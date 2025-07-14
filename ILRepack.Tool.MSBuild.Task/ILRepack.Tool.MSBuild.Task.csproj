@@ -1,0 +1,37 @@
+﻿<Project Sdk="Microsoft.NET.Sdk">
+
+  <PropertyGroup>
+    <OutputType>Library</OutputType>
+    <TargetFramework>netstandard2.0</TargetFramework>
+    <ImplicitUsings>enable</ImplicitUsings>
+    <Nullable>enable</Nullable>
+    <AssemblyName>ILRepack.Tool.MsBuild.Task</AssemblyName>
+    <IsPackable>true</IsPackable>
+    <IsPublishable>true</IsPublishable>
+    <PackRelease>true</PackRelease>
+    <PublishRelease>true</PublishRelease>
+    <PublishSingleFile>true</PublishSingleFile>
+    <SelfContained>true</SelfContained>
+    <DebugType>embedded</DebugType>
+  </PropertyGroup>
+
+  <PropertyGroup Label="build metadata">
+    <PackageId>KageKirin.ILRepack.Tool.MSBuild.Task</PackageId>
+    <Title>ILRepack.Tool.MSBuild.Task</Title>
+    <Description>MSBuild Task to run `ILRepack` over a freshly compiled assembly, in order to infuse it with select IL code of its dependencies.</Description>
+    <PackageTags>il;ilrepack;ilmerge</PackageTags>
+    <PackageIcon>Icon.png</PackageIcon>
+    <PackageIconUrl>https://raw.github.com/KageKirin/ILRepack.Tool/main/Icon.png</PackageIconUrl>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <!--
+      These lines pack the build props/targets files to the `build` folder in the generated package.
+         By convention, the .NET SDK will look for build\<Package Id>.props and build\<Package Id>.targets
+         for automatic inclusion in the build.
+    -->
+    <Content Include="build\KageKirin.ILRepack.Tool.MSBuild.Task.targets" PackagePath="build\" />
+    <Content Include="build\KageKirin.ILRepack.Tool.MSBuild.Task.targets" PackagePath="tools\" />
+  </ItemGroup>
+
+</Project>
