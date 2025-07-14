@@ -1,0 +1,30 @@
+<Project>
+
+  <ItemGroup Label="functionality dependencies">
+    <PackageVersion Include="ILRepack.Lib" Version="2.0.44" />
+    <PackageVersion Include="Microsoft.Build.Utilities.Core" Version="17.14.8" />
+    <PackageVersion Include="Microsoft.Build.Framework" Version="17.14.8" />
+  </ItemGroup>
+
+  <ItemGroup Label="unit test dependencies">
+    <PackageVersion Include="Moq" Version="4.20.72" />
+    <PackageVersion Include="Microsoft.NET.Test.Sdk" Version="17.14.1" />
+    <PackageVersion Include="xunit.v3" Version="2.0.3" />
+    <PackageVersion Include="xunit.v3.assert" Version="2.0.3" />
+    <PackageVersion Include="xunit.runner.visualstudio" Version="3.1.1" />
+    <PackageVersion Include="Microsoft.Testing.Extensions.CodeCoverage" Version="17.14.2" />
+    <PackageVersion Include="Microsoft.Testing.Extensions.TrxReport" Version="1.7.3" />
+  </ItemGroup>
+
+  <ItemGroup Label="global package references">
+    <!-- enable reproducible builds -->
+    <GlobalPackageReference Include="DotNet.ReproducibleBuilds" Version="1.2.25" PrivateAssets="All" />
+    <!-- enable source link -->
+    <GlobalPackageReference Include="Microsoft.SourceLink.GitHub" Version="8.0.0" PrivateAssets="All" />
+    <!-- enable automatic versioning -->
+    <GlobalPackageReference Include="MinVer" Version="6.0.0" PrivateAssets="All" />
+    <!-- structured build logger -->
+    <GlobalPackageReference Include="MSBuild.StructuredLogger" Version="2.3.17" PrivateAssets="All" />
+  </ItemGroup>
+
+</Project>
