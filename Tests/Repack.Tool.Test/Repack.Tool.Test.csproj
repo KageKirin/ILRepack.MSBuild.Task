@@ -40,12 +40,7 @@
     <ProjectReference Include="..\TestLibA\TestLibA.csproj" PrivateAssets="all" />
   </ItemGroup>
 
-  <ItemGroup>
-    <ProjectReference Include="..\..\ILRepack.Tool.MSBuild.Task\ILRepack.Tool.MSBuild.Task.csproj" PrivateAssets="all" />
-  </ItemGroup>
-
-  <ItemGroup>
-    <Import Include="..\..\ILRepack.Tool.MSBuild.Task\build\KageKirin.ILRepack.Tool.MSBuild.Task.targets" />
-  </ItemGroup>
+  <Import Project="..\..\ILRepack.Tool.MSBuild.Task\build\KageKirin.ILRepack.Tool.MSBuild.Task.targets" />
+  <Import Project="ILRepack.targets" />
 
 </Project>
