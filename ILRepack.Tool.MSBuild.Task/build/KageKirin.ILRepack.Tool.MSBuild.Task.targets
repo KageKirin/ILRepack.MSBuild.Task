@@ -2,6 +2,14 @@
 <Project xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
 
   <PropertyGroup>
+    <_ILRepackToolTaskAssemblyLocal>$(OutDir)ILRepack.Tool.MSBuild.Task.dll</_ILRepackToolTaskAssemblyLocal>
+    <_ILRepackToolTaskAssemblyArtifact>$(MSBuildThisFileDirectory)..\..\.artifacts\bin\ILRepack.Tool.MSBuild.Task\$(Configuration)\ILRepack.Tool.MSBuild.Task.dll</_ILRepackToolTaskAssemblyArtifact>
+    <_ILRepackToolTaskAssemblyPackage>$(MSBuildThisFileDirectory)..\lib\netstandard2.0\ILRepack.Tool.MSBuild.Task.dll</_ILRepackToolTaskAssemblyPackage>
+
+    <_ILRepackToolTaskAssembly Condition="Exists('$(_ILRepackToolTaskAssemblyLocal)')">$(_ILRepackToolTaskAssemblyLocal)</_ILRepackToolTaskAssembly>
+    <_ILRepackToolTaskAssembly Condition="'$(_ILRepackToolTaskAssembly)' == ''">$(_ILRepackToolTaskAssemblyArtifact)</_ILRepackToolTaskAssembly>
+    <_ILRepackToolTaskAssembly Condition="'$(_ILRepackToolTaskAssembly)' == ''">$(_ILRepackToolTaskAssemblyPackage)</_ILRepackToolTaskAssembly>
+
     <_MsBuildAssembly>$(MSBuildToolsPath)\Microsoft.Build.Tasks.Core.dll</_MsBuildAssembly>
     <_MsBuildTaskFactory>CodeTaskFactory</_MsBuildTaskFactory>
     <_MsBuildTaskFactory Condition=" '$(MSBuildVersion.Substring(0,2))' >= 16 Or ('$(MSBuildVersion.Substring(0,2))' == 15 And '$(MSBuildVersion.Substring(3,1))' >= 8)">RoslynCodeTaskFactory</_MsBuildTaskFactory>
