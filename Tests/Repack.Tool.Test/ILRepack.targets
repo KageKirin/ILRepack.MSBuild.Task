@@ -1,0 +1,41 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<Project xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+
+  <Target Name="ILRepacker" AfterTargets="Compile" DependsOnTargets="ResolveAssemblyReferences">
+
+    <Message Text="Repacking $(IntermediateOutputPath)" Importance="high" />
+
+    <ItemGroup>
+      <MainAssembly Include="$(IntermediateOutputPath)$(TargetFileName)" />
+      <InputAssemblies Include="@(ReferenceCopyLocalPaths)" />
+
+      <FilterAssemblies Include="xunit.v3" />
+      <FilterAssemblies Include="TestLibA" />
+
+      <LibraryPath Include="%(InputAssemblies.Directory)" />
+    </ItemGroup>
+
+    <ItemGroup>
+      <DoNotInternalizeAssemblies Include="@(MainAssembly)" />
+    </ItemGroup>
+
+    <Message Text="Repacking assemblies in $(IntermediateOutputPath): @(InputAssemblies->'%(Identity)', ' ') into @(MainAssembly->'%(Identity)')" Importance="high" />
+
+    <ILRepack
+      Parallel="false"
+      DebugInfo="true"
+      Verbose="true"
+      Internalize="true"
+      RenameInternalized="false"
+      InputAssemblies="@(MainAssembly);@(InputAssemblies)"
+      InternalizeExclude="@(DoNotInternalizeAssemblies)"
+      FilterAssemblies="@(FilterAssemblies)"
+
+      OutputFile="@(MainAssembly)"
+      LogFile="$(OutputPath)$(AssemblyName).ilrepack.log"
+    />
+
+  </Target>
+
+
+</Project>
