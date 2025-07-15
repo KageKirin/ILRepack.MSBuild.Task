@@ -9,6 +9,7 @@
       <MainAssembly Include="$(IntermediateOutputPath)$(TargetFileName)" />
       <InputAssemblies Include="@(ReferenceCopyLocalPaths)" />
 
+      <FilterAssemblies Include="$(ProjectName)" />
       <FilterAssemblies Include="xunit.v3" />
       <FilterAssemblies Include="TestLibA" />
 
