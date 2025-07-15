@@ -31,7 +31,7 @@
          By convention, the .NET SDK will look for build\<Package Id>.props and build\<Package Id>.targets
          for automatic inclusion in the build.
     -->
-    <Content Include="build\KageKirin.ILRepack.Tool.MSBuild.Task.targets" PackagePath="build\" />
+    <Content Include="$(MSBuildThisFileDirectory)build\KageKirin.ILRepack.Tool.MSBuild.Task.targets" PackagePath="build\" Link="build\KageKirin.ILRepack.Tool.MSBuild.Task.targets" Pack="true" CopyToOutputDirectory="PreserveNewest" />
     <Content Include="build\KageKirin.ILRepack.Tool.MSBuild.Task.targets" PackagePath="tools\" />
   </ItemGroup>
 
