@@ -1,0 +1,228 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<Project xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+
+  <PropertyGroup>
+    <_MsBuildAssembly>$(MSBuildToolsPath)\Microsoft.Build.Tasks.Core.dll</_MsBuildAssembly>
+    <_MsBuildTaskFactory>CodeTaskFactory</_MsBuildTaskFactory>
+    <_MsBuildTaskFactory Condition=" '$(MSBuildVersion.Substring(0,2))' >= 16 Or ('$(MSBuildVersion.Substring(0,2))' == 15 And '$(MSBuildVersion.Substring(3,1))' >= 8)">RoslynCodeTaskFactory</_MsBuildTaskFactory>
+  </PropertyGroup>
+
+  <UsingTask
+    TaskName="ILRepack"
+    TaskFactory="$(_MsBuildTaskFactory)"
+    AssemblyFile="$(_MsBuildAssembly)">
+
+    <ParameterGroup>
+      <Parallel ParameterType="System.Boolean" Required="false" />
+      <DebugInfo ParameterType="System.Boolean" Required="false" />
+      <Verbose ParameterType="System.Boolean" Required="false" />
+      <Internalize ParameterType="System.Boolean" Required="false" />
+      <RenameInternalized ParameterType="System.Boolean" Required="false" />
+      <TargetKind ParameterType="System.String" Required="false" />
+
+      <Wildcards ParameterType="System.Boolean" Required="false" />
+      <DelaySign ParameterType="System.Boolean" Required="false" />
+      <ExcludeInternalizeSerializable ParameterType="System.Boolean" Required="false" />
+      <Union ParameterType="System.Boolean" Required="false" />
+      <AllowDup ParameterType="System.Boolean" Required="false" />
+      <AllowDuplicateResources ParameterType="System.Boolean" Required="false" />
+      <NoRepackRes ParameterType="System.Boolean" Required="false" />
+      <CopyAttrs ParameterType="System.Boolean" Required="false" />
+      <AllowMultiple ParameterType="System.Boolean" Required="false" />
+      <KeepOtherVersionReferences ParameterType="System.Boolean" Required="false" />
+
+      <PreserveTimestamp ParameterType="System.Boolean" Required="false" />
+      <SkipConfig ParameterType="System.Boolean" Required="false" />
+      <ILLink ParameterType="System.Boolean" Required="false" />
+      <XmlDocs ParameterType="System.Boolean" Required="false" />
+      <ZeroPEKind ParameterType="System.Boolean" Required="false" />
+
+      <Version ParameterType="System.String" Required="false" />
+
+      <InputAssemblies ParameterType="Microsoft.Build.Framework.ITaskItem[]" Required="true" />
+      <LibraryPaths ParameterType="Microsoft.Build.Framework.ITaskItem[]" Required="false" />
+      <InternalizeExclude ParameterType="Microsoft.Build.Framework.ITaskItem[]" Required="false" />
+
+      <OutputFile ParameterType="Microsoft.Build.Framework.ITaskItem" Required="true" />
+      <LogFile ParameterType="Microsoft.Build.Framework.ITaskItem" Required="false" />
+
+      <FilterAssemblies ParameterType="Microsoft.Build.Framework.ITaskItem[]" Required="false" />
+      <ImportAttributeAssemblies ParameterType="Microsoft.Build.Framework.ITaskItem[]" Required="false" />
+      <InternalizeAssemblies ParameterType="Microsoft.Build.Framework.ITaskItem[]" Required="false" />
+
+      <RepackDropAttributes ParameterType="Microsoft.Build.Framework.ITaskItem[]" Required="false" />
+      <AllowedDuplicateTypes ParameterType="Microsoft.Build.Framework.ITaskItem[]" Required="false" />
+
+      <KeyFile ParameterType="Microsoft.Build.Framework.ITaskItem" Required="false" />
+      <KeyContainer ParameterType="Microsoft.Build.Framework.ITaskItem" Required="false" />
+
+      <Timeout ParameterType="System.Int32" Required="false" />
+    </ParameterGroup>
+
+    <Task>
+
+      <Using Namespace="System" />
+      <Using Namespace="System.Diagnostics" />
+      <Using Namespace="System.Linq" />
+      <Using Namespace="System.Collections.Generic" />
+      <Using Namespace="System.Text.RegularExpressions" />
+      <Code Type="Fragment" Language="cs">
+      <![CDATA[
+        Log.LogMessage(MessageImportance.High, "ILRepack: preparing inputs");
+
+        var cmdParams = new List<string>();
+
+        if (Parallel)
+          cmdParams.Add("/parallel");
+
+        if (!DebugInfo)
+          cmdParams.Add("/ndebug");
+
+        if (Verbose)
+          cmdParams.Add("/verbose");
+
+        if (Internalize)
+          cmdParams.Add("/internalize");
+
+        if (RenameInternalized)
+          cmdParams.Add("/renameinternalized");
+
+        if (Wildcards)
+          cmdParams.Add("/wildcards");
+
+        if (DelaySign)
+          cmdParams.Add("/delaysign");
+
+        if (ExcludeInternalizeSerializable)
+          cmdParams.Add("/excludeinternalizeserializable");
+
+        if (Union)
+          cmdParams.Add("/union");
+
+        if (AllowDup)
+          cmdParams.Add("/allowdup");
+
+        if (AllowDuplicateResources)
+          cmdParams.Add("/allowduplicateresources");
+
+        if (NoRepackRes)
+          cmdParams.Add("/noRepackRes");
+
+        if (CopyAttrs)
+          cmdParams.Add("/copyattrs");
+
+        if (AllowMultiple)
+          cmdParams.Add("/allowMultiple");
+
+        if (KeepOtherVersionReferences)
+          cmdParams.Add("/keepotherversionreferences");
+
+        if (PreserveTimestamp)
+          cmdParams.Add("/preservetimestamp");
+
+        if (SkipConfig)
+          cmdParams.Add("/skipconfig");
+
+        if (ILLink)
+          cmdParams.Add("/illink");
+
+        if (XmlDocs)
+          cmdParams.Add("/xmldocs");
+
+        if (ZeroPEKind)
+          cmdParams.Add("/zeropekind");
+
+        if (!string.IsNullOrWhiteSpace(TargetKind))
+          cmdParams.Add($"/target:{TargetKind}");
+
+        if (!string.IsNullOrWhiteSpace(Version))
+          cmdParams.Add($"/ver:{Version}");
+
+        if (!string.IsNullOrWhiteSpace(OutputFile.ItemSpec))
+          cmdParams.Add($"/out:\"{OutputFile.ItemSpec}\"");
+
+        if (LogFile is not null && !string.IsNullOrWhiteSpace(LogFile.ItemSpec))
+          cmdParams.Add($"/log:\"{LogFile.ItemSpec}\"");
+
+        if (KeyFile is not null && !string.IsNullOrWhiteSpace(KeyFile.ItemSpec))
+          cmdParams.Add($"/keyfile:\"{KeyFile.ItemSpec}\"");
+
+        if (KeyContainer is not null && !string.IsNullOrWhiteSpace(KeyContainer.ItemSpec))
+          cmdParams.Add($"/keycontainer:\"{KeyContainer.ItemSpec}\"");
+
+        if (ImportAttributeAssemblies is not null && ImportAttributeAssemblies.Length > 0)
+          cmdParams.AddRange(ImportAttributeAssemblies.Select(f => $"/attr:\"{f.ItemSpec}\""));
+
+        if (InternalizeAssemblies is not null && InternalizeAssemblies.Length > 0)
+          cmdParams.AddRange(InternalizeAssemblies.Select(f => $"/internalizeassembly:\"{f.ItemSpec}\""));
+
+        if (RepackDropAttributes is not null && RepackDropAttributes.Length > 0)
+          cmdParams.AddRange(RepackDropAttributes.Select(attr => $"/repackdrop:\"{attr.ItemSpec}\""));
+
+        if (AllowedDuplicateTypes is not null && AllowedDuplicateTypes.Length > 0)
+          cmdParams.AddRange(AllowedDuplicateTypes.Select(t => $"/allowdup:\"{t.ItemSpec}\""));
+
+        // TODO: handle
+        //InternalizeExclude
+
+        Log.LogMessage(MessageImportance.High, $"ILRepack: InputAssemblies (unfiltered): {string.Join("\n", InputAssemblies.Select(f => f.ItemSpec))}");
+        if (FilterAssemblies.Length > 0)
+        {
+          InputAssemblies = InputAssemblies.Where(item => FilterAssemblies.Any(x => 
+            item.GetMetadata("Filename").ToLower().StartsWith(x.ItemSpec.ToLower()) || 
+            Regex.IsMatch(item.GetMetadata("Filename"), x.ItemSpec, RegexOptions.IgnoreCase)
+          )).ToArray();
+        }
+        Log.LogMessage(MessageImportance.High, $"ILRepack: InputAssemblies (filtered): {string.Join("\n", InputAssemblies.Select(f => f.ItemSpec))}");
+
+        if (LibraryPaths is not null && LibraryPaths.Length > 0)
+          cmdParams.AddRange(LibraryPaths.Select(item => item.ItemSpec).Distinct().Select(l => $"/lib:\"{l}\""));
+        else
+          cmdParams.AddRange(InputAssemblies.Select(item => Path.GetDirectoryName(item.ItemSpec)).Distinct().Select(l => $"/lib:\"{l}\""));
+
+
+        // must come last
+        cmdParams.AddRange(InputAssemblies.Distinct().Select(item => $"\"{item.ItemSpec}\""));
+
+
+        string command = "ilrepack " + string.Join(" ", cmdParams);
+        Log.LogMessage(MessageImportance.High, $"ILRepack: running `{command}`");
+
+        Process process = new Process();
+        process.StartInfo = new ProcessStartInfo()
+        {
+            FileName = "dotnet",
+            Arguments = command,
+            RedirectStandardOutput = true,
+            RedirectStandardError = true,
+            UseShellExecute = false,
+            CreateNoWindow = true
+        };
+
+        process.Start();
+
+        string output = process.StandardOutput.ReadToEnd();
+        Log.LogMessage(MessageImportance.High, $"ILRepack[output]: {output}");
+
+        string error = process.StandardError.ReadToEnd();
+        if (!string.IsNullOrEmpty(error))
+          Log.LogError($"ILRepack[error]: {error}");
+
+        process.WaitForExit(Timeout > 0 ? Timeout * 1000 : 300000);
+        Log.LogMessage(MessageImportance.High, $"ILRepack: exit code {process.ExitCode}");
+
+        Success = process.ExitCode == 0;
+
+      ]]>
+      </Code>
+    </Task>
+  </UsingTask>
+
+  <PropertyGroup>
+    <_ILRepackConfigProps>$(ProjectDir)ILRepack.Config.props</_ILRepackConfigProps>
+    <_ILRepackTargets>$(ProjectDir)ILRepack.targets</_ILRepackTargets>
+  </PropertyGroup>
+
+  <Import Project="$(_ILRepackConfigProps)" Condition="'$(_ILRepackConfigProps)' != '' and Exists('$(_ILRepackConfigProps)')"/>
+  <Import Project="$(_ILRepackTargets)" Condition="'$(_ILRepackTargets)' != '' and Exists('$(_ILRepackTargets)')"/>
+</Project>
