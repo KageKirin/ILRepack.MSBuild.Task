@@ -229,7 +229,7 @@ public class ILRepack : Microsoft.Build.Utilities.Task
         set { _LogFile = value; }
     }
 
-    private Microsoft.Build.Framework.ITaskItem[] _FilterAssemblies;
+    private Microsoft.Build.Framework.ITaskItem[] _FilterAssemblies = [];
 
     public virtual Microsoft.Build.Framework.ITaskItem[] FilterAssemblies
     {
