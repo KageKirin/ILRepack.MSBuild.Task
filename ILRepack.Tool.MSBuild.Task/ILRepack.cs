@@ -189,7 +189,7 @@ public class ILRepack : Microsoft.Build.Utilities.Task
         set { _Version = value; }
     }
 
-    private Microsoft.Build.Framework.ITaskItem[] _InputAssemblies;
+    private Microsoft.Build.Framework.ITaskItem[] _InputAssemblies = [];
 
     public virtual Microsoft.Build.Framework.ITaskItem[] InputAssemblies
     {
