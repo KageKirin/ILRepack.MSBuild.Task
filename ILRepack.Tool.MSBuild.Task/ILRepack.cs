@@ -13,293 +13,77 @@ namespace KageKirin.ILRepack.Tool.MSBuild.Task;
 
 public class ILRepack : Microsoft.Build.Utilities.Task
 {
-    private bool _Parallel;
-
-    public virtual bool Parallel
-    {
-        get { return _Parallel; }
-        set { _Parallel = value; }
-    }
+    public virtual bool Parallel { get; set; }
 
-    private bool _DebugInfo;
-
-    public virtual bool DebugInfo
-    {
-        get { return _DebugInfo; }
-        set { _DebugInfo = value; }
-    }
+    public virtual bool DebugInfo { get; set; }
 
-    private bool _Verbose;
-
-    public virtual bool Verbose
-    {
-        get { return _Verbose; }
-        set { _Verbose = value; }
-    }
+    public virtual bool Verbose { get; set; }
 
-    private bool _Internalize;
-
-    public virtual bool Internalize
-    {
-        get { return _Internalize; }
-        set { _Internalize = value; }
-    }
+    public virtual bool Internalize { get; set; }
 
-    private bool _RenameInternalized;
-
-    public virtual bool RenameInternalized
-    {
-        get { return _RenameInternalized; }
-        set { _RenameInternalized = value; }
-    }
+    public virtual bool RenameInternalized { get; set; }
 
-    private string _TargetKind = string.Empty;
-
-    public virtual string TargetKind
-    {
-        get { return _TargetKind; }
-        set { _TargetKind = value; }
-    }
+    public virtual string TargetKind { get; set; } = string.Empty;
 
-    private bool _Wildcards;
-
-    public virtual bool Wildcards
-    {
-        get { return _Wildcards; }
-        set { _Wildcards = value; }
-    }
+    public virtual bool Wildcards { get; set; }
 
-    private bool _DelaySign;
-
-    public virtual bool DelaySign
-    {
-        get { return _DelaySign; }
-        set { _DelaySign = value; }
-    }
+    public virtual bool DelaySign { get; set; }
 
-    private bool _ExcludeInternalizeSerializable;
-
-    public virtual bool ExcludeInternalizeSerializable
-    {
-        get { return _ExcludeInternalizeSerializable; }
-        set { _ExcludeInternalizeSerializable = value; }
-    }
+    public virtual bool ExcludeInternalizeSerializable { get; set; }
 
-    private bool _Union;
-
-    public virtual bool Union
-    {
-        get { return _Union; }
-        set { _Union = value; }
-    }
 
-    private bool _AllowDup;
-
-    public virtual bool AllowDup
-    {
-        get { return _AllowDup; }
-        set { _AllowDup = value; }
-    }
+    public virtual bool AllowDup { get; set; }
 
-    private bool _AllowDuplicateResources;
-
-    public virtual bool AllowDuplicateResources
-    {
-        get { return _AllowDuplicateResources; }
-        set { _AllowDuplicateResources = value; }
-    }
+    public virtual bool AllowDuplicateResources { get; set; }
 
-    private bool _NoRepackRes;
-
-    public virtual bool NoRepackRes
-    {
-        get { return _NoRepackRes; }
-        set { _NoRepackRes = value; }
-    }
+    public virtual bool NoRepackRes { get; set; }
 
-    private bool _CopyAttrs;
-
-    public virtual bool CopyAttrs
-    {
-        get { return _CopyAttrs; }
-        set { _CopyAttrs = value; }
-    }
+    public virtual bool CopyAttrs { get; set; }
 
-    private bool _AllowMultiple;
-
-    public virtual bool AllowMultiple
-    {
-        get { return _AllowMultiple; }
-        set { _AllowMultiple = value; }
-    }
+    public virtual bool AllowMultiple { get; set; }
 
-    private bool _KeepOtherVersionReferences;
-
-    public virtual bool KeepOtherVersionReferences
-    {
-        get { return _KeepOtherVersionReferences; }
-        set { _KeepOtherVersionReferences = value; }
-    }
+    public virtual bool KeepOtherVersionReferences { get; set; }
 
-    private bool _PreserveTimestamp;
-
-    public virtual bool PreserveTimestamp
-    {
-        get { return _PreserveTimestamp; }
-        set { _PreserveTimestamp = value; }
-    }
+    public virtual bool PreserveTimestamp { get; set; }
 
-    private bool _SkipConfig;
-
-    public virtual bool SkipConfig
-    {
-        get { return _SkipConfig; }
-        set { _SkipConfig = value; }
-    }
+    public virtual bool SkipConfig { get; set; }
 
-    private bool _ILLink;
-
-    public virtual bool ILLink
-    {
-        get { return _ILLink; }
-        set { _ILLink = value; }
-    }
+    public virtual bool ILLink { get; set; }
 
-    private bool _XmlDocs;
-
-    public virtual bool XmlDocs
-    {
-        get { return _XmlDocs; }
-        set { _XmlDocs = value; }
-    }
+    public virtual bool XmlDocs { get; set; }
 
-    private bool _ZeroPEKind;
-
-    public virtual bool ZeroPEKind
-    {
-        get { return _ZeroPEKind; }
-        set { _ZeroPEKind = value; }
-    }
+    public virtual bool ZeroPEKind { get; set; }
 
-    private string _Version = string.Empty;
-
-    public virtual string Version
-    {
-        get { return _Version; }
-        set { _Version = value; }
-    }
+    public virtual string Version { get; set; } = string.Empty;
 
-    private Microsoft.Build.Framework.ITaskItem[] _InputAssemblies = [];
-
-    public virtual Microsoft.Build.Framework.ITaskItem[] InputAssemblies
-    {
-        get { return _InputAssemblies; }
-        set { _InputAssemblies = value; }
-    }
+    public virtual Microsoft.Build.Framework.ITaskItem[] InputAssemblies { get; set; } = [];
 
-    private Microsoft.Build.Framework.ITaskItem[] _LibraryPaths = [];
-
-    public virtual Microsoft.Build.Framework.ITaskItem[] LibraryPaths
-    {
-        get { return _LibraryPaths; }
-        set { _LibraryPaths = value; }
-    }
-
-    private Microsoft.Build.Framework.ITaskItem[] _InternalizeExclude = [];
-
-    public virtual Microsoft.Build.Framework.ITaskItem[] InternalizeExclude
-    {
-        get { return _InternalizeExclude; }
-        set { _InternalizeExclude = value; }
-    }
-
-    private Microsoft.Build.Framework.ITaskItem _OutputFile;
-
-    public virtual Microsoft.Build.Framework.ITaskItem OutputFile
-    {
-        get { return _OutputFile; }
-        set { _OutputFile = value; }
-    }
-
-    private Microsoft.Build.Framework.ITaskItem _LogFile;
-
-    public virtual Microsoft.Build.Framework.ITaskItem LogFile
-    {
-        get { return _LogFile; }
-        set { _LogFile = value; }
-    }
-
-    private Microsoft.Build.Framework.ITaskItem[] _FilterAssemblies = [];
-
-    public virtual Microsoft.Build.Framework.ITaskItem[] FilterAssemblies
-    {
-        get { return _FilterAssemblies; }
-        set { _FilterAssemblies = value; }
-    }
-
-    private Microsoft.Build.Framework.ITaskItem[] _ImportAttributeAssemblies = [];
-
-    public virtual Microsoft.Build.Framework.ITaskItem[] ImportAttributeAssemblies
-    {
-        get { return _ImportAttributeAssemblies; }
-        set { _ImportAttributeAssemblies = value; }
-    }
-
-    private Microsoft.Build.Framework.ITaskItem[] _InternalizeAssemblies = [];
-
-    public virtual Microsoft.Build.Framework.ITaskItem[] InternalizeAssemblies
-    {
-        get { return _InternalizeAssemblies; }
-        set { _InternalizeAssemblies = value; }
-    }
-
-    private Microsoft.Build.Framework.ITaskItem[] _RepackDropAttributes = [];
-
-    public virtual Microsoft.Build.Framework.ITaskItem[] RepackDropAttributes
-    {
-        get { return _RepackDropAttributes; }
-        set { _RepackDropAttributes = value; }
-    }
-
-    private Microsoft.Build.Framework.ITaskItem[] _AllowedDuplicateTypes = [];
-
-    public virtual Microsoft.Build.Framework.ITaskItem[] AllowedDuplicateTypes
-    {
-        get { return _AllowedDuplicateTypes; }
-        set { _AllowedDuplicateTypes = value; }
-    }
-
-    private Microsoft.Build.Framework.ITaskItem _KeyFile;
-
-    public virtual Microsoft.Build.Framework.ITaskItem KeyFile
-    {
-        get { return _KeyFile; }
-        set { _KeyFile = value; }
-    }
-
-    private Microsoft.Build.Framework.ITaskItem _KeyContainer;
-
-    public virtual Microsoft.Build.Framework.ITaskItem KeyContainer
-    {
-        get { return _KeyContainer; }
-        set { _KeyContainer = value; }
-    }
-
-    private int _Timeout;
-
-    public virtual int Timeout
-    {
-        get { return _Timeout; }
-        set { _Timeout = value; }
-    }
-
-    private bool _Success = true;
-
-    public virtual bool Success
-    {
-        get { return _Success; }
-        set { _Success = value; }
-    }
+    public virtual Microsoft.Build.Framework.ITaskItem[] LibraryPaths { get; set; } = [];
+
+    public virtual Microsoft.Build.Framework.ITaskItem[] InternalizeExclude { get; set; } = [];
+
+    public virtual Microsoft.Build.Framework.ITaskItem OutputFile { get; set; } = default;
+
+    public virtual Microsoft.Build.Framework.ITaskItem LogFile { get; set; } = default;
+
+    public virtual Microsoft.Build.Framework.ITaskItem[] FilterAssemblies { get; set; } = [];
+
+    public virtual Microsoft.Build.Framework.ITaskItem[] ImportAttributeAssemblies { get; set; } =
+        [];
+
+    public virtual Microsoft.Build.Framework.ITaskItem[] InternalizeAssemblies { get; set; } = [];
+
+    public virtual Microsoft.Build.Framework.ITaskItem[] RepackDropAttributes { get; set; } = [];
+
+    public virtual Microsoft.Build.Framework.ITaskItem[] AllowedDuplicateTypes { get; set; } = [];
+
+    public virtual Microsoft.Build.Framework.ITaskItem KeyFile { get; set; } = default;
+
+    public virtual Microsoft.Build.Framework.ITaskItem KeyContainer { get; set; } = default;
+
+    public virtual int Timeout { get; set; }
+
+    public virtual bool Success { get; set; }
 
     public override bool Execute()
     {
