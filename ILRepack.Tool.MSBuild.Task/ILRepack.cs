@@ -53,7 +53,7 @@ public class ILRepack : Microsoft.Build.Utilities.Task
         set { _RenameInternalized = value; }
     }
 
-    private string _TargetKind;
+    private string _TargetKind = string.Empty;
 
     public virtual string TargetKind
     {
