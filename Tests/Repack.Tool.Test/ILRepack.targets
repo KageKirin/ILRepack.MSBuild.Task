@@ -10,8 +10,8 @@
       <InputAssemblies Include="@(ReferenceCopyLocalPaths)" />
 
       <FilterAssemblies Include="$(ProjectName)" />
-      <FilterAssemblies Include="xunit.v3" />
       <FilterAssemblies Include="TestLibA" />
+      <FilterAssemblies Include="xunit" />
 
       <LibraryPath Include="%(InputAssemblies.Directory)" />
     </ItemGroup>
