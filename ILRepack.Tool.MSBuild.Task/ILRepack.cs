@@ -237,7 +237,7 @@ public class ILRepack : Microsoft.Build.Utilities.Task
         set { _FilterAssemblies = value; }
     }
 
-    private Microsoft.Build.Framework.ITaskItem[] _ImportAttributeAssemblies;
+    private Microsoft.Build.Framework.ITaskItem[] _ImportAttributeAssemblies = [];
 
     public virtual Microsoft.Build.Framework.ITaskItem[] ImportAttributeAssemblies
     {
