@@ -205,7 +205,7 @@ public class ILRepack : Microsoft.Build.Utilities.Task
         set { _LibraryPaths = value; }
     }
 
-    private Microsoft.Build.Framework.ITaskItem[] _InternalizeExclude;
+    private Microsoft.Build.Framework.ITaskItem[] _InternalizeExclude = [];
 
     public virtual Microsoft.Build.Framework.ITaskItem[] InternalizeExclude
     {
