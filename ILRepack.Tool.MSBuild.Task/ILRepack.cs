@@ -197,7 +197,7 @@ public class ILRepack : Microsoft.Build.Utilities.Task
         set { _InputAssemblies = value; }
     }
 
-    private Microsoft.Build.Framework.ITaskItem[] _LibraryPaths;
+    private Microsoft.Build.Framework.ITaskItem[] _LibraryPaths = [];
 
     public virtual Microsoft.Build.Framework.ITaskItem[] LibraryPaths
     {
