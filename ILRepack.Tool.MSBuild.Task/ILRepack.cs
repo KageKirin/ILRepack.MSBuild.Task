@@ -53,7 +53,7 @@ public class ILRepack : Microsoft.Build.Utilities.Task
         set { _RenameInternalized = value; }
     }
 
-    private string _TargetKind;
+    private string _TargetKind = string.Empty;
 
     public virtual string TargetKind
     {
@@ -181,7 +181,7 @@ public class ILRepack : Microsoft.Build.Utilities.Task
         set { _ZeroPEKind = value; }
     }
 
-    private string _Version;
+    private string _Version = string.Empty;
 
     public virtual string Version
     {
@@ -189,7 +189,7 @@ public class ILRepack : Microsoft.Build.Utilities.Task
         set { _Version = value; }
     }
 
-    private Microsoft.Build.Framework.ITaskItem[] _InputAssemblies;
+    private Microsoft.Build.Framework.ITaskItem[] _InputAssemblies = [];
 
     public virtual Microsoft.Build.Framework.ITaskItem[] InputAssemblies
     {
@@ -197,7 +197,7 @@ public class ILRepack : Microsoft.Build.Utilities.Task
         set { _InputAssemblies = value; }
     }
 
-    private Microsoft.Build.Framework.ITaskItem[] _LibraryPaths;
+    private Microsoft.Build.Framework.ITaskItem[] _LibraryPaths = [];
 
     public virtual Microsoft.Build.Framework.ITaskItem[] LibraryPaths
     {
@@ -205,7 +205,7 @@ public class ILRepack : Microsoft.Build.Utilities.Task
         set { _LibraryPaths = value; }
     }
 
-    private Microsoft.Build.Framework.ITaskItem[] _InternalizeExclude;
+    private Microsoft.Build.Framework.ITaskItem[] _InternalizeExclude = [];
 
     public virtual Microsoft.Build.Framework.ITaskItem[] InternalizeExclude
     {
@@ -229,7 +229,7 @@ public class ILRepack : Microsoft.Build.Utilities.Task
         set { _LogFile = value; }
     }
 
-    private Microsoft.Build.Framework.ITaskItem[] _FilterAssemblies;
+    private Microsoft.Build.Framework.ITaskItem[] _FilterAssemblies = [];
 
     public virtual Microsoft.Build.Framework.ITaskItem[] FilterAssemblies
     {
@@ -237,7 +237,7 @@ public class ILRepack : Microsoft.Build.Utilities.Task
         set { _FilterAssemblies = value; }
     }
 
-    private Microsoft.Build.Framework.ITaskItem[] _ImportAttributeAssemblies;
+    private Microsoft.Build.Framework.ITaskItem[] _ImportAttributeAssemblies = [];
 
     public virtual Microsoft.Build.Framework.ITaskItem[] ImportAttributeAssemblies
     {
@@ -245,7 +245,7 @@ public class ILRepack : Microsoft.Build.Utilities.Task
         set { _ImportAttributeAssemblies = value; }
     }
 
-    private Microsoft.Build.Framework.ITaskItem[] _InternalizeAssemblies;
+    private Microsoft.Build.Framework.ITaskItem[] _InternalizeAssemblies = [];
 
     public virtual Microsoft.Build.Framework.ITaskItem[] InternalizeAssemblies
     {
@@ -253,7 +253,7 @@ public class ILRepack : Microsoft.Build.Utilities.Task
         set { _InternalizeAssemblies = value; }
     }
 
-    private Microsoft.Build.Framework.ITaskItem[] _RepackDropAttributes;
+    private Microsoft.Build.Framework.ITaskItem[] _RepackDropAttributes = [];
 
     public virtual Microsoft.Build.Framework.ITaskItem[] RepackDropAttributes
     {
@@ -261,7 +261,7 @@ public class ILRepack : Microsoft.Build.Utilities.Task
         set { _RepackDropAttributes = value; }
     }
 
-    private Microsoft.Build.Framework.ITaskItem[] _AllowedDuplicateTypes;
+    private Microsoft.Build.Framework.ITaskItem[] _AllowedDuplicateTypes = [];
 
     public virtual Microsoft.Build.Framework.ITaskItem[] AllowedDuplicateTypes
     {
