@@ -1,0 +1,44 @@
+<Project Sdk="Microsoft.NET.Sdk">
+
+  <PropertyGroup>
+    <OutputType>Library</OutputType>
+    <TargetFramework>netstandard2.0</TargetFramework>
+    <DevelopmentDependency>true</DevelopmentDependency>
+    <ImplicitUsings>enable</ImplicitUsings>
+    <Nullable>enable</Nullable>
+    <AssemblyName>ILRepack.Lib.MsBuild.Task</AssemblyName>
+    <IsPackable>true</IsPackable>
+    <IsPublishable>true</IsPublishable>
+    <PackRelease>true</PackRelease>
+    <PublishRelease>true</PublishRelease>
+    <PublishSingleFile>true</PublishSingleFile>
+    <SelfContained>true</SelfContained>
+    <DebugType>embedded</DebugType>
+  </PropertyGroup>
+
+  <PropertyGroup Label="build metadata">
+    <PackageId>KageKirin.ILRepack.Lib.MSBuild.Task</PackageId>
+    <Title>ILRepack.Lib.MSBuild.Task</Title>
+    <Description>MSBuild Task to run `ILRepack` over a freshly compiled assembly, in order to infuse it with select IL code of its dependencies.</Description>
+    <PackageTags>il;ilrepack;ilmerge</PackageTags>
+    <PackageIcon>Icon.png</PackageIcon>
+    <PackageIconUrl>https://raw.github.com/KageKirin/ILRepack.MSBuild.Task/main/Icon.png</PackageIconUrl>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <!--
+      These lines pack the build props/targets files to the `build` folder in the generated package.
+         By convention, the .NET SDK will look for build\<Package Id>.props and build\<Package Id>.targets
+         for automatic inclusion in the build.
+    -->
+    <Content Include="$(MSBuildThisFileDirectory)build\KageKirin.ILRepack.Lib.MSBuild.Task.targets" PackagePath="build\" Link="build\KageKirin.ILRepack.Lib.MSBuild.Task.targets" Pack="true" CopyToOutputDirectory="PreserveNewest" />
+    <Content Include="$(MSBuildThisFileDirectory)build\KageKirin.ILRepack.Lib.MSBuild.Task.targets" PackagePath="tools\" Link="tools\KageKirin.ILRepack.Lib.MSBuild.Task.targets" Pack="true" CopyToOutputDirectory="PreserveNewest" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <PackageReference Include="Microsoft.Build.Utilities.Core" PrivateAssets="all" />
+    <PackageReference Include="Microsoft.Build.Framework" PrivateAssets="all" />
+    <PackageReference Include="ILRepack.Lib" PrivateAssets="all" />
+  </ItemGroup>
+
+</Project>
