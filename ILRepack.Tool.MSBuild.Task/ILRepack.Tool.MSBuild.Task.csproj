@@ -22,7 +22,7 @@
     <Description>MSBuild Task to run `ILRepack` over a freshly compiled assembly, in order to infuse it with select IL code of its dependencies.</Description>
     <PackageTags>il;ilrepack;ilmerge</PackageTags>
     <PackageIcon>Icon.png</PackageIcon>
-    <PackageIconUrl>https://raw.github.com/KageKirin/ILRepack.Tool/main/Icon.png</PackageIconUrl>
+    <PackageIconUrl>https://raw.github.com/KageKirin/ILRepack.MSBuild.Task/main/Icon.png</PackageIconUrl>
   </PropertyGroup>
 
   <ItemGroup>
