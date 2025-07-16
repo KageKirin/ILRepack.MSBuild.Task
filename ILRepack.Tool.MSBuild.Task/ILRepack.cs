@@ -245,7 +245,7 @@ public class ILRepack : Microsoft.Build.Utilities.Task
         set { _ImportAttributeAssemblies = value; }
     }
 
-    private Microsoft.Build.Framework.ITaskItem[] _InternalizeAssemblies;
+    private Microsoft.Build.Framework.ITaskItem[] _InternalizeAssemblies = [];
 
     public virtual Microsoft.Build.Framework.ITaskItem[] InternalizeAssemblies
     {
