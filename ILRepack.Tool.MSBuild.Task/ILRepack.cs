@@ -261,7 +261,7 @@ public class ILRepack : Microsoft.Build.Utilities.Task
         set { _RepackDropAttributes = value; }
     }
 
-    private Microsoft.Build.Framework.ITaskItem[] _AllowedDuplicateTypes;
+    private Microsoft.Build.Framework.ITaskItem[] _AllowedDuplicateTypes = [];
 
     public virtual Microsoft.Build.Framework.ITaskItem[] AllowedDuplicateTypes
     {
