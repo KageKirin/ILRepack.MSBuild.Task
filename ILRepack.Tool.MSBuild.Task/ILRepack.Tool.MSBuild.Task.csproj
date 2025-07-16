@@ -35,4 +35,9 @@
     <Content Include="build\KageKirin.ILRepack.Tool.MSBuild.Task.targets" PackagePath="tools\" />
   </ItemGroup>
 
+  <ItemGroup>
+    <PackageReference Include="Microsoft.Build.Utilities.Core" PrivateAssets="all" />
+    <PackageReference Include="Microsoft.Build.Framework" PrivateAssets="all" />
+  </ItemGroup>
+
 </Project>
