@@ -253,7 +253,7 @@ public class ILRepack : Microsoft.Build.Utilities.Task
         set { _InternalizeAssemblies = value; }
     }
 
-    private Microsoft.Build.Framework.ITaskItem[] _RepackDropAttributes;
+    private Microsoft.Build.Framework.ITaskItem[] _RepackDropAttributes = [];
 
     public virtual Microsoft.Build.Framework.ITaskItem[] RepackDropAttributes
     {
