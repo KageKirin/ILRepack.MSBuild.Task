@@ -181,7 +181,7 @@ public class ILRepack : Microsoft.Build.Utilities.Task
         set { _ZeroPEKind = value; }
     }
 
-    private string _Version;
+    private string _Version = string.Empty;
 
     public virtual string Version
     {
