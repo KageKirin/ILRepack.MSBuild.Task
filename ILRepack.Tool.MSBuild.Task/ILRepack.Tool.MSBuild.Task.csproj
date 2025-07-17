@@ -38,6 +38,23 @@
   <ItemGroup>
     <PackageReference Include="Microsoft.Build.Utilities.Core" PrivateAssets="all" />
     <PackageReference Include="Microsoft.Build.Framework" PrivateAssets="all" />
+    <PackageReference Include="ILRepack" PrivateAssets="all" IncludeAssets="runtime" GeneratePathProperty="true" />
+  </ItemGroup>
+
+  <Target Name="Info" BeforeTargets="Compile">
+    <PropertyGroup>
+      <_LsCommand>ls</_LsCommand>
+      <_LsCommand Condition="'$([System.OperatingSystem]::IsWindows())'">dir</_LsCommand>
+    </PropertyGroup>
+
+    <Message Text="PkgILRepack $(PkgILRepack)" Importance="high" />
+    <Exec Command="$(_LsCommand) $(PkgILRepack)" />
+    <Exec Command="$(_LsCommand) $(PkgILRepack)/tools" />
+  </Target>
+
+  <ItemGroup>
+    <Content Include="$(PkgILRepack)\tools\ILRepack.exe" PackagePath="tools" Link="tools\ILRepack.exe"  Pack="true" CopyToOutputDirectory="PreserveNewest" />
+    <Content Include="$(PkgILRepack)\tools\ILRepack.runtimeconfig.json" PackagePath="tools" Link="tools\ILRepack.runtimeconfig.json"  Pack="true" CopyToOutputDirectory="PreserveNewest" />
   </ItemGroup>
 
 </Project>

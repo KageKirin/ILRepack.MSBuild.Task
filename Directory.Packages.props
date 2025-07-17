@@ -1,6 +1,7 @@
 <Project>
 
   <ItemGroup Label="functionality dependencies">
+    <PackageVersion Include="ILRepack" Version="2.0.44" />
     <PackageVersion Include="ILRepack.Lib" Version="2.0.44" />
     <PackageVersion Include="Microsoft.Build.Utilities.Core" Version="17.14.8" />
     <PackageVersion Include="Microsoft.Build.Framework" Version="17.14.8" />
