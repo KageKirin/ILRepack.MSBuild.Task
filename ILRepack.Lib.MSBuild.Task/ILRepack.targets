@@ -1,44 +1,19 @@
 <?xml version="1.0" encoding="utf-8" ?>
 <Project xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
-
-  <Target Name="ILRepacker" AfterTargets="Compile" DependsOnTargets="ResolveAssemblyReferences">
+  <Target Name="ILRepackerExe" AfterTargets="Compile" DependsOnTargets="ResolveAssemblyReferences">
 
     <Message Text="Repacking $(IntermediateOutputPath)" Importance="high" />
+    <PropertyGroup>
+      <_ThisAssembly>$(IntermediateOutputPath)$(TargetFileName)</_ThisAssembly>
+      <_ILRepackAssembly>$(PkgILRepack_Lib)/lib/net472/ILRepack.dll</_ILRepackAssembly>
+      <_ILRepackExclude>ILRepack.not</_ILRepackExclude>
+      <_ILRepackExe>$(PkgILRepack)/tools/ILRepack.exe</_ILRepackExe>
+      <_ILRepackCmd>$(_ILRepackExe) /internalize:$(_ILRepackExclude) /renameinternalized /log:$(_ThisAssembly).ilrepack.log /out:$(_ThisAssembly).repack $(_ThisAssembly) $(_ILRepackAssembly)</_ILRepackCmd>
+    </PropertyGroup>
 
-    <ItemGroup>
-      <MainAssembly Include="$(IntermediateOutputPath)$(TargetFileName)" />
-
-      <InputAssemblies Include="@(ReferenceCopyLocalPaths)" />
-      <InputAssemblies Include="$(PkgILRepack_Lib)\**\*.dll" />
-
-      <FilterAssemblies Include="$(AssemblyName)" />
-      <FilterAssemblies Include="ILRepack.dll" />
-      <FilterAssemblies Include="ILRepack$" />
-
-      <LibraryPath Include="%(InputAssemblies.Directory)" />
-    </ItemGroup>
-
-    <ItemGroup>
-      <DoNotInternalizeAssemblies Include="@(MainAssembly)" />
-    </ItemGroup>
-
-    <Message Text="Repacking assemblies in $(IntermediateOutputPath): @(InputAssemblies->'%(Identity)', ' ') into @(MainAssembly->'%(Identity)')" Importance="high" />
-
-    <ILRepack
-      Parallel="false"
-      DebugInfo="true"
-      Verbose="true"
-      Internalize="true"
-      RenameInternalized="false"
-      InputAssemblies="@(MainAssembly);@(InputAssemblies)"
-      InternalizeExclude="@(DoNotInternalizeAssemblies)"
-      FilterAssemblies="@(FilterAssemblies)"
-
-      OutputFile="@(MainAssembly)"
-      LogFile="$(OutputPath)$(AssemblyName).ilrepack.log"
-    />
+    <Message Text="running: $(_ILRepackCmd)" Importance="high" />
+    <Exec Command="dotnet $(_ILRepackCmd)" />
+    <Move SourceFiles="$(_ThisAssembly).repack" DestinationFiles="$(_ThisAssembly)" />
 
   </Target>
-
-
 </Project>
