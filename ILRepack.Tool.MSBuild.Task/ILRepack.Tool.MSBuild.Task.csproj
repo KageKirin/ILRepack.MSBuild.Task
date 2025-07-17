@@ -41,4 +41,15 @@
     <PackageReference Include="ILRepack" PrivateAssets="all" IncludeAssets="runtime" GeneratePathProperty="true" />
   </ItemGroup>
 
+  <Target Name="Info" BeforeTargets="Compile">
+    <PropertyGroup>
+      <_LsCommand>ls</_LsCommand>
+      <_LsCommand Condition="'$([System.OperatingSystem]::IsWindows())'">dir</_LsCommand>
+    </PropertyGroup>
+
+    <Message Text="PkgILRepack $(PkgILRepack)" Importance="high" />
+    <Exec Command="$(_LsCommand) $(PkgILRepack)" />
+    <Exec Command="$(_LsCommand) $(PkgILRepack)/tools" />
+  </Target>
+
 </Project>
