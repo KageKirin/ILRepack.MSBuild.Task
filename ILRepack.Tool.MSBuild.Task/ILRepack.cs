@@ -4,6 +4,7 @@ using System.Collections.Generic;
 using System.Diagnostics;
 using System.IO;
 using System.Linq;
+using System.Reflection;
 using System.Text;
 using System.Text.RegularExpressions;
 using Microsoft.Build.Framework;
@@ -231,7 +232,12 @@ public class ILRepack : Microsoft.Build.Utilities.Task, IDisposable
         // must come last
         cmdParams.AddRange(InputAssemblies.Select(item => $"\"{item.ItemSpec}\"").Distinct());
 
-        string command = "ilrepack " + string.Join(" ", cmdParams);
+        var thisPath = Path.GetDirectoryName(Assembly.GetExecutingAssembly().Location);
+        var ilrepack = Path.Combine(thisPath, "tools", "ILRepack.exe");
+        if (!File.Exists(ilrepack))
+            ilrepack = "ilrepack";
+
+        string command = ilrepack + " " + string.Join(" ", cmdParams);
         Log.LogMessage(MessageImportance.High, $"ILRepack: running `{command}`");
 
         Process process = new Process();
