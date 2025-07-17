@@ -1,4 +1,4 @@
-﻿namespace TestLibA;
+namespace TestLibA;
 
 public class SampleA
 {
