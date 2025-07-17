@@ -28,3 +28,4 @@ publish:
 
 results:
 	ls -alG .artifacts/bin/ILRepack.Tool.MSBuild.Task/debug
+	ls -alG .artifacts/bin/ILRepack.Lib.MSBuild.Task/debug
