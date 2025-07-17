@@ -20,16 +20,9 @@ p pack:
 
 t test:
 	dotnet test -bl -v d
-	dotnet run --project XmlFormat.Tool -- --help
-	dotnet run --project XmlFormat.Tool -- --version
-	dotnet run --project XmlFormat.Tool -- --inline test.xml
-	.artifacts/bin/XmlFormat.Tool/debug/XmlFormat.Tool --help
-	.artifacts/bin/XmlFormat.Tool/debug/XmlFormat.Tool --version
-	.artifacts/bin/XmlFormat.Tool/debug/XmlFormat.Tool --inline test.xml
 
 publish:
 	dotnet push
 
 results:
-	ls -alG .artifacts/bin/XmlFormat.MsBuild.Task/debug
-	ls -alG .artifacts/bin/XmlFormat.Tool/debug
+	ls -alG .artifacts/bin/ILRepack.Tool.MSBuild.Task/debug
