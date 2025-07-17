@@ -52,4 +52,9 @@
     <Exec Command="$(_LsCommand) $(PkgILRepack)/tools" />
   </Target>
 
+  <ItemGroup>
+    <Content Include="$(PkgILRepack)\tools\ILRepack.exe" PackagePath="tools" Link="tools\ILRepack.exe"  Pack="true" CopyToOutputDirectory="PreserveNewest" />
+    <Content Include="$(PkgILRepack)\tools\ILRepack.runtimeconfig.json" PackagePath="tools" Link="tools\ILRepack.runtimeconfig.json"  Pack="true" CopyToOutputDirectory="PreserveNewest" />
+  </ItemGroup>
+
 </Project>
