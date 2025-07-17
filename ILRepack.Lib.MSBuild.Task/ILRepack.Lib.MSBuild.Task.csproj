@@ -14,6 +14,7 @@
     <PublishSingleFile>true</PublishSingleFile>
     <SelfContained>true</SelfContained>
     <DebugType>embedded</DebugType>
+    <CopyLocalLockFileAssemblies>true</CopyLocalLockFileAssemblies>
   </PropertyGroup>
 
   <PropertyGroup Label="build metadata">
@@ -38,8 +39,21 @@
   <ItemGroup>
     <PackageReference Include="Microsoft.Build.Utilities.Core" PrivateAssets="all" />
     <PackageReference Include="Microsoft.Build.Framework" PrivateAssets="all" />
-    <PackageReference Include="ILRepack" PrivateAssets="all" />
-    <PackageReference Include="ILRepack.Lib" PrivateAssets="all" />
+    <PackageReference Include="ILRepack" PrivateAssets="all" IncludeAssets="all" GeneratePathProperty="true" />
+    <PackageReference Include="ILRepack.Lib" PrivateAssets="all" IncludeAssets="all" GeneratePathProperty="true" />
   </ItemGroup>
+
+  <ItemGroup>
+    <ProjectReference Include="..\ILRepack.Tool.MSBuild.Task\ILRepack.Tool.MSBuild.Task.csproj" PrivateAssets="all" IncludeAssets="all" />
+  </ItemGroup>
+
+  <Import Project="..\ILRepack.Tool.MSBuild.Task\build\KageKirin.ILRepack.Tool.MSBuild.Task.targets" />
+  <Import Project="ILRepack.targets" />
+
+
+  <Target Name="INFO" BeforeTargets="Compile">
+    <Message Text="PkgILRepack $(PkgILRepack)" Importance="high" />
+    <Message Text="PkgILRepack_Lib $(PkgILRepack_Lib)" Importance="high" />
+  </Target>
 
 </Project>
