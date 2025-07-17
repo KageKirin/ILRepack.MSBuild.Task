@@ -240,15 +240,17 @@ public class ILRepack : Microsoft.Build.Utilities.Task, IDisposable
         string command = ilrepack + " " + string.Join(" ", cmdParams);
         Log.LogMessage(MessageImportance.High, $"ILRepack: running `{command}`");
 
-        Process process = new Process();
-        process.StartInfo = new ProcessStartInfo()
+        Process process = new()
         {
-            FileName = "dotnet",
-            Arguments = command,
-            RedirectStandardOutput = true,
-            RedirectStandardError = true,
-            UseShellExecute = false,
-            CreateNoWindow = true,
+            StartInfo = new()
+            {
+                FileName = "dotnet",
+                Arguments = command,
+                RedirectStandardOutput = true,
+                RedirectStandardError = true,
+                UseShellExecute = false,
+                CreateNoWindow = true,
+            }
         };
 
         process.Start();
