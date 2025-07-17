@@ -1,0 +1,26 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<Project xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+
+  <PropertyGroup>
+    <_ILRepackLibTaskAssemblyLocal>$(OutDir)ILRepack.Lib.MSBuild.Task.dll</_ILRepackLibTaskAssemblyLocal>
+    <_ILRepackLibTaskAssemblyArtifact>$(MSBuildThisFileDirectory)..\..\.artifacts\bin\ILRepack.Lib.MSBuild.Task\$(Configuration)\ILRepack.Lib.MSBuild.Task.dll</_ILRepackLibTaskAssemblyArtifact>
+    <_ILRepackLibTaskAssemblyPackage>$(MSBuildThisFileDirectory)..\lib\netstandard2.0\ILRepack.Lib.MSBuild.Task.dll</_ILRepackLibTaskAssemblyPackage>
+
+    <_ILRepackLibTaskAssembly Condition="Exists('$(_ILRepackLibTaskAssemblyLocal)')">$(_ILRepackLibTaskAssemblyLocal)</_ILRepackLibTaskAssembly>
+    <_ILRepackLibTaskAssembly Condition="'$(_ILRepackLibTaskAssembly)' == ''">$(_ILRepackLibTaskAssemblyArtifact)</_ILRepackLibTaskAssembly>
+    <_ILRepackLibTaskAssembly Condition="'$(_ILRepackLibTaskAssembly)' == ''">$(_ILRepackLibTaskAssemblyPackage)</_ILRepackLibTaskAssembly>
+  </PropertyGroup>
+
+  <UsingTask
+    TaskName="ILRepack"
+    AssemblyFile="$(_ILRepackLibTaskAssembly)"
+  />
+
+  <PropertyGroup>
+    <_ILRepackConfigProps>$(ProjectDir)ILRepack.Config.props</_ILRepackConfigProps>
+    <_ILRepackTargets>$(ProjectDir)ILRepack.targets</_ILRepackTargets>
+  </PropertyGroup>
+
+  <Import Project="$(_ILRepackConfigProps)" Condition="'$(_ILRepackConfigProps)' != '' and Exists('$(_ILRepackConfigProps)')"/>
+  <Import Project="$(_ILRepackTargets)" Condition="'$(_ILRepackTargets)' != '' and Exists('$(_ILRepackTargets)')"/>
+</Project>
