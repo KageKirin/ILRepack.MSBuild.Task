@@ -6,7 +6,7 @@
     <_ILRepackLibTaskAssemblyArtifact>$(MSBuildThisFileDirectory)..\..\.artifacts\bin\ILRepack.Lib.MSBuild.Task\$(Configuration)\ILRepack.Lib.MSBuild.Task.dll</_ILRepackLibTaskAssemblyArtifact>
     <_ILRepackLibTaskAssemblyPackage>$(MSBuildThisFileDirectory)..\lib\netstandard2.0\ILRepack.Lib.MSBuild.Task.dll</_ILRepackLibTaskAssemblyPackage>
 
-    <_ILRepackLibTaskAssembly Condition="Exists('$(_ILRepackLibTaskAssemblyLocal)')">$(_ILRepackLibTaskAssemblyLocal)</_ILRepackLibTaskAssembly>
+    <_ILRepackLibTaskAssembly Condition="'$(_ILRepackLibTaskAssembly)' == '' and Exists('$(_ILRepackLibTaskAssemblyLocal)')">$(_ILRepackLibTaskAssemblyLocal)</_ILRepackLibTaskAssembly>
     <_ILRepackLibTaskAssembly Condition="'$(_ILRepackLibTaskAssembly)' == ''">$(_ILRepackLibTaskAssemblyArtifact)</_ILRepackLibTaskAssembly>
     <_ILRepackLibTaskAssembly Condition="'$(_ILRepackLibTaskAssembly)' == ''">$(_ILRepackLibTaskAssemblyPackage)</_ILRepackLibTaskAssembly>
   </PropertyGroup>
