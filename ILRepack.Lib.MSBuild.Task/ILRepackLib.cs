@@ -122,28 +122,29 @@ public class ILRepack : Microsoft.Build.Utilities.Task, IDisposable
             )
             : OutputFile.ItemSpec;
 
-        RepackOptions repackOptions = new();
-
-        repackOptions.Parallel = Parallel;
-        repackOptions.DebugInfo = DebugInfo;
-        repackOptions.LogVerbose = Verbose;
-        repackOptions.Internalize = Internalize;
-        repackOptions.RenameInternalized = RenameInternalized;
-        repackOptions.AllowWildCards = Wildcards;
-        repackOptions.DelaySign = DelaySign;
-        repackOptions.ExcludeInternalizeSerializable = ExcludeInternalizeSerializable;
-        repackOptions.UnionMerge = Union;
-        repackOptions.AllowAllDuplicateTypes = AllowDup;
-        repackOptions.AllowDuplicateResources = AllowDuplicateResources;
-        repackOptions.NoRepackRes = NoRepackRes;
-        repackOptions.CopyAttributes = CopyAttrs;
-        repackOptions.AllowMultipleAssemblyLevelAttributes = AllowMultiple;
-        repackOptions.KeepOtherVersionReferences = KeepOtherVersionReferences;
-        repackOptions.PreserveTimestamp = PreserveTimestamp;
-        repackOptions.SkipConfigMerge = SkipConfig;
-        repackOptions.MergeIlLinkerFiles = ILLink;
-        repackOptions.XmlDocumentation = XmlDocs;
-        repackOptions.AllowZeroPeKind = ZeroPEKind;
+        RepackOptions repackOptions = new()
+        {
+            Parallel = Parallel,
+            DebugInfo = DebugInfo,
+            LogVerbose = Verbose,
+            Internalize = Internalize,
+            RenameInternalized = RenameInternalized,
+            AllowWildCards = Wildcards,
+            DelaySign = DelaySign,
+            ExcludeInternalizeSerializable = ExcludeInternalizeSerializable,
+            UnionMerge = Union,
+            AllowAllDuplicateTypes = AllowDup,
+            AllowDuplicateResources = AllowDuplicateResources,
+            NoRepackRes = NoRepackRes,
+            CopyAttributes = CopyAttrs,
+            AllowMultipleAssemblyLevelAttributes = AllowMultiple,
+            KeepOtherVersionReferences = KeepOtherVersionReferences,
+            PreserveTimestamp = PreserveTimestamp,
+            SkipConfigMerge = SkipConfig,
+            MergeIlLinkerFiles = ILLink,
+            XmlDocumentation = XmlDocs,
+            AllowZeroPeKind = ZeroPEKind,
+        };
 
         if (!string.IsNullOrWhiteSpace(TargetKind))
             repackOptions.TargetKind = (ILRepacking.ILRepack.Kind)
