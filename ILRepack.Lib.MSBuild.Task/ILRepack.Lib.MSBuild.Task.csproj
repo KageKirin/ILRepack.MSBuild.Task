@@ -11,8 +11,6 @@
     <IsPublishable>true</IsPublishable>
     <PackRelease>true</PackRelease>
     <PublishRelease>true</PublishRelease>
-    <PublishSingleFile>true</PublishSingleFile>
-    <SelfContained>true</SelfContained>
     <DebugType>embedded</DebugType>
     <CopyLocalLockFileAssemblies>true</CopyLocalLockFileAssemblies>
   </PropertyGroup>
@@ -32,8 +30,8 @@
          By convention, the .NET SDK will look for build\<Package Id>.props and build\<Package Id>.targets
          for automatic inclusion in the build.
     -->
-    <Content Include="$(MSBuildThisFileDirectory)build\KageKirin.ILRepack.Lib.MSBuild.Task.targets" PackagePath="build\" Link="build\KageKirin.ILRepack.Lib.MSBuild.Task.targets" Pack="true" CopyToOutputDirectory="PreserveNewest" />
-    <Content Include="$(MSBuildThisFileDirectory)build\KageKirin.ILRepack.Lib.MSBuild.Task.targets" PackagePath="tools\" Link="tools\KageKirin.ILRepack.Lib.MSBuild.Task.targets" Pack="true" CopyToOutputDirectory="PreserveNewest" />
+    <Content Include="$(MSBuildThisFileDirectory)build\KageKirin.ILRepack.Lib.MSBuild.Task.targets" PackagePath="build" Link="build\KageKirin.ILRepack.Lib.MSBuild.Task.targets" Pack="true" CopyToOutputDirectory="PreserveNewest" />
+    <Content Include="$(MSBuildThisFileDirectory)build\KageKirin.ILRepack.Lib.MSBuild.Task.targets" PackagePath="tools" Link="tools\KageKirin.ILRepack.Lib.MSBuild.Task.targets" Pack="true" CopyToOutputDirectory="PreserveNewest" />
   </ItemGroup>
 
   <ItemGroup>
