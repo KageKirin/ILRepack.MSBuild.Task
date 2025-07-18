@@ -189,8 +189,23 @@ public class ILRepack : Microsoft.Build.Utilities.Task, IDisposable
         if (AllowedDuplicateTypes is not null && AllowedDuplicateTypes.Length > 0)
             cmdParams.AddRange(AllowedDuplicateTypes.Select(t => $"/allowdup:\"{t.ItemSpec}\""));
 
-        // TODO: handle
-        //InternalizeExclude
+        if (InternalizeExclude is not null && InternalizeExclude.Length > 0)
+        {
+            string excludeFile = Path.Combine(
+                Path.GetDirectoryName(OutputFile.ItemSpec),
+                "ILRepack.not"
+            );
+            using StreamWriter writer = new(
+                path: excludeFile,
+                append: false,
+                encoding: Encoding.UTF8
+            );
+
+            foreach (var asm in InternalizeExclude)
+                writer.WriteLine(asm.ItemSpec);
+
+            cmdParams.Add($"/internalize:\"{excludeFile}\"");
+        }
 
         Log.LogMessage(
             MessageImportance.High,
@@ -250,7 +265,7 @@ public class ILRepack : Microsoft.Build.Utilities.Task, IDisposable
                 RedirectStandardError = true,
                 UseShellExecute = false,
                 CreateNoWindow = true,
-            }
+            },
         };
 
         process.Start();
