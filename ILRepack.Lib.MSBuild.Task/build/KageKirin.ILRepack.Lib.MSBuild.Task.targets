@@ -8,7 +8,7 @@
 
     <_ILRepackLibTaskAssembly Condition="'$(_ILRepackLibTaskAssembly)' == '' and Exists('$(_ILRepackLibTaskAssemblyLocal)')">$(_ILRepackLibTaskAssemblyLocal)</_ILRepackLibTaskAssembly>
     <_ILRepackLibTaskAssembly Condition="'$(_ILRepackLibTaskAssembly)' == '' and Exists('$(_ILRepackLibTaskAssemblyArtifact)')">$(_ILRepackLibTaskAssemblyArtifact)</_ILRepackLibTaskAssembly>
-    <_ILRepackLibTaskAssembly Condition="'$(_ILRepackLibTaskAssembly)' == ''">$(_ILRepackLibTaskAssemblyPackage)</_ILRepackLibTaskAssembly>
+    <_ILRepackLibTaskAssembly Condition="'$(_ILRepackLibTaskAssembly)' == '' and Exists('$(_ILRepackLibTaskAssemblyPackage)')">$(_ILRepackLibTaskAssemblyPackage)</_ILRepackLibTaskAssembly>
   </PropertyGroup>
 
   <UsingTask
