@@ -13,6 +13,8 @@ c clean:
 	rm -rf .artifacts
 
 b build:
+	dotnet build -bl -v d ILRepack.Tool.MSBuild.Task
+	dotnet build -bl -v d ILRepack.Lib.MSBuild.Task
 	dotnet build -bl -v d
 
 p pack:
@@ -26,3 +28,4 @@ publish:
 
 results:
 	ls -alG .artifacts/bin/ILRepack.Tool.MSBuild.Task/debug
+	ls -alG .artifacts/bin/ILRepack.Lib.MSBuild.Task/debug
