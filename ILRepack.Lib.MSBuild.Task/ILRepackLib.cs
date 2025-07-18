@@ -222,6 +222,27 @@ public class ILRepack : Microsoft.Build.Utilities.Task, IDisposable
             $"ILRepackLib: InputAssemblies (filtered): {string.Join("\n", InputAssemblies.Distinct().Select(f => f.ItemSpec))}"
         );
 
+        foreach (var inputAssembly in InputAssemblies.Select(f => f.ItemSpec))
+        {
+            if (string.IsNullOrEmpty(inputAssembly))
+            {
+                Log.LogError("ILRepackLib: InputAssemblies contains null/empty input assembly");
+                continue;
+            }
+
+            if (File.Exists(inputAssembly))
+            {
+                Log.LogMessage(
+                    MessageImportance.High,
+                    $"ILRepackLib: InputAssemblies `{inputAssembly}` exists"
+                );
+            }
+            else
+            {
+                Log.LogError($"ILRepackLib: InputAssemblies `{inputAssembly}` does not exist!");
+            }
+        }
+
         if (LibraryPaths is not null && LibraryPaths.Length > 0)
             repackOptions.SearchDirectories = LibraryPaths.Select(item => item.ItemSpec).Distinct();
         else
