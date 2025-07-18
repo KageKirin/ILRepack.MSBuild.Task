@@ -3,14 +3,14 @@
 
   <PropertyGroup>
     <_ILRepackLibTaskAssemblyLocal>$(OutDir)ILRepack.Lib.MSBuild.Task.dll</_ILRepackLibTaskAssemblyLocal>
-    <_ILRepackLibTaskAssemblyArtifact>$(MSBuildThisFileDirectory)..\..\.artifacts\bin\ILRepack.Lib.MSBuild.Task\$(Configuration)\ILRepack.Lib.MSBuild.Task.dll</_ILRepackLibTaskAssemblyArtifact>
-    <_ILRepackLibTaskAssemblyArtifactLowerCase>$(MSBuildThisFileDirectory)..\..\.artifacts\bin\ILRepack.Lib.MSBuild.Task\$(Configuration)\ILRepack.Lib.MSBuild.Task.dll</_ILRepackLibTaskAssemblyArtifactLowerCase>
     <_ILRepackLibTaskAssemblyPackage>$(MSBuildThisFileDirectory)..\lib\netstandard2.0\ILRepack.Lib.MSBuild.Task.dll</_ILRepackLibTaskAssemblyPackage>
+    <_ILRepackLibTaskAssemblyArtifact>$(MSBuildThisFileDirectory)..\..\.artifacts\bin\ILRepack.Lib.MSBuild.Task\$(Configuration)\ILRepack.Lib.MSBuild.Task.dll</_ILRepackLibTaskAssemblyArtifact>
+    <_ILRepackLibTaskAssemblyArtifactLowerCase>$(MSBuildThisFileDirectory)..\..\.artifacts\bin\ILRepack.Lib.MSBuild.Task\$(Configuration.ToLowerInvariant())\ILRepack.Lib.MSBuild.Task.dll</_ILRepackLibTaskAssemblyArtifactLowerCase>
 
     <_ILRepackLibTaskAssembly Condition="'$(_ILRepackLibTaskAssembly)' == '' and Exists('$(_ILRepackLibTaskAssemblyLocal)')">$(_ILRepackLibTaskAssemblyLocal)</_ILRepackLibTaskAssembly>
+    <_ILRepackLibTaskAssembly Condition="'$(_ILRepackLibTaskAssembly)' == '' and Exists('$(_ILRepackLibTaskAssemblyPackage)')">$(_ILRepackLibTaskAssemblyPackage)</_ILRepackLibTaskAssembly>
     <_ILRepackLibTaskAssembly Condition="'$(_ILRepackLibTaskAssembly)' == '' and Exists('$(_ILRepackLibTaskAssemblyArtifact)')">$(_ILRepackLibTaskAssemblyArtifact)</_ILRepackLibTaskAssembly>
     <_ILRepackLibTaskAssembly Condition="'$(_ILRepackLibTaskAssembly)' == '' and Exists('$(_ILRepackLibTaskAssemblyArtifactLowerCase)')">$(_ILRepackLibTaskAssemblyArtifactLowerCase)</_ILRepackLibTaskAssembly>
-    <_ILRepackLibTaskAssembly Condition="'$(_ILRepackLibTaskAssembly)' == '' and Exists('$(_ILRepackLibTaskAssemblyPackage)')">$(_ILRepackLibTaskAssemblyPackage)</_ILRepackLibTaskAssembly>
   </PropertyGroup>
 
   <UsingTask
