@@ -4,10 +4,12 @@
   <PropertyGroup>
     <_ILRepackToolTaskAssemblyLocal>$(OutDir)ILRepack.Tool.MSBuild.Task.dll</_ILRepackToolTaskAssemblyLocal>
     <_ILRepackToolTaskAssemblyArtifact>$(MSBuildThisFileDirectory)..\..\.artifacts\bin\ILRepack.Tool.MSBuild.Task\$(Configuration)\ILRepack.Tool.MSBuild.Task.dll</_ILRepackToolTaskAssemblyArtifact>
+    <_ILRepackToolTaskAssemblyArtifactLowerCase>$(MSBuildThisFileDirectory)..\..\.artifacts\bin\ILRepack.Tool.MSBuild.Task\$(Configuration.ToLowerInvariant())\ILRepack.Tool.MSBuild.Task.dll</_ILRepackToolTaskAssemblyArtifactLowerCase>
     <_ILRepackToolTaskAssemblyPackage>$(MSBuildThisFileDirectory)..\lib\netstandard2.0\ILRepack.Tool.MSBuild.Task.dll</_ILRepackToolTaskAssemblyPackage>
 
     <_ILRepackToolTaskAssembly Condition="'$(_ILRepackToolTaskAssembly)' == '' and Exists('$(_ILRepackToolTaskAssemblyLocal)')">$(_ILRepackToolTaskAssemblyLocal)</_ILRepackToolTaskAssembly>
     <_ILRepackToolTaskAssembly Condition="'$(_ILRepackToolTaskAssembly)' == '' and Exists('$(_ILRepackToolTaskAssemblyArtifact)')">$(_ILRepackToolTaskAssemblyArtifact)</_ILRepackToolTaskAssembly>
+    <_ILRepackToolTaskAssembly Condition="'$(_ILRepackToolTaskAssembly)' == '' and Exists('$(_ILRepackToolTaskAssemblyArtifactLowerCase)')">$(_ILRepackToolTaskAssemblyArtifactLowerCase)</_ILRepackToolTaskAssembly>
     <_ILRepackToolTaskAssembly Condition="'$(_ILRepackToolTaskAssembly)' == '' and Exists('$(_ILRepackToolTaskAssemblyPackage)')">$(_ILRepackToolTaskAssemblyPackage)</_ILRepackToolTaskAssembly>
   </PropertyGroup>
 
