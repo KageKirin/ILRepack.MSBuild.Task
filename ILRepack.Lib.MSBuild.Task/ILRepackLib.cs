@@ -114,7 +114,12 @@ public class ILRepack : Microsoft.Build.Utilities.Task, IDisposable
 
         bool needTempOutputAssembly = InputAssemblies[0].ItemSpec == OutputFile.ItemSpec;
         string outputAssembly = needTempOutputAssembly
-            ? Path.GetTempFileName()
+            ? Path.Combine(
+                Path.GetDirectoryName(OutputFile.ItemSpec),
+                Path.GetFileNameWithoutExtension(OutputFile.ItemSpec)
+                    + ".Repack"
+                    + Path.GetExtension(OutputFile.ItemSpec)
+            )
             : OutputFile.ItemSpec;
 
         RepackOptions repackOptions = new();
