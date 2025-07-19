@@ -12,7 +12,6 @@
     <PackRelease>true</PackRelease>
     <PublishRelease>true</PublishRelease>
     <DebugType>embedded</DebugType>
-    <CopyLocalLockFileAssemblies>true</CopyLocalLockFileAssemblies>
   </PropertyGroup>
 
   <PropertyGroup Label="build metadata">
