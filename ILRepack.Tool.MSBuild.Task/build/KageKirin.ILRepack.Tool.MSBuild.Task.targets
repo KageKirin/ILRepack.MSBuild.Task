@@ -8,7 +8,7 @@
     <_ILRepackToolTaskAssemblyArtifact>$(MSBuildThisFileDirectory)..\..\.artifacts\bin\ILRepack.Tool.MSBuild.Task\$(Configuration)\ILRepack.Tool.MSBuild.Task.dll</_ILRepackToolTaskAssemblyArtifact>
     <_ILRepackToolTaskAssemblyArtifactLowerCase>$(MSBuildThisFileDirectory)..\..\.artifacts\bin\ILRepack.Tool.MSBuild.Task\$(Configuration.ToLowerInvariant())\ILRepack.Tool.MSBuild.Task.dll</_ILRepackToolTaskAssemblyArtifactLowerCase>
 
-    <_ILRepackToolTaskAssembly>$(_ILRepackToolTaskAssemblyArtifactLowerCase)</_ILRepackToolTaskAssembly>
+    <_ILRepackToolTaskAssembly>$(_ILRepackToolTaskAssemblyLocal)</_ILRepackToolTaskAssembly>
     <_ILRepackToolTaskAssembly Condition="!Exists('$(_ILRepackToolTaskAssembly)')">$(_ILRepackToolTaskAssemblyLocal)</_ILRepackToolTaskAssembly>
     <_ILRepackToolTaskAssembly Condition="!Exists('$(_ILRepackToolTaskAssembly)')">$(_ILRepackToolTaskAssemblyLocalRelative)</_ILRepackToolTaskAssembly>
     <_ILRepackToolTaskAssembly Condition="!Exists('$(_ILRepackToolTaskAssembly)')">$(_ILRepackToolTaskAssemblyPackage)</_ILRepackToolTaskAssembly>
@@ -28,6 +28,7 @@
 
     <Message Text="_ILRepackToolTaskAssembly: $(_ILRepackToolTaskAssembly)" Importance="high" />
     <Message Text="_ILRepackToolTaskAssembly: $(_ILRepackToolTaskAssembly) exists" Condition="Exists('$(_ILRepackToolTaskAssembly)')" Importance="high" />
+    <Exec Command="ls -alG $(_ILRepackToolTaskAssembly)" />
   </Target>
 
   <UsingTask

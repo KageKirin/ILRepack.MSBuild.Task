@@ -20,6 +20,7 @@
     -->
     <IsPackable>false</IsPackable>
     <IsPublishable>false</IsPublishable>
+    <CopyLocalLockFileAssemblies>true</CopyLocalLockFileAssemblies>
   </PropertyGroup>
 
   <ItemGroup>
