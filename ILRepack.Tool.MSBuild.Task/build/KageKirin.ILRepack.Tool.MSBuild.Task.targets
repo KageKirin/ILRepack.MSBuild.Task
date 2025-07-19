@@ -3,7 +3,7 @@
 
   <PropertyGroup>
     <_ILRepackToolTaskAssemblyLocal>$(OutDir)ILRepack.Tool.MSBuild.Task.dll</_ILRepackToolTaskAssemblyLocal>
-    <_ILRepackToolTaskAssemblyArtifact>$(MSBuildThisFileDirectory)..\..\.artifacts\bin\ILRepack.Tool.MSBuild.Task\$(Configuration)\ILRepack.Tool.MSBuild.Task.dll</_ILRepackToolTaskAssemblyArtifact>
+    <_ILRepackToolTaskAssemblyArtifact>$(MSBuildThisFileDirectory)..\..\.artifacts\bin\ILRepack.Tool.MSBuild.Task\$(Configuration.ToLowerInvariant())\ILRepack.Tool.MSBuild.Task.dll</_ILRepackToolTaskAssemblyArtifact>
     <_ILRepackToolTaskAssemblyPackage>$(MSBuildThisFileDirectory)..\lib\netstandard2.0\ILRepack.Tool.MSBuild.Task.dll</_ILRepackToolTaskAssemblyPackage>
 
     <_ILRepackToolTaskAssembly Condition="Exists('$(_ILRepackToolTaskAssemblyLocal)')">$(_ILRepackToolTaskAssemblyLocal)</_ILRepackToolTaskAssembly>
