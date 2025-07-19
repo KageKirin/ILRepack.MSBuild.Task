@@ -11,6 +11,8 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "TestLibA", "Tests\TestLibA\
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ILRepack.Lib.MSBuild.Task", "ILRepack.Lib.MSBuild.Task\ILRepack.Lib.MSBuild.Task.csproj", "{2A6BF3E3-3C88-4DF8-B1A3-39ED111890B8}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Repack.Tool.Test", "Tests\Repack.Tool.Test\Repack.Tool.Test.csproj", "{8E77C61E-E479-42BC-96D7-AA7061CD7D2D}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -32,8 +34,13 @@ Global
 		{2A6BF3E3-3C88-4DF8-B1A3-39ED111890B8}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{2A6BF3E3-3C88-4DF8-B1A3-39ED111890B8}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{2A6BF3E3-3C88-4DF8-B1A3-39ED111890B8}.Release|Any CPU.Build.0 = Release|Any CPU
+		{8E77C61E-E479-42BC-96D7-AA7061CD7D2D}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{8E77C61E-E479-42BC-96D7-AA7061CD7D2D}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{8E77C61E-E479-42BC-96D7-AA7061CD7D2D}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{8E77C61E-E479-42BC-96D7-AA7061CD7D2D}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(NestedProjects) = preSolution
 		{DB9A3118-59F2-47BA-B59C-6A0724FCC6A7} = {54749167-747B-4C31-94CC-AD76608E23F7}
+		{8E77C61E-E479-42BC-96D7-AA7061CD7D2D} = {54749167-747B-4C31-94CC-AD76608E23F7}
 	EndGlobalSection
 EndGlobal
