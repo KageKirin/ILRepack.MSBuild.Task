@@ -23,11 +23,15 @@
     <Message Text="_ILRepackLibTaskAssemblyArtifact: $(_ILRepackLibTaskAssemblyArtifact) exists" Condition="Exists('$(_ILRepackLibTaskAssemblyArtifact)')" Importance="high" />
     <Message Text="_ILRepackLibTaskAssemblyArtifactLowerCase: $(_ILRepackLibTaskAssemblyArtifactLowerCase)" Importance="high" />
     <Message Text="_ILRepackLibTaskAssemblyArtifactLowerCase: $(_ILRepackLibTaskAssemblyArtifactLowerCase) exists" Condition="Exists('$(_ILRepackLibTaskAssemblyArtifactLowerCase)')" Importance="high" />
+
+    <Message Text="_ILRepackLibTaskAssembly: $(_ILRepackLibTaskAssembly)" Importance="high" />
+    <Message Text="_ILRepackLibTaskAssembly: $(_ILRepackLibTaskAssembly) exists" Condition="Exists('$(_ILRepackLibTaskAssembly)')" Importance="high" />
   </Target>
 
   <UsingTask
     TaskName="ILRepack"
     AssemblyFile="$(_ILRepackLibTaskAssembly)"
+    Condition="Exists('$(_ILRepackLibTaskAssembly)')"
   />
 
   <PropertyGroup>
