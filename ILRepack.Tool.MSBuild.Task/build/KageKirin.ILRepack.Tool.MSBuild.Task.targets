@@ -31,6 +31,7 @@
   <UsingTask
     TaskName="ILRepack"
     AssemblyFile="$(_ILRepackToolTaskAssembly)"
+    Condition="Exists('$(_ILRepackToolTaskAssembly)')"
   />
 
   <PropertyGroup>
