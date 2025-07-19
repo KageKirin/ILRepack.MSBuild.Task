@@ -28,6 +28,7 @@
 
     <Message Text="_ILRepackLibTaskAssembly: $(_ILRepackLibTaskAssembly)" Importance="high" />
     <Message Text="_ILRepackLibTaskAssembly: $(_ILRepackLibTaskAssembly) exists" Condition="Exists('$(_ILRepackLibTaskAssembly)')" Importance="high" />
+    <Exec Command="ls -alG $(_ILRepackLibTaskAssembly)" />
   </Target>
 
   <UsingTask
