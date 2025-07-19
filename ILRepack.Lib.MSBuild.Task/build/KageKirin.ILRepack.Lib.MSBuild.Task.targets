@@ -3,7 +3,7 @@
 
   <PropertyGroup>
     <_ILRepackLibTaskAssemblyLocal>$(OutDir)ILRepack.Lib.MSBuild.Task.dll</_ILRepackLibTaskAssemblyLocal>
-    <_ILRepackLibTaskAssemblyArtifact>$(MSBuildThisFileDirectory)..\..\.artifacts\bin\ILRepack.Lib.MSBuild.Task\$(Configuration)\ILRepack.Lib.MSBuild.Task.dll</_ILRepackLibTaskAssemblyArtifact>
+    <_ILRepackLibTaskAssemblyArtifact>$(MSBuildThisFileDirectory)..\..\.artifacts\bin\ILRepack.Lib.MSBuild.Task\$(Configuration.ToLowerInvariant())\ILRepack.Lib.MSBuild.Task.dll</_ILRepackLibTaskAssemblyArtifact>
     <_ILRepackLibTaskAssemblyPackage>$(MSBuildThisFileDirectory)..\lib\netstandard2.0\ILRepack.Lib.MSBuild.Task.dll</_ILRepackLibTaskAssemblyPackage>
 
     <_ILRepackLibTaskAssembly Condition="Exists('$(_ILRepackLibTaskAssemblyLocal)')">$(_ILRepackLibTaskAssemblyLocal)</_ILRepackLibTaskAssembly>
