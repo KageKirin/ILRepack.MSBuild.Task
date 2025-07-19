@@ -8,7 +8,7 @@
     <_ILRepackLibTaskAssemblyArtifact>$(MSBuildThisFileDirectory)..\..\.artifacts\bin\ILRepack.Lib.MSBuild.Task\$(Configuration)\ILRepack.Lib.MSBuild.Task.dll</_ILRepackLibTaskAssemblyArtifact>
     <_ILRepackLibTaskAssemblyArtifactLowerCase>$(MSBuildThisFileDirectory)..\..\.artifacts\bin\ILRepack.Lib.MSBuild.Task\$(Configuration.ToLowerInvariant())\ILRepack.Lib.MSBuild.Task.dll</_ILRepackLibTaskAssemblyArtifactLowerCase>
 
-    <_ILRepackLibTaskAssembly>$(_ILRepackLibTaskAssemblyArtifactLowerCase)</_ILRepackLibTaskAssembly>
+    <_ILRepackLibTaskAssembly>$(_ILRepackLibTaskAssemblyLocal)</_ILRepackLibTaskAssembly>
     <_ILRepackLibTaskAssembly Condition="!Exists('$(_ILRepackLibTaskAssembly)')">$(_ILRepackLibTaskAssemblyLocal)</_ILRepackLibTaskAssembly>
     <_ILRepackLibTaskAssembly Condition="!Exists('$(_ILRepackLibTaskAssembly)')">$(_ILRepackLibTaskAssemblyLocalRelative)</_ILRepackLibTaskAssembly>
     <_ILRepackLibTaskAssembly Condition="!Exists('$(_ILRepackLibTaskAssembly)')">$(_ILRepackLibTaskAssemblyPackage)</_ILRepackLibTaskAssembly>
