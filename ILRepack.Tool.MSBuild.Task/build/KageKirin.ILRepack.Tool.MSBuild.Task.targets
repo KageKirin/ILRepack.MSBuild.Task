@@ -23,6 +23,9 @@
     <Message Text="_ILRepackToolTaskAssemblyArtifact: $(_ILRepackToolTaskAssemblyArtifact) exists" Condition="Exists('$(_ILRepackToolTaskAssemblyArtifact)')" Importance="high" />
     <Message Text="_ILRepackToolTaskAssemblyArtifactLowerCase: $(_ILRepackToolTaskAssemblyArtifactLowerCase)" Importance="high" />
     <Message Text="_ILRepackToolTaskAssemblyArtifactLowerCase: $(_ILRepackToolTaskAssemblyArtifactLowerCase) exists" Condition="Exists('$(_ILRepackToolTaskAssemblyArtifactLowerCase)')" Importance="high" />
+
+    <Message Text="_ILRepackToolTaskAssembly: $(_ILRepackToolTaskAssembly)" Importance="high" />
+    <Message Text="_ILRepackToolTaskAssembly: $(_ILRepackToolTaskAssembly) exists" Condition="Exists('$(_ILRepackToolTaskAssembly)')" Importance="high" />
   </Target>
 
   <UsingTask
