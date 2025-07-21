@@ -4,7 +4,8 @@
     "projects": [
       "Tests\\TestLibA\\TestLibA.csproj",
       "Tests\\Repack.Tool.Test\\Repack.Tool.Test.csproj",
-      "Tests\\Repack.Lib.Test\\Repack.Lib.Test.csproj"
+      "Tests\\Repack.Lib.Test\\Repack.Lib.Test.csproj",
+      "Tests\\Repack.Tool.RefOnly.Test\\Repack.Tool.RefOnly.Test.csproj"
     ]
   }
 }
