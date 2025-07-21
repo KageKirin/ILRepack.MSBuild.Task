@@ -6,7 +6,7 @@
     <DevelopmentDependency>true</DevelopmentDependency>
     <ImplicitUsings>enable</ImplicitUsings>
     <Nullable>enable</Nullable>
-    <AssemblyName>ILRepack.Lib.MsBuild.Task</AssemblyName>
+    <AssemblyName>ILRepack.Lib.MSBuild.Task</AssemblyName>
     <IsPackable>true</IsPackable>
     <IsPublishable>true</IsPublishable>
     <PackRelease>true</PackRelease>
