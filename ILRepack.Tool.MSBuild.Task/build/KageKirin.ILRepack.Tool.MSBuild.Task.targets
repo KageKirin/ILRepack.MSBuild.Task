@@ -64,6 +64,47 @@
 
     <Message Text="_ILRepackToolTaskAssembly: $(_ILRepackToolTaskAssembly)" Importance="high" />
     <Message Text="_ILRepackToolTaskAssembly: $(_ILRepackToolTaskAssembly) exists" Condition="Exists('$(_ILRepackToolTaskAssembly)')" Importance="high" />
+
+    <LocateToolFile
+      RootDir="."
+      FileName="$(_ILRepackToolTaskAssemblyFile)">
+      <Output
+        TaskParameter="Files"
+        ItemName="_ILRepackToolAssemblyFiles"
+      />
+    </LocateToolFile>
+    <Message Text="_ILRepackToolAssemblyFiles: @(_ILRepackToolAssemblyFiles)" Importance="high" />
+
+    <LocateToolFile
+      RootDir="$(OutDir)"
+      FileName="$(_ILRepackToolTaskAssemblyFile)">
+      <Output
+        TaskParameter="Files"
+        ItemName="_ILRepackToolAssemblyFiles"
+      />
+    </LocateToolFile>
+    <Message Text="_ILRepackToolAssemblyFiles: @(_ILRepackToolAssemblyFiles)" Importance="high" />
+
+    <LocateToolFile
+      RootDir="$(MSBuildThisFileDirectory)"
+      FileName="$(_ILRepackToolTaskAssemblyFile)">
+      <Output
+        TaskParameter="Files"
+        ItemName="_ILRepackToolAssemblyFiles"
+      />
+    </LocateToolFile>
+    <Message Text="_ILRepackToolAssemblyFiles: @(_ILRepackToolAssemblyFiles)" Importance="high" />
+
+    <LocateToolFile
+      RootDir="$(MSBuildThisFileDirectory)..\.."
+      FileName="$(_ILRepackToolTaskAssemblyFile)">
+      <Output
+        TaskParameter="Files"
+        ItemName="_ILRepackToolAssemblyFiles"
+      />
+    </LocateToolFile>
+    <Message Text="_ILRepackToolAssemblyFiles: @(_ILRepackToolAssemblyFiles)" Importance="high" />
+
   </Target>
 
   <UsingTask
