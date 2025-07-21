@@ -2,7 +2,7 @@
 <Project xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
 
   <PropertyGroup>
-    <_ILRepackLibTaskAssemblyFile>ILRepack.Lib.MSBuild.Task.dll</_ILRepackLibTaskAssemblyFile>
+    <_ILRepackLibTaskAssemblyFile>ILRepack.Lib.MsBuild.Task.dll</_ILRepackLibTaskAssemblyFile>
     <_ILRepackLibTaskAssemblyLocal>$(OutDir)$(_ILRepackLibTaskAssemblyFile)</_ILRepackLibTaskAssemblyLocal>
     <_ILRepackLibTaskAssemblyLocalRelative>$(MSBuildThisFileDirectory)..\$(_ILRepackLibTaskAssemblyFile)</_ILRepackLibTaskAssemblyLocalRelative>
     <_ILRepackLibTaskAssemblyPackage>$(MSBuildThisFileDirectory)..\lib\netstandard2.0\$(_ILRepackLibTaskAssemblyFile)</_ILRepackLibTaskAssemblyPackage>
