@@ -39,11 +39,7 @@
 
   <ItemGroup>
     <ProjectReference Include="..\TestLibA\TestLibA.csproj" PrivateAssets="all" />
-    <ProjectReference Include="..\..\ILRepack.Lib.MSBuild.Task\ILRepack.Lib.MSBuild.Task.csproj">
-      <Project>{2A6BF3E3-3C88-4DF8-B1A3-39ED111890B8}</Project>
-      <Name>ILRepack.Lib.MSBuild.Task</Name>
-      <ReferenceOutputAssembly>false</ReferenceOutputAssembly>
-    </ProjectReference>
+    <ProjectReference Include="..\..\ILRepack.Lib.MSBuild.Task\ILRepack.Lib.MSBuild.Task.csproj" PrivateAssets="all" IncludeAssets="all" />
   </ItemGroup>
 
 
