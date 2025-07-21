@@ -4,4 +4,10 @@
     <Exec Command="git log --reverse --pretty='* %s' > $(MSBuildThisFileDirectory)CHANGELOG.md"/>
     <Exec Command="cat $(MSBuildThisFileDirectory)CHANGELOG.md"/>
   </Target>
+
+  <Target Name="LogOutputDir" AfterTargets="Build">
+    <Message Text="ProjectDir $(ProjectDir)" Importance="high" />
+    <Message Text="OutDir $(OutDir)" Importance="high" />
+    <Exec Command="ls $(OutDir)"/>
+  </Target>
 </Project>
