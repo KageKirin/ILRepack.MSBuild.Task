@@ -2,11 +2,12 @@
 <Project xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
 
   <PropertyGroup>
-    <_ILRepackLibTaskAssemblyLocal>$(OutDir)ILRepack.Lib.MSBuild.Task.dll</_ILRepackLibTaskAssemblyLocal>
-    <_ILRepackLibTaskAssemblyLocalRelative>$(MSBuildThisFileDirectory)..\ILRepack.Lib.MSBuild.Task.dll</_ILRepackLibTaskAssemblyLocalRelative>
-    <_ILRepackLibTaskAssemblyPackage>$(MSBuildThisFileDirectory)..\lib\netstandard2.0\ILRepack.Lib.MSBuild.Task.dll</_ILRepackLibTaskAssemblyPackage>
-    <_ILRepackLibTaskAssemblyArtifact>$(MSBuildThisFileDirectory)..\..\.artifacts\bin\ILRepack.Lib.MSBuild.Task\$(Configuration)\ILRepack.Lib.MSBuild.Task.dll</_ILRepackLibTaskAssemblyArtifact>
-    <_ILRepackLibTaskAssemblyArtifactLowerCase>$(MSBuildThisFileDirectory)..\..\.artifacts\bin\ILRepack.Lib.MSBuild.Task\$(Configuration.ToLowerInvariant())\ILRepack.Lib.MSBuild.Task.dll</_ILRepackLibTaskAssemblyArtifactLowerCase>
+    <_ILRepackLibTaskAssemblyFile>ILRepack.Lib.MSBuild.Task.dll</_ILRepackLibTaskAssemblyFile>
+    <_ILRepackLibTaskAssemblyLocal>$(OutDir)$(_ILRepackLibTaskAssemblyFile)</_ILRepackLibTaskAssemblyLocal>
+    <_ILRepackLibTaskAssemblyLocalRelative>$(MSBuildThisFileDirectory)..\$(_ILRepackLibTaskAssemblyFile)</_ILRepackLibTaskAssemblyLocalRelative>
+    <_ILRepackLibTaskAssemblyPackage>$(MSBuildThisFileDirectory)..\lib\netstandard2.0\$(_ILRepackLibTaskAssemblyFile)</_ILRepackLibTaskAssemblyPackage>
+    <_ILRepackLibTaskAssemblyArtifact>$(MSBuildThisFileDirectory)..\..\.artifacts\bin\ILRepack.Lib.MSBuild.Task\$(Configuration)\$(_ILRepackLibTaskAssemblyFile)</_ILRepackLibTaskAssemblyArtifact>
+    <_ILRepackLibTaskAssemblyArtifactLowerCase>$(MSBuildThisFileDirectory)..\..\.artifacts\bin\ILRepack.Lib.MSBuild.Task\$(Configuration.ToLowerInvariant())\$(_ILRepackLibTaskAssemblyFile)</_ILRepackLibTaskAssemblyArtifactLowerCase>
 
     <_ILRepackLibTaskAssembly>$(_ILRepackLibTaskAssemblyArtifactLowerCase)</_ILRepackLibTaskAssembly>
     <_ILRepackLibTaskAssembly Condition="!Exists('$(_ILRepackLibTaskAssembly)')">$(_ILRepackLibTaskAssemblyLocal)</_ILRepackLibTaskAssembly>
