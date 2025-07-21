@@ -15,7 +15,41 @@
     <_ILRepackLibTaskAssembly Condition="!Exists('$(_ILRepackLibTaskAssembly)')">$(_ILRepackLibTaskAssemblyPackage)</_ILRepackLibTaskAssembly>
     <_ILRepackLibTaskAssembly Condition="!Exists('$(_ILRepackLibTaskAssembly)')">$(_ILRepackLibTaskAssemblyArtifact)</_ILRepackLibTaskAssembly>
     <_ILRepackLibTaskAssembly Condition="!Exists('$(_ILRepackLibTaskAssembly)')">$(_ILRepackLibTaskAssemblyArtifactLowerCase)</_ILRepackLibTaskAssembly>
+
+    <_MsBuildAssembly>$(MSBuildToolsPath)\Microsoft.Build.Tasks.Core.dll</_MsBuildAssembly>
+    <_MsBuildTaskFactory>CodeTaskFactory</_MsBuildTaskFactory>
+    <_MsBuildTaskFactory Condition=" '$(MSBuildVersion.Substring(0,2))' >= 16 Or ('$(MSBuildVersion.Substring(0,2))' == 15 And '$(MSBuildVersion.Substring(3,1))' >= 8)">RoslynCodeTaskFactory</_MsBuildTaskFactory>
+
   </PropertyGroup>
+
+  <UsingTask
+    TaskName="LocateLibFile"
+    TaskFactory="$(_MsBuildTaskFactory)"
+    AssemblyFile="$(_MsBuildAssembly)">
+    <ParameterGroup>
+      <RootDir ParameterType="System.String" Required="true" />
+      <FileName ParameterType="System.String" Required="true" />
+      <Files ParameterType="System.String[]" Required="false" Output="true" />
+    </ParameterGroup>
+    <Task>
+      <Using Namespace="System" />
+      <Using Namespace="System.Diagnostics" />
+      <Using Namespace="System.IO" />
+      <Using Namespace="System.Linq" />
+      <Using Namespace="System.Collections.Generic" />
+      <Using Namespace="System.Text.RegularExpressions" />
+      <Code Type="Fragment" Language="cs">
+      <![CDATA[
+        Log.LogMessage(MessageImportance.High, $"LocateLibFile: looking for {FileName} in {RootDir} and below");
+        Files = Directory.EnumerateFiles(RootDir, FileName, SearchOption.AllDirectories).ToArray();
+        foreach(var file in Files)
+        {
+          Log.LogMessage(MessageImportance.High, $"LocateLibFile[{FileName}]: found {file}");
+        }
+      ]]>
+      </Code>
+    </Task>
+  </UsingTask>
 
   <Target Name="ILRepackLibInfo" BeforeTargets="Compile">
     <Message Text="_ILRepackLibTaskAssemblyLocal: $(_ILRepackLibTaskAssemblyLocal)" Importance="high" />
@@ -29,6 +63,48 @@
 
     <Message Text="_ILRepackLibTaskAssembly: $(_ILRepackLibTaskAssembly)" Importance="high" />
     <Message Text="_ILRepackLibTaskAssembly: $(_ILRepackLibTaskAssembly) exists" Condition="Exists('$(_ILRepackLibTaskAssembly)')" Importance="high" />
+
+    <LocateLibFile
+      RootDir="."
+      FileName="$(_ILRepackLibTaskAssemblyFile)">
+      <Output
+        TaskParameter="Files"
+        ItemName="_ILRepackLibAssemblyFiles"
+      />
+    </LocateLibFile>
+    <Message Text="_ILRepackLibAssemblyFiles: @(_ILRepackLibAssemblyFiles)" Importance="high" />
+
+    <LocateLibFile
+      RootDir="$(OutDir)"
+      FileName="$(_ILRepackLibTaskAssemblyFile)">
+      <Output
+        TaskParameter="Files"
+        ItemName="_ILRepackLibAssemblyFiles"
+      />
+    </LocateLibFile>
+    <Message Text="_ILRepackLibAssemblyFiles: @(_ILRepackLibAssemblyFiles)" Importance="high" />
+
+    <LocateLibFile
+      RootDir="$(MSBuildThisFileDirectory)"
+      FileName="$(_ILRepackLibTaskAssemblyFile)">
+      <Output
+        TaskParameter="Files"
+        ItemName="_ILRepackLibAssemblyFiles"
+      />
+    </LocateLibFile>
+    <Message Text="_ILRepackLibAssemblyFiles: @(_ILRepackLibAssemblyFiles)" Importance="high" />
+
+    <LocateLibFile
+      RootDir="$(MSBuildThisFileDirectory)..\.."
+      FileName="$(_ILRepackLibTaskAssemblyFile)">
+      <Output
+        TaskParameter="Files"
+        ItemName="_ILRepackLibAssemblyFiles"
+      />
+    </LocateLibFile>
+    <Message Text="_ILRepackLibAssemblyFiles: @(_ILRepackLibAssemblyFiles)" Importance="high" />
+
+
   </Target>
 
   <UsingTask
