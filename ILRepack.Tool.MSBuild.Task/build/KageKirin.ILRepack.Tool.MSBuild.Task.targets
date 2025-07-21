@@ -2,11 +2,12 @@
 <Project xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
 
   <PropertyGroup>
-    <_ILRepackToolTaskAssemblyLocal>$(OutDir)ILRepack.Tool.MSBuild.Task.dll</_ILRepackToolTaskAssemblyLocal>
-    <_ILRepackToolTaskAssemblyLocalRelative>$(MSBuildThisFileDirectory)..\ILRepack.Tool.MSBuild.Task.dll</_ILRepackToolTaskAssemblyLocalRelative>
-    <_ILRepackToolTaskAssemblyPackage>$(MSBuildThisFileDirectory)..\lib\netstandard2.0\ILRepack.Tool.MSBuild.Task.dll</_ILRepackToolTaskAssemblyPackage>
-    <_ILRepackToolTaskAssemblyArtifact>$(MSBuildThisFileDirectory)..\..\.artifacts\bin\ILRepack.Tool.MSBuild.Task\$(Configuration)\ILRepack.Tool.MSBuild.Task.dll</_ILRepackToolTaskAssemblyArtifact>
-    <_ILRepackToolTaskAssemblyArtifactLowerCase>$(MSBuildThisFileDirectory)..\..\.artifacts\bin\ILRepack.Tool.MSBuild.Task\$(Configuration.ToLowerInvariant())\ILRepack.Tool.MSBuild.Task.dll</_ILRepackToolTaskAssemblyArtifactLowerCase>
+    <_ILRepackToolTaskAssemblyFile>ILRepack.Tool.MsBuild.Task.dll</_ILRepackToolTaskAssemblyFile>
+    <_ILRepackToolTaskAssemblyLocal>$(OutDir)$(_ILRepackToolTaskAssemblyFile)</_ILRepackToolTaskAssemblyLocal>
+    <_ILRepackToolTaskAssemblyLocalRelative>$(MSBuildThisFileDirectory)..\$(_ILRepackToolTaskAssemblyFile)</_ILRepackToolTaskAssemblyLocalRelative>
+    <_ILRepackToolTaskAssemblyPackage>$(MSBuildThisFileDirectory)..\lib\netstandard2.0\$(_ILRepackToolTaskAssemblyFile)</_ILRepackToolTaskAssemblyPackage>
+    <_ILRepackToolTaskAssemblyArtifact>$(MSBuildThisFileDirectory)..\..\.artifacts\bin\ILRepack.Tool.MSBuild.Task\$(Configuration)\$(_ILRepackToolTaskAssemblyFile)</_ILRepackToolTaskAssemblyArtifact>
+    <_ILRepackToolTaskAssemblyArtifactLowerCase>$(MSBuildThisFileDirectory)..\..\.artifacts\bin\ILRepack.Tool.MSBuild.Task\$(Configuration.ToLowerInvariant())\$(_ILRepackToolTaskAssemblyFile)</_ILRepackToolTaskAssemblyArtifactLowerCase>
 
     <_ILRepackToolTaskAssembly>$(_ILRepackToolTaskAssemblyArtifactLowerCase)</_ILRepackToolTaskAssembly>
     <_ILRepackToolTaskAssembly Condition="!Exists('$(_ILRepackToolTaskAssembly)')">$(_ILRepackToolTaskAssemblyLocal)</_ILRepackToolTaskAssembly>
