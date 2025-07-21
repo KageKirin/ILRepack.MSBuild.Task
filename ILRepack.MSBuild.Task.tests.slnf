@@ -1,0 +1,10 @@
+{
+  "solution": {
+    "path": "ILRepack.MSBuild.Task.sln",
+    "projects": [
+      "Tests\\TestLibA\\TestLibA.csproj",
+      "Tests\\Repack.Tool.Test\\Repack.Tool.Test.csproj",
+      "Tests\\Repack.Lib.Test\\Repack.Lib.Test.csproj"
+    ]
+  }
+}
