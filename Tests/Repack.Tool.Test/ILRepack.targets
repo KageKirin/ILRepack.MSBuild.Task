@@ -25,12 +25,13 @@
     <ILRepack
       Parallel="false"
       DebugInfo="true"
-      Verbose="true"
+      Verbose="false"
       Internalize="true"
       RenameInternalized="false"
       InputAssemblies="@(MainAssembly);@(InputAssemblies)"
       InternalizeExclude="@(DoNotInternalizeAssemblies)"
       FilterAssemblies="@(FilterAssemblies)"
+      Timeout="60"
 
       OutputFile="@(MainAssembly)"
       LogFile="$(OutputPath)$(AssemblyName).ilrepack.log"
