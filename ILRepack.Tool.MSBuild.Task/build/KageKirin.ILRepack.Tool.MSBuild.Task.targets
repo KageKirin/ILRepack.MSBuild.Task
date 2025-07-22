@@ -23,35 +23,6 @@
 
   </PropertyGroup>
 
-  <UsingTask
-    TaskName="LocateToolFile"
-    TaskFactory="$(_MsBuildTaskFactory)"
-    AssemblyFile="$(_MsBuildAssembly)">
-    <ParameterGroup>
-      <RootDir ParameterType="System.String" Required="true" />
-      <FileName ParameterType="System.String" Required="true" />
-      <Files ParameterType="System.String[]" Required="false" Output="true" />
-    </ParameterGroup>
-    <Task>
-      <Using Namespace="System" />
-      <Using Namespace="System.Diagnostics" />
-      <Using Namespace="System.IO" />
-      <Using Namespace="System.Linq" />
-      <Using Namespace="System.Collections.Generic" />
-      <Using Namespace="System.Text.RegularExpressions" />
-      <Code Type="Fragment" Language="cs">
-      <![CDATA[
-        Log.LogMessage(MessageImportance.High, $"LocateToolFile: looking for {FileName} in {RootDir} and below");
-        Files = Directory.EnumerateFiles(RootDir, FileName, SearchOption.AllDirectories).ToArray();
-        foreach(var file in Files)
-        {
-          Log.LogMessage(MessageImportance.High, $"LocateToolFile[{FileName}]: found {file}");
-        }
-      ]]>
-      </Code>
-    </Task>
-  </UsingTask>
-
   <Target Name="ILRepackToolInfo" BeforeTargets="Compile">
     <Message Text="_ILRepackToolTaskAssemblyLocal: $(_ILRepackToolTaskAssemblyLocal)" Importance="high" />
     <Message Text="_ILRepackToolTaskAssemblyLocal: $(_ILRepackToolTaskAssemblyLocal) exists" Condition="Exists('$(_ILRepackToolTaskAssemblyLocal)')" Importance="high" />
