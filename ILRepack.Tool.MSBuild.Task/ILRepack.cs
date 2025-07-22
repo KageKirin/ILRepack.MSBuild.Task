@@ -85,7 +85,7 @@ public class ILRepack : Microsoft.Build.Utilities.Task, IDisposable
 
     public virtual Microsoft.Build.Framework.ITaskItem KeyContainer { get; set; } = default;
 
-    public virtual int Timeout { get; set; }
+    public virtual int Timeout { get; set; } = 30;
 
     public virtual bool Success { get; set; }
 
