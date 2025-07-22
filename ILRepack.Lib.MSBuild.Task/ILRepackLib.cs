@@ -286,9 +286,18 @@ public class ILRepack : Microsoft.Build.Utilities.Task, IDisposable
         var repacker = new ILRepacking.ILRepack(repackOptions);
         try
         {
-            repacker.Repack();
-            Success = true;
-            Log.LogMessage(MessageImportance.High, $"ILRepackLib: success");
+            var task = System.Threading.Tasks.Task.Run(() => repacker.Repack());
+            if (task.Wait(TimeSpan.FromSeconds(Timeout > 0 ? Timeout : 30)))
+            {
+                Success = true;
+                Log.LogMessage(MessageImportance.High, $"ILRepackLib: success");
+            }
+            else
+            {
+                Log.LogError($"ILRepackLib: timeout");
+                Success = false;
+                throw new TimeoutException();
+            }
         }
         catch (Exception exception)
         {
@@ -302,23 +311,6 @@ public class ILRepack : Microsoft.Build.Utilities.Task, IDisposable
             File.Copy(outputAssembly, OutputFile.ItemSpec, overwrite: true);
             File.Delete(outputAssembly);
         }
-
-        /*
-            System.Threading.Tasks.Task task = new(() => repacker.Repack());
-            {
-
-                    task.Start();
-                    task.Wait(Timeout);
-                    Success = true;
-                }
-                catch (Exception exception)
-                {
-                    Log.LogErrorFromException(exception);
-                    task.
-                    Success = false;
-                }
-            }
-            */
 
         stopWatch.Stop();
 
