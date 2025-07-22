@@ -22,62 +22,6 @@
 
   </PropertyGroup>
 
-  <Target Name="ILRepackLibInfo" BeforeTargets="Compile">
-    <Message Text="_ILRepackLibTaskAssemblyLocal: $(_ILRepackLibTaskAssemblyLocal)" Importance="high" />
-    <Message Text="_ILRepackLibTaskAssemblyLocal: $(_ILRepackLibTaskAssemblyLocal) exists" Condition="Exists('$(_ILRepackLibTaskAssemblyLocal)')" Importance="high" />
-    <Message Text="_ILRepackLibTaskAssemblyPackage: $(_ILRepackLibTaskAssemblyPackage)" Importance="high" />
-    <Message Text="_ILRepackLibTaskAssemblyPackage: $(_ILRepackLibTaskAssemblyPackage) exists" Condition="Exists('$(_ILRepackLibTaskAssemblyPackage)')" Importance="high" />
-    <Message Text="_ILRepackLibTaskAssemblyArtifact: $(_ILRepackLibTaskAssemblyArtifact)" Importance="high" />
-    <Message Text="_ILRepackLibTaskAssemblyArtifact: $(_ILRepackLibTaskAssemblyArtifact) exists" Condition="Exists('$(_ILRepackLibTaskAssemblyArtifact)')" Importance="high" />
-    <Message Text="_ILRepackLibTaskAssemblyArtifactLowerCase: $(_ILRepackLibTaskAssemblyArtifactLowerCase)" Importance="high" />
-    <Message Text="_ILRepackLibTaskAssemblyArtifactLowerCase: $(_ILRepackLibTaskAssemblyArtifactLowerCase) exists" Condition="Exists('$(_ILRepackLibTaskAssemblyArtifactLowerCase)')" Importance="high" />
-
-    <Message Text="_ILRepackLibTaskAssembly: $(_ILRepackLibTaskAssembly)" Importance="high" />
-    <Message Text="_ILRepackLibTaskAssembly: $(_ILRepackLibTaskAssembly) exists" Condition="Exists('$(_ILRepackLibTaskAssembly)')" Importance="high" />
-
-    <LocateLibFile
-      RootDir="."
-      FileName="$(_ILRepackLibTaskAssemblyFile)">
-      <Output
-        TaskParameter="Files"
-        ItemName="_ILRepackLibAssemblyFiles"
-      />
-    </LocateLibFile>
-    <Message Text="_ILRepackLibAssemblyFiles: @(_ILRepackLibAssemblyFiles)" Importance="high" />
-
-    <LocateLibFile
-      RootDir="$(OutDir)"
-      FileName="$(_ILRepackLibTaskAssemblyFile)">
-      <Output
-        TaskParameter="Files"
-        ItemName="_ILRepackLibAssemblyFiles"
-      />
-    </LocateLibFile>
-    <Message Text="_ILRepackLibAssemblyFiles: @(_ILRepackLibAssemblyFiles)" Importance="high" />
-
-    <LocateLibFile
-      RootDir="$(MSBuildThisFileDirectory)"
-      FileName="$(_ILRepackLibTaskAssemblyFile)">
-      <Output
-        TaskParameter="Files"
-        ItemName="_ILRepackLibAssemblyFiles"
-      />
-    </LocateLibFile>
-    <Message Text="_ILRepackLibAssemblyFiles: @(_ILRepackLibAssemblyFiles)" Importance="high" />
-
-    <LocateLibFile
-      RootDir="$(MSBuildThisFileDirectory)..\.."
-      FileName="$(_ILRepackLibTaskAssemblyFile)">
-      <Output
-        TaskParameter="Files"
-        ItemName="_ILRepackLibAssemblyFiles"
-      />
-    </LocateLibFile>
-    <Message Text="_ILRepackLibAssemblyFiles: @(_ILRepackLibAssemblyFiles)" Importance="high" />
-
-
-  </Target>
-
   <UsingTask
     TaskName="ILRepack"
     AssemblyFile="$(_ILRepackLibTaskAssembly)"
