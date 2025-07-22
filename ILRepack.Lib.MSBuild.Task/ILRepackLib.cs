@@ -312,23 +312,6 @@ public class ILRepack : Microsoft.Build.Utilities.Task, IDisposable
             File.Delete(outputAssembly);
         }
 
-        /*
-            System.Threading.Tasks.Task task = new(() => repacker.Repack());
-            {
-
-                    task.Start();
-                    task.Wait(Timeout);
-                    Success = true;
-                }
-                catch (Exception exception)
-                {
-                    Log.LogErrorFromException(exception);
-                    task.
-                    Success = false;
-                }
-            }
-            */
-
         stopWatch.Stop();
 
         Log.LogMessage(
