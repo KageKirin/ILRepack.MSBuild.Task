@@ -46,7 +46,7 @@
       <_FilterAssemblies Include="$(AssemblyName)" />
       <_FilterAssemblies Include="@(ILRepackFilterAssemblies)" />
 
-      <_LibraryPaths Include="%(ILRepackLibraryPaths.Directory)" />
+      <_LibraryPaths Include="@(ILRepackLibraryPaths)" />
       <_LibraryPaths Include="%(_InputAssemblies.Directory)" />
     </ItemGroup>
 
