@@ -1,0 +1,129 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<Project xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+
+  <PropertyGroup>
+    <ILRepackTarget Condition="'$(ILRepackTarget)' == ''">false</ILRepackTarget>
+    <ILRepackTarget Condition="'$(ILRepackTarget)' == 'disable'">false</ILRepackTarget>
+    <ILRepackTarget Condition="'$(ILRepackTarget)' == 'enable'">true</ILRepackTarget>
+
+    <ILRepackParallel Condition="'$(ILRepackParallel)' == ''">false</ILRepackParallel>
+    <ILRepackParallel Condition="'$(ILRepackParallel)' == 'disable'">false</ILRepackParallel>
+    <ILRepackParallel Condition="'$(ILRepackParallel)' == 'enable'">true</ILRepackParallel>
+
+    <ILRepackDebugInfo Condition="'$(ILRepackDebugInfo)' == ''">false</ILRepackDebugInfo>
+    <ILRepackDebugInfo Condition="'$(ILRepackDebugInfo)' == 'disable'">false</ILRepackDebugInfo>
+    <ILRepackDebugInfo Condition="'$(ILRepackDebugInfo)' == 'enable'">true</ILRepackDebugInfo>
+
+    <ILRepackVerbose Condition="'$(ILRepackVerbose)' == ''">false</ILRepackVerbose>
+    <ILRepackVerbose Condition="'$(ILRepackVerbose)' == 'disable'">false</ILRepackVerbose>
+    <ILRepackVerbose Condition="'$(ILRepackVerbose)' == 'enable'">true</ILRepackVerbose>
+
+    <ILRepackInternalize Condition="'$(ILRepackInternalize)' == ''">false</ILRepackInternalize>
+    <ILRepackInternalize Condition="'$(ILRepackInternalize)' == 'disable'">false</ILRepackInternalize>
+    <ILRepackInternalize Condition="'$(ILRepackInternalize)' == 'enable'">true</ILRepackInternalize>
+
+    <ILRepackRenameInternalized Condition="'$(ILRepackRenameInternalized)' == ''">false</ILRepackRenameInternalized>
+    <ILRepackRenameInternalized Condition="'$(ILRepackRenameInternalized)' == 'disable'">false</ILRepackRenameInternalized>
+    <ILRepackRenameInternalized Condition="'$(ILRepackRenameInternalized)' == 'enable'">true</ILRepackRenameInternalized>
+
+    <ILRepackWildcards Condition="'$(ILRepackWildcards)' == ''">false</ILRepackWildcards>
+    <ILRepackWildcards Condition="'$(ILRepackWildcards)' == 'disable'">false</ILRepackWildcards>
+    <ILRepackWildcards Condition="'$(ILRepackWildcards)' == 'enable'">true</ILRepackWildcards>
+
+    <ILRepackDelaySign Condition="'$(ILRepackDelaySign)' == ''">false</ILRepackDelaySign>
+    <ILRepackDelaySign Condition="'$(ILRepackDelaySign)' == 'disable'">false</ILRepackDelaySign>
+    <ILRepackDelaySign Condition="'$(ILRepackDelaySign)' == 'enable'">true</ILRepackDelaySign>
+
+    <ILRepackExcludeInternalizeSerializable Condition="'$(ILRepackExcludeInternalizeSerializable)' == ''">false</ILRepackExcludeInternalizeSerializable>
+    <ILRepackExcludeInternalizeSerializable Condition="'$(ILRepackExcludeInternalizeSerializable)' == 'disable'">false</ILRepackExcludeInternalizeSerializable>
+    <ILRepackExcludeInternalizeSerializable Condition="'$(ILRepackExcludeInternalizeSerializable)' == 'enable'">true</ILRepackExcludeInternalizeSerializable>
+
+    <ILRepackUnion Condition="'$(ILRepackUnion)' == ''">false</ILRepackUnion>
+    <ILRepackUnion Condition="'$(ILRepackUnion)' == 'disable'">false</ILRepackUnion>
+    <ILRepackUnion Condition="'$(ILRepackUnion)' == 'enable'">true</ILRepackUnion>
+
+    <ILRepackAllowDup Condition="'$(ILRepackAllowDup)' == ''">false</ILRepackAllowDup>
+    <ILRepackAllowDup Condition="'$(ILRepackAllowDup)' == 'disable'">false</ILRepackAllowDup>
+    <ILRepackAllowDup Condition="'$(ILRepackAllowDup)' == 'enable'">true</ILRepackAllowDup>
+
+    <ILRepackAllowDuplicateResources Condition="'$(ILRepackAllowDuplicateResources)' == ''">false</ILRepackAllowDuplicateResources>
+    <ILRepackAllowDuplicateResources Condition="'$(ILRepackAllowDuplicateResources)' == 'disable'">false</ILRepackAllowDuplicateResources>
+    <ILRepackAllowDuplicateResources Condition="'$(ILRepackAllowDuplicateResources)' == 'enable'">true</ILRepackAllowDuplicateResources>
+
+    <ILRepackNoRepackRes Condition="'$(ILRepackNoRepackRes)' == ''">false</ILRepackNoRepackRes>
+    <ILRepackNoRepackRes Condition="'$(ILRepackNoRepackRes)' == 'disable'">false</ILRepackNoRepackRes>
+    <ILRepackNoRepackRes Condition="'$(ILRepackNoRepackRes)' == 'enable'">true</ILRepackNoRepackRes>
+
+    <ILRepackCopyAttrs Condition="'$(ILRepackCopyAttrs)' == ''">false</ILRepackCopyAttrs>
+    <ILRepackCopyAttrs Condition="'$(ILRepackCopyAttrs)' == 'disable'">false</ILRepackCopyAttrs>
+    <ILRepackCopyAttrs Condition="'$(ILRepackCopyAttrs)' == 'enable'">true</ILRepackCopyAttrs>
+
+    <ILRepackAllowMultiple Condition="'$(ILRepackAllowMultiple)' == ''">false</ILRepackAllowMultiple>
+    <ILRepackAllowMultiple Condition="'$(ILRepackAllowMultiple)' == 'disable'">false</ILRepackAllowMultiple>
+    <ILRepackAllowMultiple Condition="'$(ILRepackAllowMultiple)' == 'enable'">true</ILRepackAllowMultiple>
+
+    <ILRepackKeepOtherVersionReferences Condition="'$(ILRepackKeepOtherVersionReferences)' == ''">false</ILRepackKeepOtherVersionReferences>
+    <ILRepackKeepOtherVersionReferences Condition="'$(ILRepackKeepOtherVersionReferences)' == 'disable'">false</ILRepackKeepOtherVersionReferences>
+    <ILRepackKeepOtherVersionReferences Condition="'$(ILRepackKeepOtherVersionReferences)' == 'enable'">true</ILRepackKeepOtherVersionReferences>
+
+    <ILRepackPreserveTimestamp Condition="'$(ILRepackPreserveTimestamp)' == ''">false</ILRepackPreserveTimestamp>
+    <ILRepackPreserveTimestamp Condition="'$(ILRepackPreserveTimestamp)' == 'disable'">false</ILRepackPreserveTimestamp>
+    <ILRepackPreserveTimestamp Condition="'$(ILRepackPreserveTimestamp)' == 'enable'">true</ILRepackPreserveTimestamp>
+
+    <ILRepackSkipConfig Condition="'$(ILRepackSkipConfig)' == ''">false</ILRepackSkipConfig>
+    <ILRepackSkipConfig Condition="'$(ILRepackSkipConfig)' == 'disable'">false</ILRepackSkipConfig>
+    <ILRepackSkipConfig Condition="'$(ILRepackSkipConfig)' == 'enable'">true</ILRepackSkipConfig>
+
+    <ILRepackILLink Condition="'$(ILRepackILLink)' == ''">false</ILRepackILLink>
+    <ILRepackILLink Condition="'$(ILRepackILLink)' == 'disable'">false</ILRepackILLink>
+    <ILRepackILLink Condition="'$(ILRepackILLink)' == 'enable'">true</ILRepackILLink>
+
+    <ILRepackXmlDocs Condition="'$(ILRepackXmlDocs)' == ''">false</ILRepackXmlDocs>
+    <ILRepackXmlDocs Condition="'$(ILRepackXmlDocs)' == 'disable'">false</ILRepackXmlDocs>
+    <ILRepackXmlDocs Condition="'$(ILRepackXmlDocs)' == 'enable'">true</ILRepackXmlDocs>
+
+    <ILRepackZeroPEKind Condition="'$(ILRepackZeroPEKind)' == ''">false</ILRepackZeroPEKind>
+    <ILRepackZeroPEKind Condition="'$(ILRepackZeroPEKind)' == 'disable'">false</ILRepackZeroPEKind>
+    <ILRepackZeroPEKind Condition="'$(ILRepackZeroPEKind)' == 'enable'">true</ILRepackZeroPEKind>
+
+    <ILRepackTimeout Condition="'$(ILRepackTimeout)' == ''">30</ILRepackTimeout>
+    <ILRepackTimeout Condition="$([System.Int32]::TryParse('$(ILRepackTimeout)', null))">30</ILRepackTimeout>
+
+    <ILRepackVersion Condition="$([System.Version]::TryParse('$(ILRepackVersion)', null))"></ILRepackVersion>
+
+    <ILRepackTargetKind Condition="$([System.Text.RegularExpressions.Regex]::IsMatch('$(ILRepackTargetKind)', 'dll|exe'))"></ILRepackTargetKind>
+
+
+
+    <ILRepackIncludeReferenceAssemblies Condition="'$(ILRepackIncludeReferenceAssemblies)' == ''">false</ILRepackIncludeReferenceAssemblies>
+    <ILRepackIncludeReferenceAssemblies Condition="'$(ILRepackIncludeReferenceAssemblies)' == 'disable'">false</ILRepackIncludeReferenceAssemblies>
+    <ILRepackIncludeReferenceAssemblies Condition="'$(ILRepackIncludeReferenceAssemblies)' == 'enable'">true</ILRepackIncludeReferenceAssemblies>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <ILRepackOutputFile Condition="'$(ILRepackOutputFile)' == ''" Include="$(OutDir)Repacked.$(AssemblyFile)" />
+    <ILRepackLogFile Condition="'$(ILRepackLogFile)' == ''" Include="$(OutDir)$(AssemblyName).ilrepack.log" />
+  </ItemGroup>
+
+ <!--
+  <ItemGroup Label="many files">
+    <ILRepackInputAssemblies Include="" />
+    <ILRepackLibraryPaths Include="" />
+    <ILRepackInternalizeExclude Include="" />
+    <ILRepackImportAttributeAssemblies Include="" />
+    <ILRepackInternalizeAssemblies Include="" />
+    <ILRepackRepackDropAttributes Include="" />
+    <ILRepackAllowedDuplicateTypes Include="" />
+  </ItemGroup>
+
+  <ItemGroup Label="regex or assembly name">
+    <ILRepackFilterAssemblies Include="" />
+  </ItemGroup>
+
+  <ItemGroup Label="single file">
+    <ILRepackKeyFile Include="" />
+    <ILRepackKeyContainer Include="" />
+  </ItemGroup>
+ -->
+
+</Project>
