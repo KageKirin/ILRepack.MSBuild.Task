@@ -4,7 +4,7 @@
     <ImplicitUsings>enable</ImplicitUsings>
     <Nullable>enable</Nullable>
     <OutputType>Exe</OutputType>
-    <RootNamespace>Repack.Tool.RefOnly.Test</RootNamespace>
+    <RootNamespace>Repack.Tool.Target.Test</RootNamespace>
     <TargetFramework>net9.0</TargetFramework>
     <TestingPlatformDotnetTestSupport>true</TestingPlatformDotnetTestSupport>
     <UseMicrosoftTestingPlatformRunner>true</UseMicrosoftTestingPlatformRunner>
@@ -39,17 +39,12 @@
 
   <ItemGroup>
     <ProjectReference Include="..\TestLibA\TestLibA.csproj" PrivateAssets="all" />
-    <ProjectReference Include="..\..\ILRepack.Tool.MSBuild.Task\ILRepack.Tool.MSBuild.Task.csproj">
-    <Project>{F7641765-9A21-43AF-B577-46E54E945320}</Project>
-      <Name>ILRepack.Tool.MSBuild.Task</Name>
-      <ReferenceOutputAssembly>false</ReferenceOutputAssembly>
-    </ProjectReference>
+    <ProjectReference Include="..\..\ILRepack.Tool.MSBuild.Task\ILRepack.Tool.MSBuild.Task.csproj" PrivateAssets="all" IncludeAssets="all" />
   </ItemGroup>
 
 
   <Import Project="ILRepack.Config.props" />
-  <Import Project="..\..\ILRepack.Lib.MSBuild.Task\build\KageKirin.ILRepack.Lib.MSBuild.Task.props" />
+  <Import Project="..\..\ILRepack.Tool.MSBuild.Task\build\KageKirin.ILRepack.Tool.MSBuild.Task.props" />
   <Import Project="..\..\ILRepack.Tool.MSBuild.Task\build\KageKirin.ILRepack.Tool.MSBuild.Task.targets" />
-  <Import Project="ILRepack.targets" />
 
 </Project>

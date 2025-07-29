@@ -29,4 +29,67 @@
 
   <Import Project="$(_ILRepackConfigProps)" Condition="'$(_ILRepackConfigProps)' != '' and Exists('$(_ILRepackConfigProps)')"/>
   <Import Project="$(_ILRepackTargets)" Condition="'$(_ILRepackTargets)' != '' and Exists('$(_ILRepackTargets)')"/>
+
+  <Target
+    Name="ILRepackingWithTool"
+    AfterTargets="Compile"
+    DependsOnTargets="ResolveAssemblyReferences"
+    Condition="'$(ILRepackTarget)' == 'true'">
+
+    <Message Text="Repacking $(IntermediateOutputPath)" Importance="high" />
+
+    <ItemGroup>
+      <_MainAssembly Include="$(IntermediateOutputPath)$(TargetFileName)" />
+      <_InputAssemblies Include="@(ILRepackInputAssemblies)" />
+      <_InputAssemblies Include="@(ReferenceCopyLocalPaths)" Condition="'$(ILRepackIncludeReferenceAssemblies)' == 'true'" />
+
+      <_FilterAssemblies Include="$(AssemblyName)" />
+      <_FilterAssemblies Include="@(ILRepackFilterAssemblies)" />
+
+      <_LibraryPaths Include="%(ILRepackLibraryPaths.Directory)" />
+      <_LibraryPaths Include="%(_InputAssemblies.Directory)" />
+    </ItemGroup>
+
+    <ItemGroup>
+      <_DoNotInternalizeAssemblies Include="@(_MainAssembly)" />
+    </ItemGroup>
+
+    <Message Text="Repacking assemblies in $(IntermediateOutputPath): @(_InputAssemblies->'%(Identity)', ' ') into @(_MainAssembly->'%(Identity)')" Importance="high" />
+
+    <ILRepack
+      Parallel="$(ILRepackParallel)"
+      DebugInfo="$(ILRepackDebugInfo)"
+      Verbose="$(ILRepackVerbose)"
+      Internalize="$(ILRepackInternalize)"
+      RenameInternalized="$(ILRepackRenameInternalized)"
+      Wildcards="$(ILRepackWildcards)"
+      DelaySign="$(ILRepackDelaySign)"
+      ExcludeInternalizeSerializable="$(ILRepackExcludeInternalizeSerializable)"
+      Union="$(ILRepackUnion)"
+      AllowDup="$(ILRepackAllowDup)"
+      AllowDuplicateResources="$(ILRepackAllowDuplicateResources)"
+      NoRepackRes="$(ILRepackNoRepackRes)"
+      CopyAttrs="$(ILRepackCopyAttrs)"
+      AllowMultiple="$(ILRepackAllowMultiple)"
+      KeepOtherVersionReferences="$(ILRepackKeepOtherVersionReferences)"
+      PreserveTimestamp="$(ILRepackPreserveTimestamp)"
+      SkipConfig="$(ILRepackSkipConfig)"
+      ILLink="$(ILRepackILLink)"
+      XmlDocs="$(ILRepackXmlDocs)"
+      ZeroPEKind="$(ILRepackZeroPEKind)"
+      Timeout="$(ILRepackTimeout)"
+      Version="$(ILRepackVersion)"
+      TargetKind="$(ILRepackTargetKind)"
+
+      InputAssemblies="@(_MainAssembly);@(_InputAssemblies)"
+      InternalizeExclude="@(_DoNotInternalizeAssemblies)"
+      FilterAssemblies="@(_FilterAssemblies)"
+      LibraryPaths="@(_LibraryPaths)"
+
+      OutputFile="@(ILRepackOutputFile)"
+      LogFile="@(ILRepackLogFile)"
+    />
+
+  </Target>
+
 </Project>
