@@ -13,7 +13,7 @@
       <FilterAssemblies Include="TestLibA" />
       <FilterAssemblies Include="xunit" />
 
-      <LibraryPath Include="%(InputAssemblies.Directory)" />
+      <LibraryPaths Include="%(InputAssemblies.Directory)" />
     </ItemGroup>
 
     <ItemGroup>
@@ -31,6 +31,7 @@
       InputAssemblies="@(MainAssembly);@(InputAssemblies)"
       InternalizeExclude="@(DoNotInternalizeAssemblies)"
       FilterAssemblies="@(FilterAssemblies)"
+      LibraryPaths="@(LibraryPaths)"
       Timeout="60"
 
       OutputFile="@(MainAssembly)"
