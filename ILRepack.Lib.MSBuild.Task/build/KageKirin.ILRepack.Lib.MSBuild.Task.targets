@@ -51,7 +51,6 @@
     </ItemGroup>
 
     <ItemGroup>
-      <_DoNotInternalizeAssemblies Include="@(_MainAssembly)" />
     </ItemGroup>
 
     <Message Text="Repacking assemblies in $(IntermediateOutputPath): @(_InputAssemblies->'%(Identity)', ' ') into @(_MainAssembly->'%(Identity)')" Importance="high" />
