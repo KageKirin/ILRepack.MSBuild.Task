@@ -6,9 +6,10 @@
     <PropertyGroup>
       <_ThisAssembly>$(IntermediateOutputPath)$(TargetFileName)</_ThisAssembly>
       <_ILRepackAssembly>$(PkgILRepack_Lib)/lib/net472/ILRepack.dll</_ILRepackAssembly>
+      <_ILRepackLibs>/lib:$(PkgMicrosoft_Build_Utilities_Core)\lib\net472 /lib:$(PkgMicrosoft_Build_Framework)\lib\net472</_ILRepackLibs>
       <_ILRepackExclude>ILRepack.not</_ILRepackExclude>
       <_ILRepackExe>$(PkgILRepack)/tools/ILRepack.exe</_ILRepackExe>
-      <_ILRepackCmd>$(_ILRepackExe) /internalize:$(_ILRepackExclude) /renameinternalized /log:$(_ThisAssembly).ilrepack.log /out:$(_ThisAssembly).repack $(_ThisAssembly) $(_ILRepackAssembly)</_ILRepackCmd>
+      <_ILRepackCmd>$(_ILRepackExe) /internalize:$(_ILRepackExclude) /renameinternalized $(_ILRepackLibs) /log:$(_ThisAssembly).ilrepack.log /out:$(_ThisAssembly).repack $(_ThisAssembly) $(_ILRepackAssembly)</_ILRepackCmd>
     </PropertyGroup>
 
     <Message Text="running: $(_ILRepackCmd)" Importance="high" />
