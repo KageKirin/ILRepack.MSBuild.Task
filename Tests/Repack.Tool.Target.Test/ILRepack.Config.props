@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<Project xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+
+  <PropertyGroup>
+    <ILRepackTarget>true</ILRepackTarget>
+    <ILRepackIncludeReferenceAssemblies>true</ILRepackIncludeReferenceAssemblies>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <ILRepackFilterAssemblies Include="TestLibA" />
+    <ILRepackFilterAssemblies Include="xunit" />
+  </ItemGroup>
+
+</Project>
