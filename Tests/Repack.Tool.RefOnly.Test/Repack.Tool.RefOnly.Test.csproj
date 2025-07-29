@@ -47,6 +47,8 @@
   </ItemGroup>
 
 
+  <Import Project="ILRepack.Config.props" />
+  <Import Project="..\..\ILRepack.Lib.MSBuild.Task\build\KageKirin.ILRepack.Lib.MSBuild.Task.props" />
   <Import Project="..\..\ILRepack.Tool.MSBuild.Task\build\KageKirin.ILRepack.Tool.MSBuild.Task.targets" />
   <Import Project="ILRepack.targets" />
 
