@@ -67,6 +67,7 @@ public class ILRepack : Microsoft.Build.Utilities.Task, IDisposable
 
     public virtual Microsoft.Build.Framework.ITaskItem[] InternalizeExclude { get; set; } = [];
 
+    [Required]
     public virtual Microsoft.Build.Framework.ITaskItem OutputFile { get; set; } = default;
 
     public virtual Microsoft.Build.Framework.ITaskItem LogFile { get; set; } = default;
