@@ -42,7 +42,8 @@
     <ProjectReference Include="..\..\ILRepack.Lib.MSBuild.Task\ILRepack.Lib.MSBuild.Task.csproj" PrivateAssets="all" IncludeAssets="all" />
   </ItemGroup>
 
-
+  <Import Project="ILRepack.Config.props" />
+  <Import Project="..\..\ILRepack.Lib.MSBuild.Task\build\KageKirin.ILRepack.Lib.MSBuild.Task.props" />
   <Import Project="..\..\ILRepack.Lib.MSBuild.Task\build\KageKirin.ILRepack.Lib.MSBuild.Task.targets" />
   <Import Project="ILRepack.targets" />
 
