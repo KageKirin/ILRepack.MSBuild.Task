@@ -60,6 +60,7 @@ public class ILRepack : Microsoft.Build.Utilities.Task, IDisposable
 
     public virtual string Version { get; set; } = string.Empty;
 
+    [Required]
     public virtual Microsoft.Build.Framework.ITaskItem[] InputAssemblies { get; set; } = [];
 
     public virtual Microsoft.Build.Framework.ITaskItem[] LibraryPaths { get; set; } = [];
