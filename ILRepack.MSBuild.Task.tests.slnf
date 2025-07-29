@@ -7,7 +7,8 @@
       "Tests\\Repack.Lib.Test\\Repack.Lib.Test.csproj",
       "Tests\\Repack.Tool.RefOnly.Test\\Repack.Tool.RefOnly.Test.csproj",
       "Tests\\Repack.Lib.RefOnly.Test\\Repack.Lib.RefOnly.Test.csproj",
-      "Tests\\Repack.Tool.Target.Test\\Repack.Tool.Target.Test.csproj"
+      "Tests\\Repack.Tool.Target.Test\\Repack.Tool.Target.Test.csproj",
+      "Tests\\Repack.Lib.Target.Test\\Repack.Lib.Target.Test.csproj"
     ]
   }
 }

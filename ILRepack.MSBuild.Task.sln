@@ -21,6 +21,8 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Repack.Lib.RefOnly.Test", "
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Repack.Tool.Target.Test", "Tests\Repack.Tool.Target.Test\Repack.Tool.Target.Test.csproj", "{1AEBCF4D-B852-4B48-A7A1-213459983C1F}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Repack.Lib.Target.Test", "Tests\Repack.Lib.Target.Test\Repack.Lib.Target.Test.csproj", "{1BB59A3D-768A-44CF-B1F4-351774F8D2DC}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -127,6 +129,18 @@ Global
 		{1AEBCF4D-B852-4B48-A7A1-213459983C1F}.Release|x64.Build.0 = Release|Any CPU
 		{1AEBCF4D-B852-4B48-A7A1-213459983C1F}.Release|x86.ActiveCfg = Release|Any CPU
 		{1AEBCF4D-B852-4B48-A7A1-213459983C1F}.Release|x86.Build.0 = Release|Any CPU
+		{1BB59A3D-768A-44CF-B1F4-351774F8D2DC}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{1BB59A3D-768A-44CF-B1F4-351774F8D2DC}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{1BB59A3D-768A-44CF-B1F4-351774F8D2DC}.Debug|x64.ActiveCfg = Debug|Any CPU
+		{1BB59A3D-768A-44CF-B1F4-351774F8D2DC}.Debug|x64.Build.0 = Debug|Any CPU
+		{1BB59A3D-768A-44CF-B1F4-351774F8D2DC}.Debug|x86.ActiveCfg = Debug|Any CPU
+		{1BB59A3D-768A-44CF-B1F4-351774F8D2DC}.Debug|x86.Build.0 = Debug|Any CPU
+		{1BB59A3D-768A-44CF-B1F4-351774F8D2DC}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{1BB59A3D-768A-44CF-B1F4-351774F8D2DC}.Release|Any CPU.Build.0 = Release|Any CPU
+		{1BB59A3D-768A-44CF-B1F4-351774F8D2DC}.Release|x64.ActiveCfg = Release|Any CPU
+		{1BB59A3D-768A-44CF-B1F4-351774F8D2DC}.Release|x64.Build.0 = Release|Any CPU
+		{1BB59A3D-768A-44CF-B1F4-351774F8D2DC}.Release|x86.ActiveCfg = Release|Any CPU
+		{1BB59A3D-768A-44CF-B1F4-351774F8D2DC}.Release|x86.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
@@ -138,5 +152,6 @@ Global
 		{E44E145F-DCD4-42B5-94DF-C694844E6C11} = {54749167-747B-4C31-94CC-AD76608E23F7}
 		{CE5E44E4-F0FD-42DC-AFF8-F4701C6399DB} = {54749167-747B-4C31-94CC-AD76608E23F7}
 		{1AEBCF4D-B852-4B48-A7A1-213459983C1F} = {54749167-747B-4C31-94CC-AD76608E23F7}
+		{1BB59A3D-768A-44CF-B1F4-351774F8D2DC} = {54749167-747B-4C31-94CC-AD76608E23F7}
 	EndGlobalSection
 EndGlobal
