@@ -62,7 +62,7 @@
       LogVerbose="$(ILRepackLogVerbose)"
       Internalize="$(ILRepackInternalize)"
       RenameInternalized="$(ILRepackRenameInternalized)"
-      Wildcards="$(ILRepackWildcards)"
+      AllowWildCards="$(ILRepackAllowWildCards)"
       DelaySign="$(ILRepackDelaySign)"
       ExcludeInternalizeSerializable="$(ILRepackExcludeInternalizeSerializable)"
       UnionMerge="$(ILRepackUnionMerge)"

@@ -26,9 +26,9 @@
     <ILRepackRenameInternalized Condition="'$(ILRepackRenameInternalized)' == 'disable'">false</ILRepackRenameInternalized>
     <ILRepackRenameInternalized Condition="'$(ILRepackRenameInternalized)' == 'enable'">true</ILRepackRenameInternalized>
 
-    <ILRepackWildcards Condition="'$(ILRepackWildcards)' == ''">false</ILRepackWildcards>
-    <ILRepackWildcards Condition="'$(ILRepackWildcards)' == 'disable'">false</ILRepackWildcards>
-    <ILRepackWildcards Condition="'$(ILRepackWildcards)' == 'enable'">true</ILRepackWildcards>
+    <ILRepackAllowWildCards Condition="'$(ILRepackAllowWildCards)' == ''">false</ILRepackAllowWildCards>
+    <ILRepackAllowWildCards Condition="'$(ILRepackAllowWildCards)' == 'disable'">false</ILRepackAllowWildCards>
+    <ILRepackAllowWildCards Condition="'$(ILRepackAllowWildCards)' == 'enable'">true</ILRepackAllowWildCards>
 
     <ILRepackDelaySign Condition="'$(ILRepackDelaySign)' == ''">false</ILRepackDelaySign>
     <ILRepackDelaySign Condition="'$(ILRepackDelaySign)' == 'disable'">false</ILRepackDelaySign>

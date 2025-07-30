@@ -50,7 +50,7 @@ public class ILRepack : Microsoft.Build.Utilities.Task, IDisposable
 
     public virtual bool LogVerbose { get; set; }
 
-    public virtual bool Wildcards { get; set; }
+    public virtual bool AllowWildCards { get; set; }
 
     public virtual bool XmlDocs { get; set; }
 
@@ -148,7 +148,7 @@ public class ILRepack : Microsoft.Build.Utilities.Task, IDisposable
         if (LogVerbose)
             cmdParams.Add("/verbose");
 
-        if (Wildcards)
+        if (AllowWildCards)
             cmdParams.Add("/wildcards");
 
         if (XmlDocs)

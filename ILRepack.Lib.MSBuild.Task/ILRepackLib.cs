@@ -53,7 +53,7 @@ public class ILRepack : Microsoft.Build.Utilities.Task, IDisposable
 
     public virtual bool LogVerbose { get; set; }
 
-    public virtual bool Wildcards { get; set; }
+    public virtual bool AllowWildCards { get; set; }
 
     public virtual bool XmlDocs { get; set; }
 
@@ -128,7 +128,7 @@ public class ILRepack : Microsoft.Build.Utilities.Task, IDisposable
             AllowAllDuplicateTypes = AllowAllDuplicateTypes,
             AllowDuplicateResources = AllowDuplicateResources,
             AllowMultipleAssemblyLevelAttributes = AllowMultipleAssemblyLevelAttributes,
-            AllowWildCards = Wildcards,
+            AllowWildCards = AllowWildCards,
             AllowZeroPeKind = ZeroPEKind,
             CopyAttributes = CopyAttributes,
             DebugInfo = DebugInfo,
