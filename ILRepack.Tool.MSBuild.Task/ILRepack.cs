@@ -72,6 +72,8 @@ public class ILRepack : Microsoft.Build.Utilities.Task, IDisposable
 
     public virtual string TargetPlatformDirectory { get; set; } = string.Empty;
 
+    public virtual string TargetPlatformVersion { get; set; } = string.Empty;
+
     public virtual string Version { get; set; } = string.Empty;
 
     public virtual Microsoft.Build.Framework.ITaskItem KeyContainer { get; set; } = default;
@@ -189,6 +191,8 @@ public class ILRepack : Microsoft.Build.Utilities.Task, IDisposable
         string targetplatform = string.Empty;
         if (!string.IsNullOrWhiteSpace(TargetPlatformDirectory))
             targetplatform += "${TargetPlatformDirectory},";
+        if (!string.IsNullOrWhiteSpace(TargetPlatformVersion))
+            targetplatform += TargetPlatformVersion;
         if (!string.IsNullOrWhiteSpace(targetplatform))
             cmdParams.Add($"/targetplatform:{targetplatform}");
 
