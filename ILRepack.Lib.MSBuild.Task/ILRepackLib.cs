@@ -43,6 +43,8 @@ public class ILRepack : Microsoft.Build.Utilities.Task, IDisposable
 
     public virtual bool KeepOtherVersionReferences { get; set; }
 
+    public virtual bool LineIndexation { get; set; }
+
     public virtual bool LogVerbose { get; set; }
 
     public virtual bool MergeIlLinkerFiles { get; set; }
@@ -141,6 +143,7 @@ public class ILRepack : Microsoft.Build.Utilities.Task, IDisposable
             ExcludeInternalizeSerializable = ExcludeInternalizeSerializable,
             Internalize = Internalize,
             KeepOtherVersionReferences = KeepOtherVersionReferences,
+            LineIndexation = LineIndexation,
             LogVerbose = LogVerbose,
             MergeIlLinkerFiles = MergeIlLinkerFiles,
             NoRepackRes = NoRepackRes,

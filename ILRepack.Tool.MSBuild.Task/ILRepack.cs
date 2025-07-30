@@ -40,6 +40,8 @@ public class ILRepack : Microsoft.Build.Utilities.Task, IDisposable
 
     public virtual bool KeepOtherVersionReferences { get; set; }
 
+    public virtual bool LineIndexation { get; set; }
+
     public virtual bool LogVerbose { get; set; }
 
     public virtual bool MergeIlLinkerFiles { get; set; }
@@ -132,6 +134,9 @@ public class ILRepack : Microsoft.Build.Utilities.Task, IDisposable
 
         if (KeepOtherVersionReferences)
             cmdParams.Add("/keepotherversionreferences");
+
+        if (LineIndexation)
+            cmdParams.Add("/index");
 
         if (NoRepackRes)
             cmdParams.Add("/noRepackRes");
