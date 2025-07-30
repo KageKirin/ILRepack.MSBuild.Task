@@ -57,7 +57,7 @@ public class ILRepack : Microsoft.Build.Utilities.Task, IDisposable
 
     public virtual bool XmlDocumentation { get; set; }
 
-    public virtual bool ZeroPEKind { get; set; }
+    public virtual bool AllowZeroPeKind { get; set; }
 
     public virtual string TargetKind { get; set; } = string.Empty;
 
@@ -129,7 +129,7 @@ public class ILRepack : Microsoft.Build.Utilities.Task, IDisposable
             AllowDuplicateResources = AllowDuplicateResources,
             AllowMultipleAssemblyLevelAttributes = AllowMultipleAssemblyLevelAttributes,
             AllowWildCards = AllowWildCards,
-            AllowZeroPeKind = ZeroPEKind,
+            AllowZeroPeKind = AllowZeroPeKind,
             CopyAttributes = CopyAttributes,
             DebugInfo = DebugInfo,
             DelaySign = DelaySign,

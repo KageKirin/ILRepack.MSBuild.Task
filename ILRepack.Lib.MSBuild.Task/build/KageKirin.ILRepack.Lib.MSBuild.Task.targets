@@ -76,7 +76,7 @@
       SkipConfigMerge="$(ILRepackSkipConfigMerge)"
       MergeIlLinkerFiles="$(ILRepackMergeIlLinkerFiles)"
       XmlDocumentation="$(ILRepackXmlDocumentation)"
-      ZeroPEKind="$(ILRepackZeroPEKind)"
+      AllowZeroPeKind="$(ILRepackAllowZeroPeKind)"
       Timeout="$(ILRepackTimeout)"
       Version="$(ILRepackVersion)"
       TargetKind="$(ILRepackTargetKind)"

@@ -54,7 +54,7 @@ public class ILRepack : Microsoft.Build.Utilities.Task, IDisposable
 
     public virtual bool XmlDocumentation { get; set; }
 
-    public virtual bool ZeroPEKind { get; set; }
+    public virtual bool AllowZeroPeKind { get; set; }
 
     public virtual string TargetKind { get; set; } = string.Empty;
 
@@ -154,7 +154,7 @@ public class ILRepack : Microsoft.Build.Utilities.Task, IDisposable
         if (XmlDocumentation)
             cmdParams.Add("/xmldocs");
 
-        if (ZeroPEKind)
+        if (AllowZeroPeKind)
             cmdParams.Add("/zeropekind");
 
         if (!string.IsNullOrWhiteSpace(TargetKind))

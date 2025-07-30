@@ -82,9 +82,9 @@
     <ILRepackXmlDocumentation Condition="'$(ILRepackXmlDocumentation)' == 'disable'">false</ILRepackXmlDocumentation>
     <ILRepackXmlDocumentation Condition="'$(ILRepackXmlDocumentation)' == 'enable'">true</ILRepackXmlDocumentation>
 
-    <ILRepackZeroPEKind Condition="'$(ILRepackZeroPEKind)' == ''">false</ILRepackZeroPEKind>
-    <ILRepackZeroPEKind Condition="'$(ILRepackZeroPEKind)' == 'disable'">false</ILRepackZeroPEKind>
-    <ILRepackZeroPEKind Condition="'$(ILRepackZeroPEKind)' == 'enable'">true</ILRepackZeroPEKind>
+    <ILRepackAllowZeroPeKind Condition="'$(ILRepackAllowZeroPeKind)' == ''">false</ILRepackAllowZeroPeKind>
+    <ILRepackAllowZeroPeKind Condition="'$(ILRepackAllowZeroPeKind)' == 'disable'">false</ILRepackAllowZeroPeKind>
+    <ILRepackAllowZeroPeKind Condition="'$(ILRepackAllowZeroPeKind)' == 'enable'">true</ILRepackAllowZeroPeKind>
 
     <ILRepackTimeout Condition="'$(ILRepackTimeout)' == ''">30</ILRepackTimeout>
     <ILRepackTimeout Condition="$([System.Int32]::TryParse('$(ILRepackTimeout)', null))">30</ILRepackTimeout>
