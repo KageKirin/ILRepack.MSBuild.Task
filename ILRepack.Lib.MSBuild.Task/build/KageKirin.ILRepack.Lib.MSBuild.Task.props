@@ -42,9 +42,9 @@
     <ILRepackUnion Condition="'$(ILRepackUnion)' == 'disable'">false</ILRepackUnion>
     <ILRepackUnion Condition="'$(ILRepackUnion)' == 'enable'">true</ILRepackUnion>
 
-    <ILRepackAllowDup Condition="'$(ILRepackAllowDup)' == ''">false</ILRepackAllowDup>
-    <ILRepackAllowDup Condition="'$(ILRepackAllowDup)' == 'disable'">false</ILRepackAllowDup>
-    <ILRepackAllowDup Condition="'$(ILRepackAllowDup)' == 'enable'">true</ILRepackAllowDup>
+    <ILRepackAllowAllDuplicateTypes Condition="'$(ILRepackAllowAllDuplicateTypes)' == ''">false</ILRepackAllowAllDuplicateTypes>
+    <ILRepackAllowAllDuplicateTypes Condition="'$(ILRepackAllowAllDuplicateTypes)' == 'disable'">false</ILRepackAllowAllDuplicateTypes>
+    <ILRepackAllowAllDuplicateTypes Condition="'$(ILRepackAllowAllDuplicateTypes)' == 'enable'">true</ILRepackAllowAllDuplicateTypes>
 
     <ILRepackAllowDuplicateResources Condition="'$(ILRepackAllowDuplicateResources)' == ''">false</ILRepackAllowDuplicateResources>
     <ILRepackAllowDuplicateResources Condition="'$(ILRepackAllowDuplicateResources)' == 'disable'">false</ILRepackAllowDuplicateResources>

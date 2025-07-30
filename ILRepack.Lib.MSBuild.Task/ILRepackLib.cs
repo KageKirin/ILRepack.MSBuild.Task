@@ -19,7 +19,7 @@ namespace KageKirin.ILRepack.Lib.MSBuild.Task;
 
 public class ILRepack : Microsoft.Build.Utilities.Task, IDisposable
 {
-    public virtual bool AllowDup { get; set; }
+    public virtual bool AllowAllDuplicateTypes { get; set; }
 
     public virtual bool AllowDuplicateResources { get; set; }
 
@@ -125,7 +125,7 @@ public class ILRepack : Microsoft.Build.Utilities.Task, IDisposable
 
         RepackOptions repackOptions = new()
         {
-            AllowAllDuplicateTypes = AllowDup,
+            AllowAllDuplicateTypes = AllowAllDuplicateTypes,
             AllowDuplicateResources = AllowDuplicateResources,
             AllowMultipleAssemblyLevelAttributes = AllowMultiple,
             AllowWildCards = Wildcards,

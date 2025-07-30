@@ -16,7 +16,7 @@ namespace KageKirin.ILRepack.Tool.MSBuild.Task;
 
 public class ILRepack : Microsoft.Build.Utilities.Task, IDisposable
 {
-    public virtual bool AllowDup { get; set; }
+    public virtual bool AllowAllDuplicateTypes { get; set; }
 
     public virtual bool AllowDuplicateResources { get; set; }
 
@@ -97,7 +97,7 @@ public class ILRepack : Microsoft.Build.Utilities.Task, IDisposable
 
         var cmdParams = new List<string>();
 
-        if (AllowDup)
+        if (AllowAllDuplicateTypes)
             cmdParams.Add("/allowdup");
 
         if (AllowDuplicateResources)
