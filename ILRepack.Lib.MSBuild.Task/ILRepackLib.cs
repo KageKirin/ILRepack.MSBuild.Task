@@ -25,6 +25,10 @@ public class ILRepack : Microsoft.Build.Utilities.Task, IDisposable
 
     public virtual bool AllowMultipleAssemblyLevelAttributes { get; set; }
 
+    public virtual bool AllowWildCards { get; set; }
+
+    public virtual bool AllowZeroPeKind { get; set; }
+
     public virtual bool CopyAttributes { get; set; }
 
     public virtual bool DebugInfo { get; set; }
@@ -33,11 +37,13 @@ public class ILRepack : Microsoft.Build.Utilities.Task, IDisposable
 
     public virtual bool ExcludeInternalizeSerializable { get; set; }
 
-    public virtual bool MergeIlLinkerFiles { get; set; }
-
     public virtual bool Internalize { get; set; }
 
     public virtual bool KeepOtherVersionReferences { get; set; }
+
+    public virtual bool LogVerbose { get; set; }
+
+    public virtual bool MergeIlLinkerFiles { get; set; }
 
     public virtual bool NoRepackRes { get; set; }
 
@@ -49,15 +55,10 @@ public class ILRepack : Microsoft.Build.Utilities.Task, IDisposable
 
     public virtual bool SkipConfigMerge { get; set; }
 
+
     public virtual bool UnionMerge { get; set; }
 
-    public virtual bool LogVerbose { get; set; }
-
-    public virtual bool AllowWildCards { get; set; }
-
     public virtual bool XmlDocumentation { get; set; }
-
-    public virtual bool AllowZeroPeKind { get; set; }
 
     public virtual string TargetKind { get; set; } = string.Empty;
 
@@ -73,7 +74,8 @@ public class ILRepack : Microsoft.Build.Utilities.Task, IDisposable
 
     public virtual Microsoft.Build.Framework.ITaskItem[] FilterAssemblies { get; set; } = [];
 
-    public virtual Microsoft.Build.Framework.ITaskItem[] ImportAttributeAssemblies { get; set; } = [];
+    public virtual Microsoft.Build.Framework.ITaskItem[] ImportAttributeAssemblies { get; set; } =
+        [];
 
     public virtual Microsoft.Build.Framework.ITaskItem[] InternalizeAssemblies { get; set; } = [];
 
