@@ -58,9 +58,9 @@
     <ILRepackCopyAttrs Condition="'$(ILRepackCopyAttrs)' == 'disable'">false</ILRepackCopyAttrs>
     <ILRepackCopyAttrs Condition="'$(ILRepackCopyAttrs)' == 'enable'">true</ILRepackCopyAttrs>
 
-    <ILRepackAllowMultiple Condition="'$(ILRepackAllowMultiple)' == ''">false</ILRepackAllowMultiple>
-    <ILRepackAllowMultiple Condition="'$(ILRepackAllowMultiple)' == 'disable'">false</ILRepackAllowMultiple>
-    <ILRepackAllowMultiple Condition="'$(ILRepackAllowMultiple)' == 'enable'">true</ILRepackAllowMultiple>
+    <ILRepackAllowMultipleAssemblyLevelAttributes Condition="'$(ILRepackAllowMultipleAssemblyLevelAttributes)' == ''">false</ILRepackAllowMultipleAssemblyLevelAttributes>
+    <ILRepackAllowMultipleAssemblyLevelAttributes Condition="'$(ILRepackAllowMultipleAssemblyLevelAttributes)' == 'disable'">false</ILRepackAllowMultipleAssemblyLevelAttributes>
+    <ILRepackAllowMultipleAssemblyLevelAttributes Condition="'$(ILRepackAllowMultipleAssemblyLevelAttributes)' == 'enable'">true</ILRepackAllowMultipleAssemblyLevelAttributes>
 
     <ILRepackKeepOtherVersionReferences Condition="'$(ILRepackKeepOtherVersionReferences)' == ''">false</ILRepackKeepOtherVersionReferences>
     <ILRepackKeepOtherVersionReferences Condition="'$(ILRepackKeepOtherVersionReferences)' == 'disable'">false</ILRepackKeepOtherVersionReferences>

@@ -23,7 +23,7 @@ public class ILRepack : Microsoft.Build.Utilities.Task, IDisposable
 
     public virtual bool AllowDuplicateResources { get; set; }
 
-    public virtual bool AllowMultiple { get; set; }
+    public virtual bool AllowMultipleAssemblyLevelAttributes { get; set; }
 
     public virtual bool CopyAttrs { get; set; }
 
@@ -127,7 +127,7 @@ public class ILRepack : Microsoft.Build.Utilities.Task, IDisposable
         {
             AllowAllDuplicateTypes = AllowAllDuplicateTypes,
             AllowDuplicateResources = AllowDuplicateResources,
-            AllowMultipleAssemblyLevelAttributes = AllowMultiple,
+            AllowMultipleAssemblyLevelAttributes = AllowMultipleAssemblyLevelAttributes,
             AllowWildCards = Wildcards,
             AllowZeroPeKind = ZeroPEKind,
             CopyAttributes = CopyAttrs,

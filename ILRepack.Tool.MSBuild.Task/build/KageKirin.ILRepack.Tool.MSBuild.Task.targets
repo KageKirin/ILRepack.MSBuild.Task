@@ -70,7 +70,7 @@
       AllowDuplicateResources="$(ILRepackAllowDuplicateResources)"
       NoRepackRes="$(ILRepackNoRepackRes)"
       CopyAttrs="$(ILRepackCopyAttrs)"
-      AllowMultiple="$(ILRepackAllowMultiple)"
+      AllowMultipleAssemblyLevelAttributes="$(ILRepackAllowMultipleAssemblyLevelAttributes)"
       KeepOtherVersionReferences="$(ILRepackKeepOtherVersionReferences)"
       PreserveTimestamp="$(ILRepackPreserveTimestamp)"
       SkipConfig="$(ILRepackSkipConfig)"

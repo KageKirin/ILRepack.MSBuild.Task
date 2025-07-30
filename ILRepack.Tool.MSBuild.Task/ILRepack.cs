@@ -20,7 +20,7 @@ public class ILRepack : Microsoft.Build.Utilities.Task, IDisposable
 
     public virtual bool AllowDuplicateResources { get; set; }
 
-    public virtual bool AllowMultiple { get; set; }
+    public virtual bool AllowMultipleAssemblyLevelAttributes { get; set; }
 
     public virtual bool CopyAttrs { get; set; }
 
@@ -103,7 +103,7 @@ public class ILRepack : Microsoft.Build.Utilities.Task, IDisposable
         if (AllowDuplicateResources)
             cmdParams.Add("/allowduplicateresources");
 
-        if (AllowMultiple)
+        if (AllowMultipleAssemblyLevelAttributes)
             cmdParams.Add("/allowMultiple");
 
         if (CopyAttrs)
