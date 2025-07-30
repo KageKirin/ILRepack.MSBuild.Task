@@ -73,6 +73,8 @@ public class ILRepack : Microsoft.Build.Utilities.Task, IDisposable
 
     public virtual string TargetKind { get; set; } = string.Empty;
 
+    public virtual string TargetPlatformDirectory { get; set; } = string.Empty;
+
     public virtual string Version { get; set; } = string.Empty;
 
     public virtual Microsoft.Build.Framework.ITaskItem KeyContainer { get; set; } = default;
@@ -169,6 +171,9 @@ public class ILRepack : Microsoft.Build.Utilities.Task, IDisposable
         if (!string.IsNullOrWhiteSpace(TargetKind))
             repackOptions.TargetKind = (ILRepacking.ILRepack.Kind)
                 Enum.Parse(typeof(ILRepacking.ILRepack.Kind), TargetKind);
+
+        if (!string.IsNullOrWhiteSpace(TargetPlatformDirectory))
+            repackOptions.TargetPlatformDirectory = TargetPlatformDirectory;
 
         if (!string.IsNullOrWhiteSpace(Version))
             repackOptions.Version = System.Version.Parse(Version);
