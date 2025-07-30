@@ -30,7 +30,7 @@ public class ILRepack : Microsoft.Build.Utilities.Task, IDisposable
 
     public virtual bool ExcludeInternalizeSerializable { get; set; }
 
-    public virtual bool ILLink { get; set; }
+    public virtual bool MergeIlLinkerFiles { get; set; }
 
     public virtual bool Internalize { get; set; }
 
@@ -118,7 +118,7 @@ public class ILRepack : Microsoft.Build.Utilities.Task, IDisposable
         if (ExcludeInternalizeSerializable)
             cmdParams.Add("/excludeinternalizeserializable");
 
-        if (ILLink)
+        if (MergeIlLinkerFiles)
             cmdParams.Add("/illink");
 
         if (Internalize)

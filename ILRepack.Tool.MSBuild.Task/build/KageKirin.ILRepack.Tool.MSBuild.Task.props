@@ -74,9 +74,9 @@
     <ILRepackSkipConfig Condition="'$(ILRepackSkipConfig)' == 'disable'">false</ILRepackSkipConfig>
     <ILRepackSkipConfig Condition="'$(ILRepackSkipConfig)' == 'enable'">true</ILRepackSkipConfig>
 
-    <ILRepackILLink Condition="'$(ILRepackILLink)' == ''">false</ILRepackILLink>
-    <ILRepackILLink Condition="'$(ILRepackILLink)' == 'disable'">false</ILRepackILLink>
-    <ILRepackILLink Condition="'$(ILRepackILLink)' == 'enable'">true</ILRepackILLink>
+    <ILRepackMergeIlLinkerFiles Condition="'$(ILRepackMergeIlLinkerFiles)' == ''">false</ILRepackMergeIlLinkerFiles>
+    <ILRepackMergeIlLinkerFiles Condition="'$(ILRepackMergeIlLinkerFiles)' == 'disable'">false</ILRepackMergeIlLinkerFiles>
+    <ILRepackMergeIlLinkerFiles Condition="'$(ILRepackMergeIlLinkerFiles)' == 'enable'">true</ILRepackMergeIlLinkerFiles>
 
     <ILRepackXmlDocs Condition="'$(ILRepackXmlDocs)' == ''">false</ILRepackXmlDocs>
     <ILRepackXmlDocs Condition="'$(ILRepackXmlDocs)' == 'disable'">false</ILRepackXmlDocs>

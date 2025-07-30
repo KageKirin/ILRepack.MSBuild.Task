@@ -33,7 +33,7 @@ public class ILRepack : Microsoft.Build.Utilities.Task, IDisposable
 
     public virtual bool ExcludeInternalizeSerializable { get; set; }
 
-    public virtual bool ILLink { get; set; }
+    public virtual bool MergeIlLinkerFiles { get; set; }
 
     public virtual bool Internalize { get; set; }
 
@@ -137,7 +137,7 @@ public class ILRepack : Microsoft.Build.Utilities.Task, IDisposable
             Internalize = Internalize,
             KeepOtherVersionReferences = KeepOtherVersionReferences,
             LogVerbose = Verbose,
-            MergeIlLinkerFiles = ILLink,
+            MergeIlLinkerFiles = MergeIlLinkerFiles,
             NoRepackRes = NoRepackRes,
             Parallel = Parallel,
             PreserveTimestamp = PreserveTimestamp,
