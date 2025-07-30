@@ -50,12 +50,13 @@ public class ILRepack : Microsoft.Build.Utilities.Task, IDisposable
 
     public virtual bool Parallel { get; set; }
 
+    public virtual bool PauseBeforeExit { get; set; }
+
     public virtual bool PreserveTimestamp { get; set; }
 
     public virtual bool RenameInternalized { get; set; }
 
     public virtual bool SkipConfigMerge { get; set; }
-
 
     public virtual bool UnionMerge { get; set; }
 
@@ -143,6 +144,9 @@ public class ILRepack : Microsoft.Build.Utilities.Task, IDisposable
 
         if (Parallel)
             cmdParams.Add("/parallel");
+
+        if (PauseBeforeExit)
+            cmdParams.Add("/pause");
 
         if (PreserveTimestamp)
             cmdParams.Add("/preservetimestamp");

@@ -53,6 +53,8 @@ public class ILRepack : Microsoft.Build.Utilities.Task, IDisposable
 
     public virtual bool Parallel { get; set; }
 
+    public virtual bool PauseBeforeExit { get; set; }
+
     public virtual bool PreserveTimestamp { get; set; }
 
     public virtual bool RenameInternalized { get; set; }
@@ -148,6 +150,7 @@ public class ILRepack : Microsoft.Build.Utilities.Task, IDisposable
             MergeIlLinkerFiles = MergeIlLinkerFiles,
             NoRepackRes = NoRepackRes,
             Parallel = Parallel,
+            PauseBeforeExit = PauseBeforeExit,
             PreserveTimestamp = PreserveTimestamp,
             RenameInternalized = RenameInternalized,
             SkipConfigMerge = SkipConfigMerge,
