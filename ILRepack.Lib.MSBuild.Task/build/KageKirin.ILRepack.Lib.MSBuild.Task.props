@@ -70,9 +70,9 @@
     <ILRepackPreserveTimestamp Condition="'$(ILRepackPreserveTimestamp)' == 'disable'">false</ILRepackPreserveTimestamp>
     <ILRepackPreserveTimestamp Condition="'$(ILRepackPreserveTimestamp)' == 'enable'">true</ILRepackPreserveTimestamp>
 
-    <ILRepackSkipConfig Condition="'$(ILRepackSkipConfig)' == ''">false</ILRepackSkipConfig>
-    <ILRepackSkipConfig Condition="'$(ILRepackSkipConfig)' == 'disable'">false</ILRepackSkipConfig>
-    <ILRepackSkipConfig Condition="'$(ILRepackSkipConfig)' == 'enable'">true</ILRepackSkipConfig>
+    <ILRepackSkipConfigMerge Condition="'$(ILRepackSkipConfigMerge)' == ''">false</ILRepackSkipConfigMerge>
+    <ILRepackSkipConfigMerge Condition="'$(ILRepackSkipConfigMerge)' == 'disable'">false</ILRepackSkipConfigMerge>
+    <ILRepackSkipConfigMerge Condition="'$(ILRepackSkipConfigMerge)' == 'enable'">true</ILRepackSkipConfigMerge>
 
     <ILRepackMergeIlLinkerFiles Condition="'$(ILRepackMergeIlLinkerFiles)' == ''">false</ILRepackMergeIlLinkerFiles>
     <ILRepackMergeIlLinkerFiles Condition="'$(ILRepackMergeIlLinkerFiles)' == 'disable'">false</ILRepackMergeIlLinkerFiles>

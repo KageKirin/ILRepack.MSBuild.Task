@@ -73,7 +73,7 @@
       AllowMultipleAssemblyLevelAttributes="$(ILRepackAllowMultipleAssemblyLevelAttributes)"
       KeepOtherVersionReferences="$(ILRepackKeepOtherVersionReferences)"
       PreserveTimestamp="$(ILRepackPreserveTimestamp)"
-      SkipConfig="$(ILRepackSkipConfig)"
+      SkipConfigMerge="$(ILRepackSkipConfigMerge)"
       MergeIlLinkerFiles="$(ILRepackMergeIlLinkerFiles)"
       XmlDocs="$(ILRepackXmlDocs)"
       ZeroPEKind="$(ILRepackZeroPEKind)"

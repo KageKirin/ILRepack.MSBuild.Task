@@ -44,7 +44,7 @@ public class ILRepack : Microsoft.Build.Utilities.Task, IDisposable
 
     public virtual bool RenameInternalized { get; set; }
 
-    public virtual bool SkipConfig { get; set; }
+    public virtual bool SkipConfigMerge { get; set; }
 
     public virtual bool Union { get; set; }
 
@@ -139,7 +139,7 @@ public class ILRepack : Microsoft.Build.Utilities.Task, IDisposable
         if (RenameInternalized)
             cmdParams.Add("/renameinternalized");
 
-        if (SkipConfig)
+        if (SkipConfigMerge)
             cmdParams.Add("/skipconfig");
 
         if (Union)
