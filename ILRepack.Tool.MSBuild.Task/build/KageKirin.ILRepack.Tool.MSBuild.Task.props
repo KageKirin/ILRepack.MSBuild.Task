@@ -14,9 +14,9 @@
     <ILRepackDebugInfo Condition="'$(ILRepackDebugInfo)' == 'disable'">false</ILRepackDebugInfo>
     <ILRepackDebugInfo Condition="'$(ILRepackDebugInfo)' == 'enable'">true</ILRepackDebugInfo>
 
-    <ILRepackVerbose Condition="'$(ILRepackVerbose)' == ''">false</ILRepackVerbose>
-    <ILRepackVerbose Condition="'$(ILRepackVerbose)' == 'disable'">false</ILRepackVerbose>
-    <ILRepackVerbose Condition="'$(ILRepackVerbose)' == 'enable'">true</ILRepackVerbose>
+    <ILRepackLogVerbose Condition="'$(ILRepackLogVerbose)' == ''">false</ILRepackLogVerbose>
+    <ILRepackLogVerbose Condition="'$(ILRepackLogVerbose)' == 'disable'">false</ILRepackLogVerbose>
+    <ILRepackLogVerbose Condition="'$(ILRepackLogVerbose)' == 'enable'">true</ILRepackLogVerbose>
 
     <ILRepackInternalize Condition="'$(ILRepackInternalize)' == ''">false</ILRepackInternalize>
     <ILRepackInternalize Condition="'$(ILRepackInternalize)' == 'disable'">false</ILRepackInternalize>

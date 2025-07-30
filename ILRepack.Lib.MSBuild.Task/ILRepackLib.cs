@@ -51,7 +51,7 @@ public class ILRepack : Microsoft.Build.Utilities.Task, IDisposable
 
     public virtual bool UnionMerge { get; set; }
 
-    public virtual bool Verbose { get; set; }
+    public virtual bool LogVerbose { get; set; }
 
     public virtual bool Wildcards { get; set; }
 
@@ -136,7 +136,7 @@ public class ILRepack : Microsoft.Build.Utilities.Task, IDisposable
             ExcludeInternalizeSerializable = ExcludeInternalizeSerializable,
             Internalize = Internalize,
             KeepOtherVersionReferences = KeepOtherVersionReferences,
-            LogVerbose = Verbose,
+            LogVerbose = LogVerbose,
             MergeIlLinkerFiles = MergeIlLinkerFiles,
             NoRepackRes = NoRepackRes,
             Parallel = Parallel,

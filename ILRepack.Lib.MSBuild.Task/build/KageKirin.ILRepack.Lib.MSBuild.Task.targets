@@ -59,7 +59,7 @@
     <ILRepack
       Parallel="$(ILRepackParallel)"
       DebugInfo="$(ILRepackDebugInfo)"
-      Verbose="$(ILRepackVerbose)"
+      LogVerbose="$(ILRepackLogVerbose)"
       Internalize="$(ILRepackInternalize)"
       RenameInternalized="$(ILRepackRenameInternalized)"
       Wildcards="$(ILRepackWildcards)"

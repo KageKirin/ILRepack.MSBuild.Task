@@ -48,7 +48,7 @@ public class ILRepack : Microsoft.Build.Utilities.Task, IDisposable
 
     public virtual bool UnionMerge { get; set; }
 
-    public virtual bool Verbose { get; set; }
+    public virtual bool LogVerbose { get; set; }
 
     public virtual bool Wildcards { get; set; }
 
@@ -145,7 +145,7 @@ public class ILRepack : Microsoft.Build.Utilities.Task, IDisposable
         if (UnionMerge)
             cmdParams.Add("/union");
 
-        if (Verbose)
+        if (LogVerbose)
             cmdParams.Add("/verbose");
 
         if (Wildcards)
