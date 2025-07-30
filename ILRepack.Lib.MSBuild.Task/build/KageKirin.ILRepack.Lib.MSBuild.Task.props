@@ -54,9 +54,9 @@
     <ILRepackNoRepackRes Condition="'$(ILRepackNoRepackRes)' == 'disable'">false</ILRepackNoRepackRes>
     <ILRepackNoRepackRes Condition="'$(ILRepackNoRepackRes)' == 'enable'">true</ILRepackNoRepackRes>
 
-    <ILRepackCopyAttrs Condition="'$(ILRepackCopyAttrs)' == ''">false</ILRepackCopyAttrs>
-    <ILRepackCopyAttrs Condition="'$(ILRepackCopyAttrs)' == 'disable'">false</ILRepackCopyAttrs>
-    <ILRepackCopyAttrs Condition="'$(ILRepackCopyAttrs)' == 'enable'">true</ILRepackCopyAttrs>
+    <ILRepackCopyAttributes Condition="'$(ILRepackCopyAttributes)' == ''">false</ILRepackCopyAttributes>
+    <ILRepackCopyAttributes Condition="'$(ILRepackCopyAttributes)' == 'disable'">false</ILRepackCopyAttributes>
+    <ILRepackCopyAttributes Condition="'$(ILRepackCopyAttributes)' == 'enable'">true</ILRepackCopyAttributes>
 
     <ILRepackAllowMultipleAssemblyLevelAttributes Condition="'$(ILRepackAllowMultipleAssemblyLevelAttributes)' == ''">false</ILRepackAllowMultipleAssemblyLevelAttributes>
     <ILRepackAllowMultipleAssemblyLevelAttributes Condition="'$(ILRepackAllowMultipleAssemblyLevelAttributes)' == 'disable'">false</ILRepackAllowMultipleAssemblyLevelAttributes>

@@ -25,7 +25,7 @@ public class ILRepack : Microsoft.Build.Utilities.Task, IDisposable
 
     public virtual bool AllowMultipleAssemblyLevelAttributes { get; set; }
 
-    public virtual bool CopyAttrs { get; set; }
+    public virtual bool CopyAttributes { get; set; }
 
     public virtual bool DebugInfo { get; set; }
 
@@ -130,7 +130,7 @@ public class ILRepack : Microsoft.Build.Utilities.Task, IDisposable
             AllowMultipleAssemblyLevelAttributes = AllowMultipleAssemblyLevelAttributes,
             AllowWildCards = Wildcards,
             AllowZeroPeKind = ZeroPEKind,
-            CopyAttributes = CopyAttrs,
+            CopyAttributes = CopyAttributes,
             DebugInfo = DebugInfo,
             DelaySign = DelaySign,
             ExcludeInternalizeSerializable = ExcludeInternalizeSerializable,
