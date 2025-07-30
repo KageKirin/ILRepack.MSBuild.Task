@@ -19,76 +19,75 @@ namespace KageKirin.ILRepack.Lib.MSBuild.Task;
 
 public class ILRepack : Microsoft.Build.Utilities.Task, IDisposable
 {
-    public virtual bool Parallel { get; set; }
+    public virtual bool AllowDup { get; set; }
+
+    public virtual bool AllowDuplicateResources { get; set; }
+
+    public virtual bool AllowMultiple { get; set; }
+
+    public virtual bool CopyAttrs { get; set; }
 
     public virtual bool DebugInfo { get; set; }
-
-    public virtual bool Verbose { get; set; }
-
-    public virtual bool Internalize { get; set; }
-
-    public virtual bool RenameInternalized { get; set; }
-
-    public virtual string TargetKind { get; set; } = string.Empty;
-
-    public virtual bool Wildcards { get; set; }
 
     public virtual bool DelaySign { get; set; }
 
     public virtual bool ExcludeInternalizeSerializable { get; set; }
 
-    public virtual bool Union { get; set; }
+    public virtual bool ILLink { get; set; }
 
-    public virtual bool AllowDup { get; set; }
-
-    public virtual bool AllowDuplicateResources { get; set; }
-
-    public virtual bool NoRepackRes { get; set; }
-
-    public virtual bool CopyAttrs { get; set; }
-
-    public virtual bool AllowMultiple { get; set; }
+    public virtual bool Internalize { get; set; }
 
     public virtual bool KeepOtherVersionReferences { get; set; }
 
+    public virtual bool NoRepackRes { get; set; }
+
+    public virtual bool Parallel { get; set; }
+
     public virtual bool PreserveTimestamp { get; set; }
+
+    public virtual bool RenameInternalized { get; set; }
 
     public virtual bool SkipConfig { get; set; }
 
-    public virtual bool ILLink { get; set; }
+    public virtual bool Union { get; set; }
+
+    public virtual bool Verbose { get; set; }
+
+    public virtual bool Wildcards { get; set; }
 
     public virtual bool XmlDocs { get; set; }
 
     public virtual bool ZeroPEKind { get; set; }
 
+    public virtual string TargetKind { get; set; } = string.Empty;
+
     public virtual string Version { get; set; } = string.Empty;
+
+    public virtual Microsoft.Build.Framework.ITaskItem KeyContainer { get; set; } = default;
+
+    public virtual Microsoft.Build.Framework.ITaskItem KeyFile { get; set; } = default;
+
+    public virtual Microsoft.Build.Framework.ITaskItem LogFile { get; set; } = default;
+
+    public virtual Microsoft.Build.Framework.ITaskItem[] AllowedDuplicateTypes { get; set; } = [];
+
+    public virtual Microsoft.Build.Framework.ITaskItem[] FilterAssemblies { get; set; } = [];
+
+    public virtual Microsoft.Build.Framework.ITaskItem[] ImportAttributeAssemblies { get; set; } = [];
+
+    public virtual Microsoft.Build.Framework.ITaskItem[] InternalizeAssemblies { get; set; } = [];
+
+    public virtual Microsoft.Build.Framework.ITaskItem[] InternalizeExclude { get; set; } = [];
+
+    public virtual Microsoft.Build.Framework.ITaskItem[] LibraryPaths { get; set; } = [];
+
+    public virtual Microsoft.Build.Framework.ITaskItem[] RepackDropAttributes { get; set; } = [];
 
     [Required]
     public virtual Microsoft.Build.Framework.ITaskItem[] InputAssemblies { get; set; } = [];
 
-    public virtual Microsoft.Build.Framework.ITaskItem[] LibraryPaths { get; set; } = [];
-
-    public virtual Microsoft.Build.Framework.ITaskItem[] InternalizeExclude { get; set; } = [];
-
     [Required]
     public virtual Microsoft.Build.Framework.ITaskItem OutputFile { get; set; } = default;
-
-    public virtual Microsoft.Build.Framework.ITaskItem LogFile { get; set; } = default;
-
-    public virtual Microsoft.Build.Framework.ITaskItem[] FilterAssemblies { get; set; } = [];
-
-    public virtual Microsoft.Build.Framework.ITaskItem[] ImportAttributeAssemblies { get; set; } =
-        [];
-
-    public virtual Microsoft.Build.Framework.ITaskItem[] InternalizeAssemblies { get; set; } = [];
-
-    public virtual Microsoft.Build.Framework.ITaskItem[] RepackDropAttributes { get; set; } = [];
-
-    public virtual Microsoft.Build.Framework.ITaskItem[] AllowedDuplicateTypes { get; set; } = [];
-
-    public virtual Microsoft.Build.Framework.ITaskItem KeyFile { get; set; } = default;
-
-    public virtual Microsoft.Build.Framework.ITaskItem KeyContainer { get; set; } = default;
 
     public virtual int Timeout { get; set; } = 30;
 
