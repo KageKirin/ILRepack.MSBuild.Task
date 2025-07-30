@@ -26,6 +26,8 @@ public class ILRepack : Microsoft.Build.Utilities.Task, IDisposable
 
     public virtual bool AllowZeroPeKind { get; set; }
 
+    public virtual bool Closed { get; set; }
+
     public virtual bool CopyAttributes { get; set; }
 
     public virtual bool DebugInfo { get; set; }
@@ -109,6 +111,9 @@ public class ILRepack : Microsoft.Build.Utilities.Task, IDisposable
 
         if (CopyAttributes)
             cmdParams.Add("/copyattrs");
+
+        if (Closed)
+            cmdParams.Add("/closed");
 
         if (!DebugInfo)
             cmdParams.Add("/ndebug");

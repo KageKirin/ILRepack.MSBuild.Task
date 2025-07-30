@@ -29,6 +29,8 @@ public class ILRepack : Microsoft.Build.Utilities.Task, IDisposable
 
     public virtual bool AllowZeroPeKind { get; set; }
 
+    public virtual bool Closed { get; set; }
+
     public virtual bool CopyAttributes { get; set; }
 
     public virtual bool DebugInfo { get; set; }
@@ -132,6 +134,7 @@ public class ILRepack : Microsoft.Build.Utilities.Task, IDisposable
             AllowMultipleAssemblyLevelAttributes = AllowMultipleAssemblyLevelAttributes,
             AllowWildCards = AllowWildCards,
             AllowZeroPeKind = AllowZeroPeKind,
+            Closed = Closed,
             CopyAttributes = CopyAttributes,
             DebugInfo = DebugInfo,
             DelaySign = DelaySign,
