@@ -69,6 +69,8 @@ public class ILRepack : Microsoft.Build.Utilities.Task, IDisposable
 
     public virtual bool XmlDocumentation { get; set; }
 
+    public virtual int FileAlignment { get; set; }
+
     public virtual string TargetKind { get; set; } = string.Empty;
 
     public virtual string Version { get; set; } = string.Empty;
@@ -146,6 +148,7 @@ public class ILRepack : Microsoft.Build.Utilities.Task, IDisposable
             DebugInfo = DebugInfo,
             DelaySign = DelaySign,
             ExcludeInternalizeSerializable = ExcludeInternalizeSerializable,
+            FileAlignment = FileAlignment,
             Internalize = Internalize,
             KeepOtherVersionReferences = KeepOtherVersionReferences,
             LineIndexation = LineIndexation,
