@@ -52,7 +52,7 @@ public class ILRepack : Microsoft.Build.Utilities.Task, IDisposable
 
     public virtual bool AllowWildCards { get; set; }
 
-    public virtual bool XmlDocs { get; set; }
+    public virtual bool XmlDocumentation { get; set; }
 
     public virtual bool ZeroPEKind { get; set; }
 
@@ -151,7 +151,7 @@ public class ILRepack : Microsoft.Build.Utilities.Task, IDisposable
         if (AllowWildCards)
             cmdParams.Add("/wildcards");
 
-        if (XmlDocs)
+        if (XmlDocumentation)
             cmdParams.Add("/xmldocs");
 
         if (ZeroPEKind)

@@ -55,7 +55,7 @@ public class ILRepack : Microsoft.Build.Utilities.Task, IDisposable
 
     public virtual bool AllowWildCards { get; set; }
 
-    public virtual bool XmlDocs { get; set; }
+    public virtual bool XmlDocumentation { get; set; }
 
     public virtual bool ZeroPEKind { get; set; }
 
@@ -144,7 +144,7 @@ public class ILRepack : Microsoft.Build.Utilities.Task, IDisposable
             RenameInternalized = RenameInternalized,
             SkipConfigMerge = SkipConfigMerge,
             UnionMerge = UnionMerge,
-            XmlDocumentation = XmlDocs,
+            XmlDocumentation = XmlDocumentation,
         };
 
         if (!string.IsNullOrWhiteSpace(TargetKind))

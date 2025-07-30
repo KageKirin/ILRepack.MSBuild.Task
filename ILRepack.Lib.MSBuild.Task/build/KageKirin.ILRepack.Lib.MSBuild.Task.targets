@@ -75,7 +75,7 @@
       PreserveTimestamp="$(ILRepackPreserveTimestamp)"
       SkipConfigMerge="$(ILRepackSkipConfigMerge)"
       MergeIlLinkerFiles="$(ILRepackMergeIlLinkerFiles)"
-      XmlDocs="$(ILRepackXmlDocs)"
+      XmlDocumentation="$(ILRepackXmlDocumentation)"
       ZeroPEKind="$(ILRepackZeroPEKind)"
       Timeout="$(ILRepackTimeout)"
       Version="$(ILRepackVersion)"
