@@ -60,6 +60,8 @@ public class ILRepack : Microsoft.Build.Utilities.Task, IDisposable
 
     public virtual bool SkipConfigMerge { get; set; }
 
+    public virtual bool StrongNameLost { get; set; }
+
     public virtual bool UnionMerge { get; set; }
 
     public virtual bool XmlDocumentation { get; set; }

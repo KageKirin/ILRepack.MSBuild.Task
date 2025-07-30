@@ -63,6 +63,7 @@ public class ILRepack : Microsoft.Build.Utilities.Task, IDisposable
 
     public virtual bool SkipConfigMerge { get; set; }
 
+    public virtual bool StrongNameLost { get; set; }
 
     public virtual bool UnionMerge { get; set; }
 
@@ -157,6 +158,7 @@ public class ILRepack : Microsoft.Build.Utilities.Task, IDisposable
             PublicKeyTokens = PublicKeyTokens,
             RenameInternalized = RenameInternalized,
             SkipConfigMerge = SkipConfigMerge,
+            StrongNameLost = StrongNameLost,
             UnionMerge = UnionMerge,
             XmlDocumentation = XmlDocumentation,
         };
