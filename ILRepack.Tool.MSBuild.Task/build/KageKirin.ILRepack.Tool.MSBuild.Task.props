@@ -38,9 +38,9 @@
     <ILRepackExcludeInternalizeSerializable Condition="'$(ILRepackExcludeInternalizeSerializable)' == 'disable'">false</ILRepackExcludeInternalizeSerializable>
     <ILRepackExcludeInternalizeSerializable Condition="'$(ILRepackExcludeInternalizeSerializable)' == 'enable'">true</ILRepackExcludeInternalizeSerializable>
 
-    <ILRepackUnion Condition="'$(ILRepackUnion)' == ''">false</ILRepackUnion>
-    <ILRepackUnion Condition="'$(ILRepackUnion)' == 'disable'">false</ILRepackUnion>
-    <ILRepackUnion Condition="'$(ILRepackUnion)' == 'enable'">true</ILRepackUnion>
+    <ILRepackUnionMerge Condition="'$(ILRepackUnionMerge)' == ''">false</ILRepackUnionMerge>
+    <ILRepackUnionMerge Condition="'$(ILRepackUnionMerge)' == 'disable'">false</ILRepackUnionMerge>
+    <ILRepackUnionMerge Condition="'$(ILRepackUnionMerge)' == 'enable'">true</ILRepackUnionMerge>
 
     <ILRepackAllowAllDuplicateTypes Condition="'$(ILRepackAllowAllDuplicateTypes)' == ''">false</ILRepackAllowAllDuplicateTypes>
     <ILRepackAllowAllDuplicateTypes Condition="'$(ILRepackAllowAllDuplicateTypes)' == 'disable'">false</ILRepackAllowAllDuplicateTypes>

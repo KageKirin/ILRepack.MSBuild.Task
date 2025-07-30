@@ -46,7 +46,7 @@ public class ILRepack : Microsoft.Build.Utilities.Task, IDisposable
 
     public virtual bool SkipConfigMerge { get; set; }
 
-    public virtual bool Union { get; set; }
+    public virtual bool UnionMerge { get; set; }
 
     public virtual bool Verbose { get; set; }
 
@@ -142,7 +142,7 @@ public class ILRepack : Microsoft.Build.Utilities.Task, IDisposable
         if (SkipConfigMerge)
             cmdParams.Add("/skipconfig");
 
-        if (Union)
+        if (UnionMerge)
             cmdParams.Add("/union");
 
         if (Verbose)

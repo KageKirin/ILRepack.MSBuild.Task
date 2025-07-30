@@ -65,7 +65,7 @@
       Wildcards="$(ILRepackWildcards)"
       DelaySign="$(ILRepackDelaySign)"
       ExcludeInternalizeSerializable="$(ILRepackExcludeInternalizeSerializable)"
-      Union="$(ILRepackUnion)"
+      UnionMerge="$(ILRepackUnionMerge)"
       AllowAllDuplicateTypes="$(ILRepackAllowAllDuplicateTypes)"
       AllowDuplicateResources="$(ILRepackAllowDuplicateResources)"
       NoRepackRes="$(ILRepackNoRepackRes)"

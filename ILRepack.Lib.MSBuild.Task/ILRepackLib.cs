@@ -49,7 +49,7 @@ public class ILRepack : Microsoft.Build.Utilities.Task, IDisposable
 
     public virtual bool SkipConfigMerge { get; set; }
 
-    public virtual bool Union { get; set; }
+    public virtual bool UnionMerge { get; set; }
 
     public virtual bool Verbose { get; set; }
 
@@ -143,7 +143,7 @@ public class ILRepack : Microsoft.Build.Utilities.Task, IDisposable
             PreserveTimestamp = PreserveTimestamp,
             RenameInternalized = RenameInternalized,
             SkipConfigMerge = SkipConfigMerge,
-            UnionMerge = Union,
+            UnionMerge = UnionMerge,
             XmlDocumentation = XmlDocs,
         };
 
