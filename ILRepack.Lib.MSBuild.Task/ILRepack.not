@@ -5,3 +5,4 @@ Microsoft.Build
 Microsoft.Build.Framework
 Microsoft.Build.Utilities.Core
 Mono.Cecil
+Mono.Cecil.Pdb
