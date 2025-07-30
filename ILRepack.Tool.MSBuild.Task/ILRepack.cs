@@ -97,23 +97,20 @@ public class ILRepack : Microsoft.Build.Utilities.Task, IDisposable
 
         var cmdParams = new List<string>();
 
-        if (Parallel)
-            cmdParams.Add("/parallel");
+        if (AllowDup)
+            cmdParams.Add("/allowdup");
+
+        if (AllowDuplicateResources)
+            cmdParams.Add("/allowduplicateresources");
+
+        if (AllowMultiple)
+            cmdParams.Add("/allowMultiple");
+
+        if (CopyAttrs)
+            cmdParams.Add("/copyattrs");
 
         if (!DebugInfo)
             cmdParams.Add("/ndebug");
-
-        if (Verbose)
-            cmdParams.Add("/verbose");
-
-        if (Internalize)
-            cmdParams.Add("/internalize");
-
-        if (RenameInternalized)
-            cmdParams.Add("/renameinternalized");
-
-        if (Wildcards)
-            cmdParams.Add("/wildcards");
 
         if (DelaySign)
             cmdParams.Add("/delaysign");
@@ -121,35 +118,38 @@ public class ILRepack : Microsoft.Build.Utilities.Task, IDisposable
         if (ExcludeInternalizeSerializable)
             cmdParams.Add("/excludeinternalizeserializable");
 
-        if (Union)
-            cmdParams.Add("/union");
+        if (ILLink)
+            cmdParams.Add("/illink");
 
-        if (AllowDup)
-            cmdParams.Add("/allowdup");
-
-        if (AllowDuplicateResources)
-            cmdParams.Add("/allowduplicateresources");
-
-        if (NoRepackRes)
-            cmdParams.Add("/noRepackRes");
-
-        if (CopyAttrs)
-            cmdParams.Add("/copyattrs");
-
-        if (AllowMultiple)
-            cmdParams.Add("/allowMultiple");
+        if (Internalize)
+            cmdParams.Add("/internalize");
 
         if (KeepOtherVersionReferences)
             cmdParams.Add("/keepotherversionreferences");
 
+        if (NoRepackRes)
+            cmdParams.Add("/noRepackRes");
+
+        if (Parallel)
+            cmdParams.Add("/parallel");
+
         if (PreserveTimestamp)
             cmdParams.Add("/preservetimestamp");
+
+        if (RenameInternalized)
+            cmdParams.Add("/renameinternalized");
 
         if (SkipConfig)
             cmdParams.Add("/skipconfig");
 
-        if (ILLink)
-            cmdParams.Add("/illink");
+        if (Union)
+            cmdParams.Add("/union");
+
+        if (Verbose)
+            cmdParams.Add("/verbose");
+
+        if (Wildcards)
+            cmdParams.Add("/wildcards");
 
         if (XmlDocs)
             cmdParams.Add("/xmldocs");
@@ -163,17 +163,17 @@ public class ILRepack : Microsoft.Build.Utilities.Task, IDisposable
         if (!string.IsNullOrWhiteSpace(Version))
             cmdParams.Add($"/ver:{Version}");
 
-        if (!string.IsNullOrWhiteSpace(OutputFile.ItemSpec))
-            cmdParams.Add($"/out:\"{OutputFile.ItemSpec}\"");
-
-        if (LogFile is not null && !string.IsNullOrWhiteSpace(LogFile.ItemSpec))
-            cmdParams.Add($"/log:\"{LogFile.ItemSpec}\"");
+        if (KeyContainer is not null && !string.IsNullOrWhiteSpace(KeyContainer.ItemSpec))
+            cmdParams.Add($"/keycontainer:\"{KeyContainer.ItemSpec}\"");
 
         if (KeyFile is not null && !string.IsNullOrWhiteSpace(KeyFile.ItemSpec))
             cmdParams.Add($"/keyfile:\"{KeyFile.ItemSpec}\"");
 
-        if (KeyContainer is not null && !string.IsNullOrWhiteSpace(KeyContainer.ItemSpec))
-            cmdParams.Add($"/keycontainer:\"{KeyContainer.ItemSpec}\"");
+        if (LogFile is not null && !string.IsNullOrWhiteSpace(LogFile.ItemSpec))
+            cmdParams.Add($"/log:\"{LogFile.ItemSpec}\"");
+
+        if (AllowedDuplicateTypes is not null && AllowedDuplicateTypes.Length > 0)
+            cmdParams.AddRange(AllowedDuplicateTypes.Select(t => $"/allowdup:\"{t.ItemSpec}\""));
 
         if (ImportAttributeAssemblies is not null && ImportAttributeAssemblies.Length > 0)
             cmdParams.AddRange(ImportAttributeAssemblies.Select(f => $"/attr:\"{f.ItemSpec}\""));
@@ -182,14 +182,6 @@ public class ILRepack : Microsoft.Build.Utilities.Task, IDisposable
             cmdParams.AddRange(
                 InternalizeAssemblies.Select(f => $"/internalizeassembly:\"{f.ItemSpec}\"")
             );
-
-        if (RepackDropAttributes is not null && RepackDropAttributes.Length > 0)
-            cmdParams.AddRange(
-                RepackDropAttributes.Select(attr => $"/repackdrop:\"{attr.ItemSpec}\"")
-            );
-
-        if (AllowedDuplicateTypes is not null && AllowedDuplicateTypes.Length > 0)
-            cmdParams.AddRange(AllowedDuplicateTypes.Select(t => $"/allowdup:\"{t.ItemSpec}\""));
 
         if (InternalizeExclude is not null && InternalizeExclude.Length > 0)
         {
@@ -214,6 +206,11 @@ public class ILRepack : Microsoft.Build.Utilities.Task, IDisposable
 
             cmdParams.Add($"/internalize:\"{excludeFile}\"");
         }
+
+        if (RepackDropAttributes is not null && RepackDropAttributes.Length > 0)
+            cmdParams.AddRange(
+                RepackDropAttributes.Select(attr => $"/repackdrop:\"{attr.ItemSpec}\"")
+            );
 
         Log.LogMessage(
             MessageImportance.High,
@@ -251,6 +248,9 @@ public class ILRepack : Microsoft.Build.Utilities.Task, IDisposable
                     .Select(l => $"/lib:\"{l}\"")
                     .Distinct()
             );
+
+        if (!string.IsNullOrWhiteSpace(OutputFile.ItemSpec))
+            cmdParams.Add($"/out:\"{OutputFile.ItemSpec}\"");
 
         // must come last
         cmdParams.AddRange(InputAssemblies.Select(item => $"\"{item.ItemSpec}\"").Distinct());
