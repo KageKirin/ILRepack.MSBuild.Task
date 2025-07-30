@@ -57,6 +57,8 @@ public class ILRepack : Microsoft.Build.Utilities.Task, IDisposable
 
     public virtual bool PreserveTimestamp { get; set; }
 
+    public virtual bool PublicKeyTokens { get; set; }
+
     public virtual bool RenameInternalized { get; set; }
 
     public virtual bool SkipConfigMerge { get; set; }
@@ -152,6 +154,7 @@ public class ILRepack : Microsoft.Build.Utilities.Task, IDisposable
             Parallel = Parallel,
             PauseBeforeExit = PauseBeforeExit,
             PreserveTimestamp = PreserveTimestamp,
+            PublicKeyTokens = PublicKeyTokens,
             RenameInternalized = RenameInternalized,
             SkipConfigMerge = SkipConfigMerge,
             UnionMerge = UnionMerge,
