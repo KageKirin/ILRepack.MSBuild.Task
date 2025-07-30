@@ -19,13 +19,13 @@ namespace KageKirin.ILRepack.Lib.MSBuild.Task;
 
 public class ILRepack : Microsoft.Build.Utilities.Task, IDisposable
 {
-    public virtual bool AllowDup { get; set; }
+    public virtual bool AllowAllDuplicateTypes { get; set; }
 
     public virtual bool AllowDuplicateResources { get; set; }
 
-    public virtual bool AllowMultiple { get; set; }
+    public virtual bool AllowMultipleAssemblyLevelAttributes { get; set; }
 
-    public virtual bool CopyAttrs { get; set; }
+    public virtual bool CopyAttributes { get; set; }
 
     public virtual bool DebugInfo { get; set; }
 
@@ -33,7 +33,7 @@ public class ILRepack : Microsoft.Build.Utilities.Task, IDisposable
 
     public virtual bool ExcludeInternalizeSerializable { get; set; }
 
-    public virtual bool ILLink { get; set; }
+    public virtual bool MergeIlLinkerFiles { get; set; }
 
     public virtual bool Internalize { get; set; }
 
@@ -47,17 +47,17 @@ public class ILRepack : Microsoft.Build.Utilities.Task, IDisposable
 
     public virtual bool RenameInternalized { get; set; }
 
-    public virtual bool SkipConfig { get; set; }
+    public virtual bool SkipConfigMerge { get; set; }
 
-    public virtual bool Union { get; set; }
+    public virtual bool UnionMerge { get; set; }
 
-    public virtual bool Verbose { get; set; }
+    public virtual bool LogVerbose { get; set; }
 
-    public virtual bool Wildcards { get; set; }
+    public virtual bool AllowWildCards { get; set; }
 
-    public virtual bool XmlDocs { get; set; }
+    public virtual bool XmlDocumentation { get; set; }
 
-    public virtual bool ZeroPEKind { get; set; }
+    public virtual bool AllowZeroPeKind { get; set; }
 
     public virtual string TargetKind { get; set; } = string.Empty;
 
@@ -125,26 +125,26 @@ public class ILRepack : Microsoft.Build.Utilities.Task, IDisposable
 
         RepackOptions repackOptions = new()
         {
-            AllowAllDuplicateTypes = AllowDup,
+            AllowAllDuplicateTypes = AllowAllDuplicateTypes,
             AllowDuplicateResources = AllowDuplicateResources,
-            AllowMultipleAssemblyLevelAttributes = AllowMultiple,
-            AllowWildCards = Wildcards,
-            AllowZeroPeKind = ZeroPEKind,
-            CopyAttributes = CopyAttrs,
+            AllowMultipleAssemblyLevelAttributes = AllowMultipleAssemblyLevelAttributes,
+            AllowWildCards = AllowWildCards,
+            AllowZeroPeKind = AllowZeroPeKind,
+            CopyAttributes = CopyAttributes,
             DebugInfo = DebugInfo,
             DelaySign = DelaySign,
             ExcludeInternalizeSerializable = ExcludeInternalizeSerializable,
             Internalize = Internalize,
             KeepOtherVersionReferences = KeepOtherVersionReferences,
-            LogVerbose = Verbose,
-            MergeIlLinkerFiles = ILLink,
+            LogVerbose = LogVerbose,
+            MergeIlLinkerFiles = MergeIlLinkerFiles,
             NoRepackRes = NoRepackRes,
             Parallel = Parallel,
             PreserveTimestamp = PreserveTimestamp,
             RenameInternalized = RenameInternalized,
-            SkipConfigMerge = SkipConfig,
-            UnionMerge = Union,
-            XmlDocumentation = XmlDocs,
+            SkipConfigMerge = SkipConfigMerge,
+            UnionMerge = UnionMerge,
+            XmlDocumentation = XmlDocumentation,
         };
 
         if (!string.IsNullOrWhiteSpace(TargetKind))

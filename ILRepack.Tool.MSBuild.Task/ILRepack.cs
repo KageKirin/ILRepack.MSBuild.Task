@@ -16,13 +16,13 @@ namespace KageKirin.ILRepack.Tool.MSBuild.Task;
 
 public class ILRepack : Microsoft.Build.Utilities.Task, IDisposable
 {
-    public virtual bool AllowDup { get; set; }
+    public virtual bool AllowAllDuplicateTypes { get; set; }
 
     public virtual bool AllowDuplicateResources { get; set; }
 
-    public virtual bool AllowMultiple { get; set; }
+    public virtual bool AllowMultipleAssemblyLevelAttributes { get; set; }
 
-    public virtual bool CopyAttrs { get; set; }
+    public virtual bool CopyAttributes { get; set; }
 
     public virtual bool DebugInfo { get; set; }
 
@@ -30,7 +30,7 @@ public class ILRepack : Microsoft.Build.Utilities.Task, IDisposable
 
     public virtual bool ExcludeInternalizeSerializable { get; set; }
 
-    public virtual bool ILLink { get; set; }
+    public virtual bool MergeIlLinkerFiles { get; set; }
 
     public virtual bool Internalize { get; set; }
 
@@ -44,17 +44,17 @@ public class ILRepack : Microsoft.Build.Utilities.Task, IDisposable
 
     public virtual bool RenameInternalized { get; set; }
 
-    public virtual bool SkipConfig { get; set; }
+    public virtual bool SkipConfigMerge { get; set; }
 
-    public virtual bool Union { get; set; }
+    public virtual bool UnionMerge { get; set; }
 
-    public virtual bool Verbose { get; set; }
+    public virtual bool LogVerbose { get; set; }
 
-    public virtual bool Wildcards { get; set; }
+    public virtual bool AllowWildCards { get; set; }
 
-    public virtual bool XmlDocs { get; set; }
+    public virtual bool XmlDocumentation { get; set; }
 
-    public virtual bool ZeroPEKind { get; set; }
+    public virtual bool AllowZeroPeKind { get; set; }
 
     public virtual string TargetKind { get; set; } = string.Empty;
 
@@ -97,16 +97,16 @@ public class ILRepack : Microsoft.Build.Utilities.Task, IDisposable
 
         var cmdParams = new List<string>();
 
-        if (AllowDup)
+        if (AllowAllDuplicateTypes)
             cmdParams.Add("/allowdup");
 
         if (AllowDuplicateResources)
             cmdParams.Add("/allowduplicateresources");
 
-        if (AllowMultiple)
+        if (AllowMultipleAssemblyLevelAttributes)
             cmdParams.Add("/allowMultiple");
 
-        if (CopyAttrs)
+        if (CopyAttributes)
             cmdParams.Add("/copyattrs");
 
         if (!DebugInfo)
@@ -118,7 +118,7 @@ public class ILRepack : Microsoft.Build.Utilities.Task, IDisposable
         if (ExcludeInternalizeSerializable)
             cmdParams.Add("/excludeinternalizeserializable");
 
-        if (ILLink)
+        if (MergeIlLinkerFiles)
             cmdParams.Add("/illink");
 
         if (Internalize)
@@ -139,22 +139,22 @@ public class ILRepack : Microsoft.Build.Utilities.Task, IDisposable
         if (RenameInternalized)
             cmdParams.Add("/renameinternalized");
 
-        if (SkipConfig)
+        if (SkipConfigMerge)
             cmdParams.Add("/skipconfig");
 
-        if (Union)
+        if (UnionMerge)
             cmdParams.Add("/union");
 
-        if (Verbose)
+        if (LogVerbose)
             cmdParams.Add("/verbose");
 
-        if (Wildcards)
+        if (AllowWildCards)
             cmdParams.Add("/wildcards");
 
-        if (XmlDocs)
+        if (XmlDocumentation)
             cmdParams.Add("/xmldocs");
 
-        if (ZeroPEKind)
+        if (AllowZeroPeKind)
             cmdParams.Add("/zeropekind");
 
         if (!string.IsNullOrWhiteSpace(TargetKind))

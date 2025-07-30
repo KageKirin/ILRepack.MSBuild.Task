@@ -25,7 +25,7 @@
     <ILRepack
       Parallel="false"
       DebugInfo="true"
-      Verbose="false"
+      LogVerbose="false"
       Internalize="true"
       RenameInternalized="false"
       InputAssemblies="@(MainAssembly);@(InputAssemblies)"
