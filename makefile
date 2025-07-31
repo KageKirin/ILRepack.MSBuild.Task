@@ -11,6 +11,7 @@ r restore:
 c clean:
 	dotnet clean -bl -v d
 	rm -rf .artifacts
+	rm -rf .packages
 
 b build:
 	dotnet build -bl -v d ILRepack.Tool.MSBuild.Task
