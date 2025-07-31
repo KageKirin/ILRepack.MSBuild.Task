@@ -29,6 +29,8 @@ public class ILRepack : Microsoft.Build.Utilities.Task, IDisposable
 
     public virtual bool AllowZeroPeKind { get; set; }
 
+    public virtual bool Closed { get; set; }
+
     public virtual bool CopyAttributes { get; set; }
 
     public virtual bool DebugInfo { get; set; }
@@ -41,6 +43,8 @@ public class ILRepack : Microsoft.Build.Utilities.Task, IDisposable
 
     public virtual bool KeepOtherVersionReferences { get; set; }
 
+    public virtual bool LineIndexation { get; set; }
+
     public virtual bool LogVerbose { get; set; }
 
     public virtual bool MergeIlLinkerFiles { get; set; }
@@ -49,18 +53,29 @@ public class ILRepack : Microsoft.Build.Utilities.Task, IDisposable
 
     public virtual bool Parallel { get; set; }
 
+    public virtual bool PauseBeforeExit { get; set; }
+
     public virtual bool PreserveTimestamp { get; set; }
+
+    public virtual bool PublicKeyTokens { get; set; }
 
     public virtual bool RenameInternalized { get; set; }
 
     public virtual bool SkipConfigMerge { get; set; }
 
+    public virtual bool StrongNameLost { get; set; }
 
     public virtual bool UnionMerge { get; set; }
 
     public virtual bool XmlDocumentation { get; set; }
 
+    public virtual int FileAlignment { get; set; }
+
     public virtual string TargetKind { get; set; } = string.Empty;
+
+    public virtual string TargetPlatformDirectory { get; set; } = string.Empty;
+
+    public virtual string TargetPlatformVersion { get; set; } = string.Empty;
 
     public virtual string Version { get; set; } = string.Empty;
 
@@ -132,19 +147,25 @@ public class ILRepack : Microsoft.Build.Utilities.Task, IDisposable
             AllowMultipleAssemblyLevelAttributes = AllowMultipleAssemblyLevelAttributes,
             AllowWildCards = AllowWildCards,
             AllowZeroPeKind = AllowZeroPeKind,
+            Closed = Closed,
             CopyAttributes = CopyAttributes,
             DebugInfo = DebugInfo,
             DelaySign = DelaySign,
             ExcludeInternalizeSerializable = ExcludeInternalizeSerializable,
+            FileAlignment = FileAlignment,
             Internalize = Internalize,
             KeepOtherVersionReferences = KeepOtherVersionReferences,
+            LineIndexation = LineIndexation,
             LogVerbose = LogVerbose,
             MergeIlLinkerFiles = MergeIlLinkerFiles,
             NoRepackRes = NoRepackRes,
             Parallel = Parallel,
+            PauseBeforeExit = PauseBeforeExit,
             PreserveTimestamp = PreserveTimestamp,
+            PublicKeyTokens = PublicKeyTokens,
             RenameInternalized = RenameInternalized,
             SkipConfigMerge = SkipConfigMerge,
+            StrongNameLost = StrongNameLost,
             UnionMerge = UnionMerge,
             XmlDocumentation = XmlDocumentation,
         };
@@ -152,6 +173,12 @@ public class ILRepack : Microsoft.Build.Utilities.Task, IDisposable
         if (!string.IsNullOrWhiteSpace(TargetKind))
             repackOptions.TargetKind = (ILRepacking.ILRepack.Kind)
                 Enum.Parse(typeof(ILRepacking.ILRepack.Kind), TargetKind);
+
+        if (!string.IsNullOrWhiteSpace(TargetPlatformDirectory))
+            repackOptions.TargetPlatformDirectory = TargetPlatformDirectory;
+
+        if (!string.IsNullOrWhiteSpace(TargetPlatformVersion))
+            repackOptions.TargetPlatformVersion = TargetPlatformVersion;
 
         if (!string.IsNullOrWhiteSpace(Version))
             repackOptions.Version = System.Version.Parse(Version);

@@ -26,6 +26,8 @@ public class ILRepack : Microsoft.Build.Utilities.Task, IDisposable
 
     public virtual bool AllowZeroPeKind { get; set; }
 
+    public virtual bool Closed { get; set; }
+
     public virtual bool CopyAttributes { get; set; }
 
     public virtual bool DebugInfo { get; set; }
@@ -38,6 +40,8 @@ public class ILRepack : Microsoft.Build.Utilities.Task, IDisposable
 
     public virtual bool KeepOtherVersionReferences { get; set; }
 
+    public virtual bool LineIndexation { get; set; }
+
     public virtual bool LogVerbose { get; set; }
 
     public virtual bool MergeIlLinkerFiles { get; set; }
@@ -46,18 +50,29 @@ public class ILRepack : Microsoft.Build.Utilities.Task, IDisposable
 
     public virtual bool Parallel { get; set; }
 
+    public virtual bool PauseBeforeExit { get; set; }
+
     public virtual bool PreserveTimestamp { get; set; }
+
+    public virtual bool PublicKeyTokens { get; set; }
 
     public virtual bool RenameInternalized { get; set; }
 
     public virtual bool SkipConfigMerge { get; set; }
 
+    public virtual bool StrongNameLost { get; set; }
 
     public virtual bool UnionMerge { get; set; }
 
     public virtual bool XmlDocumentation { get; set; }
 
+    public virtual int FileAlignment { get; set; }
+
     public virtual string TargetKind { get; set; } = string.Empty;
+
+    public virtual string TargetPlatformDirectory { get; set; } = string.Empty;
+
+    public virtual string TargetPlatformVersion { get; set; } = string.Empty;
 
     public virtual string Version { get; set; } = string.Empty;
 
@@ -110,6 +125,9 @@ public class ILRepack : Microsoft.Build.Utilities.Task, IDisposable
         if (CopyAttributes)
             cmdParams.Add("/copyattrs");
 
+        if (Closed)
+            cmdParams.Add("/closed");
+
         if (!DebugInfo)
             cmdParams.Add("/ndebug");
 
@@ -128,11 +146,17 @@ public class ILRepack : Microsoft.Build.Utilities.Task, IDisposable
         if (KeepOtherVersionReferences)
             cmdParams.Add("/keepotherversionreferences");
 
+        if (LineIndexation)
+            cmdParams.Add("/index");
+
         if (NoRepackRes)
             cmdParams.Add("/noRepackRes");
 
         if (Parallel)
             cmdParams.Add("/parallel");
+
+        if (PauseBeforeExit)
+            cmdParams.Add("/pause");
 
         if (PreserveTimestamp)
             cmdParams.Add("/preservetimestamp");
@@ -158,8 +182,19 @@ public class ILRepack : Microsoft.Build.Utilities.Task, IDisposable
         if (AllowZeroPeKind)
             cmdParams.Add("/zeropekind");
 
+        if (FileAlignment != 0)
+            cmdParams.Add($"/align:{FileAlignment}");
+
         if (!string.IsNullOrWhiteSpace(TargetKind))
             cmdParams.Add($"/target:{TargetKind}");
+
+        string targetplatform = string.Empty;
+        if (!string.IsNullOrWhiteSpace(TargetPlatformDirectory))
+            targetplatform += "${TargetPlatformDirectory},";
+        if (!string.IsNullOrWhiteSpace(TargetPlatformVersion))
+            targetplatform += TargetPlatformVersion;
+        if (!string.IsNullOrWhiteSpace(targetplatform))
+            cmdParams.Add($"/targetplatform:{targetplatform}");
 
         if (!string.IsNullOrWhiteSpace(Version))
             cmdParams.Add($"/ver:{Version}");
