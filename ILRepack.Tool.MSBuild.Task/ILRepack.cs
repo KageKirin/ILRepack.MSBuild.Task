@@ -275,21 +275,21 @@ public class ILRepack : Microsoft.Build.Utilities.Task, IDisposable
 
         if (LibraryPaths is not null && LibraryPaths.Length > 0)
             cmdParams.AddRange(
-                LibraryPaths.Select(item => item.ItemSpec).Select(l => $"/lib:\"{l}\"").Distinct()
+                LibraryPaths.Select(item => Path.GetFullPath(item.ItemSpec)).Select(l => $"/lib:\"{l}\"").Distinct()
             );
         else
             cmdParams.AddRange(
                 InputAssemblies
-                    .Select(item => Path.GetDirectoryName(item.ItemSpec))
+                    .Select(item => Path.GetDirectoryName(Path.GetFullPath(item.ItemSpec)))
                     .Select(l => $"/lib:\"{l}\"")
                     .Distinct()
             );
 
         if (!string.IsNullOrWhiteSpace(OutputFile.ItemSpec))
-            cmdParams.Add($"/out:\"{OutputFile.ItemSpec}\"");
+            cmdParams.Add($"/out:\"{Path.GetFullPath(OutputFile.ItemSpec)}\"");
 
         // must come last
-        cmdParams.AddRange(InputAssemblies.Select(item => item.ItemSpec).Distinct());
+        cmdParams.AddRange(InputAssemblies.Select(item => Path.GetFullPath(item.ItemSpec)).Distinct());
 
         var thisPath = Path.GetDirectoryName(Assembly.GetExecutingAssembly().Location);
         var ilrepack = Path.Combine(thisPath, "tools", "ILRepack.exe");
