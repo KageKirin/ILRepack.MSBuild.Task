@@ -289,15 +289,24 @@ public class ILRepack : Microsoft.Build.Utilities.Task, IDisposable
             cmdParams.Add($"/out:\"{OutputFile.ItemSpec}\"");
 
         // must come last
-        cmdParams.AddRange(InputAssemblies.Select(item => $"\"{item.ItemSpec}\"").Distinct());
+        cmdParams.AddRange(InputAssemblies.Select(item => item.ItemSpec).Distinct());
 
         var thisPath = Path.GetDirectoryName(Assembly.GetExecutingAssembly().Location);
         var ilrepack = Path.Combine(thisPath, "tools", "ILRepack.exe");
         if (!File.Exists(ilrepack))
             ilrepack = "ilrepack";
 
-        string command = ilrepack + " " + string.Join(" ", cmdParams);
-        Log.LogMessage(MessageImportance.High, $"ILRepack: running `{command}`");
+        var rspPath = Path.Combine(
+            Path.GetDirectoryName(InputAssemblies[0].ItemSpec),
+            Path.GetFileNameWithoutExtension(InputAssemblies[0].ItemSpec) + ".rsp");
+        File.WriteAllLines(rspPath, cmdParams);
+        Log.LogMessage(
+            MessageImportance.High,
+            $"ILRepack: running with response file {rspPath}:\n`{File.ReadAllText(rspPath)}`"
+        );
+
+        string command = ilrepack + " @" + rspPath;
+        Log.LogMessage(MessageImportance.High, $"ILRepack: running as `{command}`");
 
         Process process = new()
         {
