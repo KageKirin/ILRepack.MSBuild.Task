@@ -286,7 +286,7 @@ public class ILRepack : Microsoft.Build.Utilities.Task, IDisposable
             );
 
         if (!string.IsNullOrWhiteSpace(OutputFile.ItemSpec))
-            cmdParams.Add($"/out:\"{OutputFile.ItemSpec}\"");
+            cmdParams.Add($"/out:\"{Path.GetFullPath(OutputFile.ItemSpec)}\"");
 
         // must come last
         cmdParams.AddRange(InputAssemblies.Select(item => Path.GetFullPath(item.ItemSpec)).Distinct());

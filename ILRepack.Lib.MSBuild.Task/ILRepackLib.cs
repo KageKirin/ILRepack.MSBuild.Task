@@ -302,7 +302,7 @@ public class ILRepack : Microsoft.Build.Utilities.Task, IDisposable
         Log.LogMessage(MessageImportance.High, $"ILRepackLib: repackOptions {repackOptions}");
 
         // create output dir
-        string outputPath = Path.GetDirectoryName(OutputFile.ItemSpec);
+        string outputPath = Path.GetDirectoryName(Path.GetFullPath(OutputFile.ItemSpec));
         if (outputPath != null && !Directory.Exists(outputPath))
         {
             try
