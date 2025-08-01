@@ -275,12 +275,12 @@ public class ILRepack : Microsoft.Build.Utilities.Task, IDisposable
 
         if (LibraryPaths is not null && LibraryPaths.Length > 0)
             cmdParams.AddRange(
-                LibraryPaths.Select(item => item.ItemSpec).Select(l => $"/lib:\"{l}\"").Distinct()
+                LibraryPaths.Select(item => Path.GetFullPath(item.ItemSpec)).Select(l => $"/lib:\"{l}\"").Distinct()
             );
         else
             cmdParams.AddRange(
                 InputAssemblies
-                    .Select(item => Path.GetDirectoryName(item.ItemSpec))
+                    .Select(item => Path.GetDirectoryName(Path.GetFullPath(item.ItemSpec)))
                     .Select(l => $"/lib:\"{l}\"")
                     .Distinct()
             );

@@ -286,10 +286,10 @@ public class ILRepack : Microsoft.Build.Utilities.Task, IDisposable
         }
 
         if (LibraryPaths is not null && LibraryPaths.Length > 0)
-            repackOptions.SearchDirectories = LibraryPaths.Select(item => item.ItemSpec).Distinct();
+            repackOptions.SearchDirectories = LibraryPaths.Select(item => Path.GetFullPath(item.ItemSpec)).Distinct();
         else
             repackOptions.SearchDirectories = InputAssemblies
-                .Select(item => Path.GetDirectoryName(item.ItemSpec))
+                .Select(item => Path.GetDirectoryName(Path.GetFullPath(item.ItemSpec)))
                 .Distinct();
 
         repackOptions.OutputFile = outputAssembly;
