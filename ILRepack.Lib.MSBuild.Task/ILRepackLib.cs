@@ -293,7 +293,7 @@ public class ILRepack : Microsoft.Build.Utilities.Task, IDisposable
                 .Distinct();
 
         repackOptions.OutputFile = outputAssembly;
-        repackOptions.InputAssemblies = [.. InputAssemblies.Select(f => f.ItemSpec).Distinct()];
+        repackOptions.InputAssemblies = [.. InputAssemblies.Select(f => Path.GetFullPath(f.ItemSpec)).Distinct()];
 
         Log.LogMessage(
             MessageImportance.High,

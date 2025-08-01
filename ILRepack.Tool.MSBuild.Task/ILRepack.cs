@@ -289,7 +289,7 @@ public class ILRepack : Microsoft.Build.Utilities.Task, IDisposable
             cmdParams.Add($"/out:\"{OutputFile.ItemSpec}\"");
 
         // must come last
-        cmdParams.AddRange(InputAssemblies.Select(item => item.ItemSpec).Distinct());
+        cmdParams.AddRange(InputAssemblies.Select(item => Path.GetFullPath(item.ItemSpec)).Distinct());
 
         var thisPath = Path.GetDirectoryName(Assembly.GetExecutingAssembly().Location);
         var ilrepack = Path.Combine(thisPath, "tools", "ILRepack.exe");
