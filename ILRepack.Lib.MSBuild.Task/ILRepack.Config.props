@@ -3,6 +3,7 @@
 
   <PropertyGroup>
     <ILRepackTarget>true</ILRepackTarget>
+    <ILRepackIncludeReferenceAssemblies>true</ILRepackIncludeReferenceAssemblies>
   </PropertyGroup>
 
 </Project>
