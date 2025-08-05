@@ -101,7 +101,7 @@
   </PropertyGroup>
 
   <ItemGroup>
-    <ILRepackOutputFile Condition="'$(ILRepackOutputFile)' == ''" Include="$(OutDir)Repacked.$(AssemblyFile)" />
+    <ILRepackOutputFile Condition="'$(ILRepackOutputFile)' == ''" Include="$(OutDir)$(AssemblyName).Repacked.dll" />
     <ILRepackLogFile Condition="'$(ILRepackLogFile)' == ''" Include="$(OutDir)$(AssemblyName).ilrepack.log" />
   </ItemGroup>
 
