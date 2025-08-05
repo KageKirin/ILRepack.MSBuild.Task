@@ -416,7 +416,7 @@ public class ILRepack : Microsoft.Build.Utilities.Task, IDisposable
 
     public override bool Execute()
     {
-        Log.LogMessage(MessageImportance.High, "ILRepack: preparing inputs");
+        Log.LogMessage(MessageImportance.Low, "ILRepack: preparing inputs");
 
         var cmdParams = new List<string>();
 
@@ -556,7 +556,7 @@ public class ILRepack : Microsoft.Build.Utilities.Task, IDisposable
             );
 
         Log.LogMessage(
-            MessageImportance.High,
+            MessageImportance.Low,
             $"ILRepack: InputAssemblies (unfiltered): {string.Join("\n", InputAssemblies.Select(f => f.ItemSpec))}"
         );
         if (FilterAssemblies.Length > 0)
@@ -576,7 +576,7 @@ public class ILRepack : Microsoft.Build.Utilities.Task, IDisposable
                 .ToArray();
         }
         Log.LogMessage(
-            MessageImportance.High,
+            MessageImportance.Low,
             $"ILRepack: InputAssemblies (filtered): {string.Join("\n", InputAssemblies.Distinct().Select(f => f.ItemSpec))}"
         );
 
@@ -608,12 +608,12 @@ public class ILRepack : Microsoft.Build.Utilities.Task, IDisposable
             Path.GetFileNameWithoutExtension(InputAssemblies[0].ItemSpec) + ".rsp");
         File.WriteAllLines(rspPath, cmdParams);
         Log.LogMessage(
-            MessageImportance.High,
+            MessageImportance.Normal,
             $"ILRepack: running with response file {rspPath}:\n`{File.ReadAllText(rspPath)}`"
         );
 
         string command = ilrepack + " @" + rspPath;
-        Log.LogMessage(MessageImportance.High, $"ILRepack: running as `{command}`");
+        Log.LogMessage(MessageImportance.Normal, $"ILRepack: running as `{command}`");
 
         Process process = new()
         {
