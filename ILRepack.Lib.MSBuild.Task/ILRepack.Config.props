@@ -2,7 +2,22 @@
 <Project xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
 
   <PropertyGroup>
-    <ILRepackTarget>false</ILRepackTarget>
+    <ILRepackTarget>true</ILRepackTarget>
+    <ILRepackIncludeReferenceAssemblies>true</ILRepackIncludeReferenceAssemblies>
   </PropertyGroup>
+
+  <ItemGroup>
+    <ILRepackInputAssemblies Include="$(PkgMicrosoft_Build_Utilities_Core)\lib\net472\*.dll" />
+    <ILRepackInputAssemblies Include="$(PkgMicrosoft_Build_Framework)\lib\net472\*.dll" />
+
+    <ILRepackInternalizeExclude Include="Microsoft.Win32.dll" />
+    <ILRepackInternalizeExclude Include="System.dll" />
+    <ILRepackInternalizeExclude Include="System.IO.dll" />
+    <ILRepackInternalizeExclude Include="Microsoft.Build.dll" />
+    <ILRepackInternalizeExclude Include="Microsoft.Build.Framework.dll" />
+    <ILRepackInternalizeExclude Include="Microsoft.Build.Utilities.Core.dll" />
+    <ILRepackInternalizeExclude Include="Mono.Cecil.dll" />
+    <ILRepackInternalizeExclude Include="ILRepack.Tool.MSBuild.Task.dll" />
+  </ItemGroup>
 
 </Project>
