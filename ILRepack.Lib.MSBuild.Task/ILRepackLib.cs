@@ -546,6 +546,16 @@ public class ILRepack : Microsoft.Build.Utilities.Task, IDisposable
             repackOptions.ExcludeFile = excludeFile;
         }
 
+        repackOptions.SearchDirectories = InputAssemblies
+            .Select(item => Path.GetDirectoryName(Path.GetFullPath(item.ItemSpec)))
+            .Distinct();
+        if (LibraryPaths is not null && LibraryPaths.Length > 0)
+            repackOptions.SearchDirectories = repackOptions
+                .SearchDirectories.Concat(
+                    LibraryPaths.Select(item => Path.GetFullPath(item.ItemSpec))
+                )
+                .Distinct();
+
         Log.LogMessage(
             MessageImportance.Low,
             $"ILRepackLib: InputAssemblies (unfiltered): {string.Join("\n", InputAssemblies.Select(f => f.ItemSpec))}"
@@ -591,13 +601,6 @@ public class ILRepack : Microsoft.Build.Utilities.Task, IDisposable
                 Log.LogError($"ILRepackLib: InputAssemblies `{inputAssembly}` does not exist!");
             }
         }
-
-        if (LibraryPaths is not null && LibraryPaths.Length > 0)
-            repackOptions.SearchDirectories = LibraryPaths.Select(item => Path.GetFullPath(item.ItemSpec)).Distinct();
-        else
-            repackOptions.SearchDirectories = InputAssemblies
-                .Select(item => Path.GetDirectoryName(Path.GetFullPath(item.ItemSpec)))
-                .Distinct();
 
         repackOptions.OutputFile = outputAssembly;
         repackOptions.InputAssemblies = [.. InputAssemblies.Select(f => Path.GetFullPath(f.ItemSpec)).Distinct()];
