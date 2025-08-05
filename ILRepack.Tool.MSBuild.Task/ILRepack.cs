@@ -539,7 +539,7 @@ public class ILRepack : Microsoft.Build.Utilities.Task, IDisposable
             );
 
             foreach (var asm in InternalizeExclude)
-                writer.WriteLine(Path.GetFileNameWithoutExtension(asm.ItemSpec));
+                writer.WriteLine(Path.GetFileName(asm.ItemSpec));
 
             cmdParams.Add($"/internalize:\"{excludeFile}\"");
         }
