@@ -2,10 +2,11 @@
 <Project xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
 
   <PropertyGroup>
-    <ILRepackTarget>true</ILRepackTarget>
-    <ILRepackIncludeReferenceAssemblies>true</ILRepackIncludeReferenceAssemblies>
+    <ILRepackTarget>false</ILRepackTarget>
+    <!-- <ILRepackIncludeReferenceAssemblies>true</ILRepackIncludeReferenceAssemblies> -->
   </PropertyGroup>
 
+  <!--
   <ItemGroup>
     <ILRepackInputAssemblies Include="$(PkgMicrosoft_Build_Utilities_Core)\lib\net472\*.dll" />
     <ILRepackInputAssemblies Include="$(PkgMicrosoft_Build_Framework)\lib\net472\*.dll" />
@@ -23,5 +24,6 @@
 
     <ILRepackFilterAssemblies Include="ILRepack" />
   </ItemGroup>
+  -->
 
 </Project>

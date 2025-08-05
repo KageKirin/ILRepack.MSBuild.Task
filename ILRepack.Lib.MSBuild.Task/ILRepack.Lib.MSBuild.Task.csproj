@@ -49,6 +49,7 @@
   <Import Project="ILRepack.Config.props" />
   <Import Project="..\ILRepack.Tool.MSBuild.Task\build\KageKirin.ILRepack.Tool.MSBuild.Task.props" />
   <Import Project="..\ILRepack.Tool.MSBuild.Task\build\KageKirin.ILRepack.Tool.MSBuild.Task.targets" />
+  <Import Project="ILRepack.targets" />
 
   <Target Name="INFO" BeforeTargets="Compile">
     <Message Text="PkgILRepack $(PkgILRepack)" Importance="low" />
