@@ -419,7 +419,7 @@ public class ILRepack : Microsoft.Build.Utilities.Task, IDisposable
 
     public override bool Execute()
     {
-        Log.LogMessage(MessageImportance.High, "ILRepackLib: preparing inputs");
+        Log.LogMessage(MessageImportance.Low, "ILRepackLib: preparing inputs");
 
         if (OutputFile is null || string.IsNullOrWhiteSpace(OutputFile.ItemSpec))
         {
@@ -547,7 +547,7 @@ public class ILRepack : Microsoft.Build.Utilities.Task, IDisposable
         }
 
         Log.LogMessage(
-            MessageImportance.High,
+            MessageImportance.Low,
             $"ILRepackLib: InputAssemblies (unfiltered): {string.Join("\n", InputAssemblies.Select(f => f.ItemSpec))}"
         );
         if (FilterAssemblies.Length > 0)
@@ -567,7 +567,7 @@ public class ILRepack : Microsoft.Build.Utilities.Task, IDisposable
                 .ToArray();
         }
         Log.LogMessage(
-            MessageImportance.High,
+            MessageImportance.Low,
             $"ILRepackLib: InputAssemblies (filtered): {string.Join("\n", InputAssemblies.Distinct().Select(f => f.ItemSpec))}"
         );
 
@@ -582,7 +582,7 @@ public class ILRepack : Microsoft.Build.Utilities.Task, IDisposable
             if (File.Exists(inputAssembly))
             {
                 Log.LogMessage(
-                    MessageImportance.High,
+                    MessageImportance.Low,
                     $"ILRepackLib: InputAssemblies `{inputAssembly}` exists"
                 );
             }
@@ -603,10 +603,10 @@ public class ILRepack : Microsoft.Build.Utilities.Task, IDisposable
         repackOptions.InputAssemblies = [.. InputAssemblies.Select(f => Path.GetFullPath(f.ItemSpec)).Distinct()];
 
         Log.LogMessage(
-            MessageImportance.High,
+            MessageImportance.Normal,
             $"ILRepackLib: running `{repackOptions.ToCommandLine()}`"
         );
-        Log.LogMessage(MessageImportance.High, $"ILRepackLib: repackOptions {repackOptions}");
+        Log.LogMessage(MessageImportance.Normal, $"ILRepackLib: repackOptions {repackOptions}");
 
         // create output dir
         string outputPath = Path.GetDirectoryName(Path.GetFullPath(OutputFile.ItemSpec));
@@ -633,7 +633,7 @@ public class ILRepack : Microsoft.Build.Utilities.Task, IDisposable
             if (task.Wait(TimeSpan.FromSeconds(Timeout > 0 ? Timeout : 30)))
             {
                 Success = true;
-                Log.LogMessage(MessageImportance.High, $"ILRepackLib: success");
+                Log.LogMessage(MessageImportance.Normal, $"ILRepackLib: success");
             }
             else
             {
