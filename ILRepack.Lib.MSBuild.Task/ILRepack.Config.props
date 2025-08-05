@@ -19,6 +19,8 @@
     <ILRepackInternalizeExclude Include="Microsoft.Build.Utilities.Core.dll" />
     <ILRepackInternalizeExclude Include="Mono.Cecil.dll" />
     <ILRepackInternalizeExclude Include="ILRepack.Tool.MSBuild.Task.dll" />
+
+    <ILRepackFilterAssemblies Include="ILRepack" />
   </ItemGroup>
 
 </Project>
