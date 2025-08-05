@@ -1,13 +1,13 @@
 <Project>
   <Target Name="GenerateChangelog" BeforeTargets="Pack">
-    <Message Importance="high" Text="Generating CHANGELOG.md" />
+    <Message Importance="normal" Text="Generating CHANGELOG.md" />
     <Exec Command="git log --reverse --pretty='* %s' > $(MSBuildThisFileDirectory)CHANGELOG.md"/>
     <Exec Command="cat $(MSBuildThisFileDirectory)CHANGELOG.md"/>
   </Target>
 
   <Target Name="LogOutputDir" AfterTargets="Build">
-    <Message Text="ProjectDir $(ProjectDir)" Importance="high" />
-    <Message Text="OutDir $(OutDir)" Importance="high" />
+    <Message Text="ProjectDir $(ProjectDir)" Importance="normal" />
+    <Message Text="OutDir $(OutDir)" Importance="normal" />
     <Exec Command="ls $(OutDir)"/>
   </Target>
 </Project>

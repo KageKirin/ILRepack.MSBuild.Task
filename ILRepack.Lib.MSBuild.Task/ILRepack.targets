@@ -2,7 +2,7 @@
 <Project xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
   <Target Name="ILRepackerExeForILRepackLibMSBuildTask" AfterTargets="Compile" DependsOnTargets="ResolveAssemblyReferences">
 
-    <Message Text="Repacking $(IntermediateOutputPath)" Importance="high" />
+    <Message Text="Repacking $(IntermediateOutputPath)" Importance="normal" />
     <PropertyGroup>
       <_ThisAssembly>$(IntermediateOutputPath)$(TargetFileName)</_ThisAssembly>
       <_ILRepackAssembly>$(PkgILRepack_Lib)/lib/net472/ILRepack.dll</_ILRepackAssembly>
@@ -12,7 +12,7 @@
       <_ILRepackCmd>$(_ILRepackExe) /internalize:$(_ILRepackExclude) /renameinternalized $(_ILRepackLibs) /log:$(_ThisAssembly).ilrepack.log /out:$(_ThisAssembly).repack $(_ThisAssembly) $(_ILRepackAssembly)</_ILRepackCmd>
     </PropertyGroup>
 
-    <Message Text="running: $(_ILRepackCmd)" Importance="high" />
+    <Message Text="running: $(_ILRepackCmd)" Importance="low" />
     <Exec Command="dotnet $(_ILRepackCmd)" />
     <Move SourceFiles="$(_ThisAssembly).repack" DestinationFiles="$(_ThisAssembly)" />
 

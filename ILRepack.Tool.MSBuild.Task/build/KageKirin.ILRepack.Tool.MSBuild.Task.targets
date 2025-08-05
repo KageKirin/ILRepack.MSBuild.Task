@@ -36,7 +36,7 @@
     DependsOnTargets="ResolveAssemblyReferences"
     Condition="'$(ILRepackTarget)' == 'true'">
 
-    <Message Text="Repacking $(IntermediateOutputPath)" Importance="high" />
+    <Message Text="Repacking $(IntermediateOutputPath)" Importance="normal" />
 
     <ItemGroup>
       <_MainAssembly Include="$(IntermediateOutputPath)$(TargetFileName)" />
@@ -54,8 +54,8 @@
       <_DoNotInternalizeAssemblies Include="@(ILRepackInternalizeExclude)" />
     </ItemGroup>
 
-    <Message Text="Repacking assemblies into '%(_MainAssembly.Identity)'" Importance="high" />
-    <Message Text="Repacking assemblies in $(IntermediateOutputPath): @(_InputAssemblies->'%(Identity)', ' ') into @(_MainAssembly->'%(Identity)')" Importance="high" />
+    <Message Text="Repacking assemblies into '%(_MainAssembly.Identity)'" Importance="low" />
+    <Message Text="Repacking assemblies in $(IntermediateOutputPath): @(_InputAssemblies->'%(Identity)', ' ') into @(_MainAssembly->'%(Identity)')" Importance="low" />
 
     <ILRepack
       Parallel="$(ILRepackParallel)"

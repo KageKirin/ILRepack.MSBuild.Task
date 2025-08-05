@@ -47,7 +47,7 @@
       <_LsCommand Condition="'$([System.OperatingSystem]::IsWindows())'">dir</_LsCommand>
     </PropertyGroup>
 
-    <Message Text="PkgILRepack $(PkgILRepack)" Importance="high" />
+    <Message Text="PkgILRepack $(PkgILRepack)" Importance="low" />
     <Exec Command="$(_LsCommand) $(PkgILRepack)" />
     <Exec Command="$(_LsCommand) $(PkgILRepack)/tools" />
   </Target>

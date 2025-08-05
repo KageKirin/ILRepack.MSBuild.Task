@@ -45,8 +45,8 @@
   <Import Project="ILRepack.targets" />
 
   <Target Name="INFO" BeforeTargets="Compile">
-    <Message Text="PkgILRepack $(PkgILRepack)" Importance="high" />
-    <Message Text="PkgILRepack_Lib $(PkgILRepack_Lib)" Importance="high" />
+    <Message Text="PkgILRepack $(PkgILRepack)" Importance="low" />
+    <Message Text="PkgILRepack_Lib $(PkgILRepack_Lib)" Importance="low" />
   </Target>
 
 </Project>

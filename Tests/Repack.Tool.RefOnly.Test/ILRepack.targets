@@ -3,7 +3,7 @@
 
   <Target Name="ILRepackingWithTool" AfterTargets="Compile" DependsOnTargets="ResolveAssemblyReferences">
 
-    <Message Text="Repacking $(IntermediateOutputPath)" Importance="high" />
+    <Message Text="Repacking $(IntermediateOutputPath)" Importance="normal" />
 
     <ItemGroup>
       <MainAssembly Include="$(IntermediateOutputPath)$(TargetFileName)" />
@@ -20,7 +20,7 @@
       <DoNotInternalizeAssemblies Include="@(MainAssembly)" />
     </ItemGroup>
 
-    <Message Text="Repacking assemblies in $(IntermediateOutputPath): @(InputAssemblies->'%(Identity)', ' ') into @(MainAssembly->'%(Identity)')" Importance="high" />
+    <Message Text="Repacking assemblies in $(IntermediateOutputPath): @(InputAssemblies->'%(Identity)', ' ') into @(MainAssembly->'%(Identity)')" Importance="low" />
 
     <ILRepack
       Parallel="false"
