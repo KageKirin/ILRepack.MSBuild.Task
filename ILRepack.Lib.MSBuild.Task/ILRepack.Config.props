@@ -6,4 +6,9 @@
     <ILRepackIncludeReferenceAssemblies>true</ILRepackIncludeReferenceAssemblies>
   </PropertyGroup>
 
+  <ItemGroup>
+    <ILRepackInputAssemblies Include="$(PkgMicrosoft_Build_Utilities_Core)\lib\net472\*.dll" />
+    <ILRepackInputAssemblies Include="$(PkgMicrosoft_Build_Framework)\lib\net472\*.dll" />
+  </ItemGroup>
+
 </Project>
