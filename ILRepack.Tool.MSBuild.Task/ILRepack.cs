@@ -580,17 +580,17 @@ public class ILRepack : Microsoft.Build.Utilities.Task, IDisposable
             $"ILRepack: InputAssemblies (filtered): {string.Join("\n", InputAssemblies.Distinct().Select(f => f.ItemSpec))}"
         );
 
+        IEnumerable<string> searchDirectories = InputAssemblies
+            .Select(item => Path.GetDirectoryName(Path.GetFullPath(item.ItemSpec)))
+            .Distinct();
         if (LibraryPaths is not null && LibraryPaths.Length > 0)
-            cmdParams.AddRange(
-                LibraryPaths.Select(item => Path.GetFullPath(item.ItemSpec)).Select(l => $"/lib:\"{l}\"").Distinct()
-            );
-        else
-            cmdParams.AddRange(
-                InputAssemblies
-                    .Select(item => Path.GetDirectoryName(Path.GetFullPath(item.ItemSpec)))
-                    .Select(l => $"/lib:\"{l}\"")
-                    .Distinct()
-            );
+            searchDirectories = searchDirectories
+                .Concat(LibraryPaths.Select(item => Path.GetFullPath(item.ItemSpec)))
+                .Distinct();
+
+        cmdParams.AddRange(
+            searchDirectories.Select(item => Path.GetFullPath(item)).Select(l => $"/lib:\"{l}\"")
+        );
 
         if (!string.IsNullOrWhiteSpace(OutputFile.ItemSpec))
             cmdParams.Add($"/out:\"{Path.GetFullPath(OutputFile.ItemSpec)}\"");
