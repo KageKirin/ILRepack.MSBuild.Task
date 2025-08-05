@@ -1,54 +1,20 @@
 <?xml version="1.0" encoding="utf-8" ?>
 <Project xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <Target Name="ILRepackerExeForILRepackLibMSBuildTask" AfterTargets="Compile" DependsOnTargets="ResolveAssemblyReferences">
 
-  <Target Name="ILRepackingMSBuildLibWithTool" AfterTargets="Compile" DependsOnTargets="ResolveAssemblyReferences">
+    <Message Text="Repacking $(IntermediateOutputPath)" Importance="normal" />
+    <PropertyGroup>
+      <_ThisAssembly>$(IntermediateOutputPath)$(TargetFileName)</_ThisAssembly>
+      <_ILRepackAssembly>$(PkgILRepack_Lib)/lib/net472/ILRepack.dll</_ILRepackAssembly>
+      <_ILRepackLibs>/lib:$(PkgMicrosoft_Build_Utilities_Core)\lib\net472 /lib:$(PkgMicrosoft_Build_Framework)\lib\net472</_ILRepackLibs>
+      <_ILRepackExclude>$(MSBuildThisFileDirectory)ILRepack.not</_ILRepackExclude>
+      <_ILRepackExe>$(PkgILRepack)/tools/ILRepack.exe</_ILRepackExe>
+      <_ILRepackCmd>$(_ILRepackExe) /internalize:$(_ILRepackExclude) /renameinternalized $(_ILRepackLibs) /log:$(_ThisAssembly).ilrepack.log /out:$(_ThisAssembly).repack $(_ThisAssembly) $(_ILRepackAssembly)</_ILRepackCmd>
+    </PropertyGroup>
 
-    <Message Text="Repacking $(IntermediateOutputPath)" Importance="high" />
-
-    <ItemGroup>
-      <MainAssembly Include="$(IntermediateOutputPath)$(TargetFileName)" />
-      <InputAssemblies Include="$(PkgILRepack_Lib)/lib/net472/ILRepack.dll" />
-      <InputAssemblies Include="@(ReferenceCopyLocalPaths)" />
-
-      <FilterAssemblies Include="$(AssemblyName)" />
-      <FilterAssemblies Include="ILRepack.Lib" />
-      <FilterAssemblies Include="Microsoft.Build" />
-
-      <LibraryPaths Include="%(InputAssemblies.Directory)" />
-      <LibraryPaths Include="%(ReferenceCopyLocalPaths.Directory)" />
-
-      <LibraryPaths Include="$(PkgMicrosoft_Build_Utilities_Core)\lib\net472" />
-      <LibraryPaths Include="$(PkgMicrosoft_Build_Framework)\lib\net472" />
-
-
-    </ItemGroup>
-
-    <ItemGroup>
-      <DoNotInternalizeAssemblies Include="@(MainAssembly)" />
-      <DoNotInternalizeAssemblies Include="ILRepack.Tool.MSBuild.Task.dll" />
-      <DoNotInternalizeAssemblies Include="Microsoft.Build.Framework.dll" />
-      <DoNotInternalizeAssemblies Include="Microsoft.Build.Utilities.Core.dll" />
-      <DoNotInternalizeAssemblies Include="Mono.Cecil.dll" />
-    </ItemGroup>
-
-    <Message Text="Repacking assemblies in $(IntermediateOutputPath): @(InputAssemblies->'%(Identity)', ' ') into @(MainAssembly->'%(Identity)')" Importance="high" />
-
-    <ILRepack
-      Parallel="false"
-      DebugInfo="false"
-      LogVerbose="false"
-      Internalize="true"
-      RenameInternalized="false"
-      InputAssemblies="@(MainAssembly);@(InputAssemblies)"
-      InternalizeExclude="@(DoNotInternalizeAssemblies)"
-      FilterAssemblies="@(FilterAssemblies)"
-      LibraryPaths="@(LibraryPaths)"
-      Timeout="60"
-
-      OutputFile="@(MainAssembly)"
-      LogFile="$(OutputPath)$(AssemblyName).ilrepack.log"
-    />
+    <Message Text="running: $(_ILRepackCmd)" Importance="low" />
+    <Exec Command="dotnet $(_ILRepackCmd)" />
+    <Move SourceFiles="$(_ThisAssembly).repack" DestinationFiles="$(_ThisAssembly)" />
 
   </Target>
-
 </Project>
