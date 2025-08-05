@@ -9,6 +9,7 @@
   <ItemGroup>
     <ILRepackInputAssemblies Include="$(PkgMicrosoft_Build_Utilities_Core)\lib\net472\*.dll" />
     <ILRepackInputAssemblies Include="$(PkgMicrosoft_Build_Framework)\lib\net472\*.dll" />
+    <ILRepackInputAssemblies Include="$(PkgILRepack_Lib)\lib\net472\*.dll" />
 
     <ILRepackInternalizeExclude Include="Microsoft.Win32.dll" />
     <ILRepackInternalizeExclude Include="System.dll" />
